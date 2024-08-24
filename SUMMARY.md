@@ -1,4 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Content](content.md)
+
+## DIP
+
+* [Image](dip/image.md)
