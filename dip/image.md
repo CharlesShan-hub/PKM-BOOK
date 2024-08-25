@@ -16,6 +16,12 @@ description: 图像的基本概念
 
 图像就是数组，每个像素点的颜色是响应值。
 
+<figure><img src="../.gitbook/assets/tmp1irw0f42.jpg" alt="宇航员的图片" width="256"><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
+
 ```python
 import skimage.data as data
 from PIL import Image
@@ -25,17 +31,27 @@ image = Image.fromarray(data.astronaut())
 image.show()
 ```
 
-<figure><img src="../.gitbook/assets/tmp1irw0f42.jpg" alt="宇航员的图片" width="256"><figcaption></figcaption></figure>
+</details>
+
+{% hint style="info" %}
+skimage.data模块有很多demo 图片python
 
 <pre class="language-python"><code class="lang-python"><strong>print(data.__all__)
 </strong><strong>['astronaut', 'binary_blobs', 'brain', 'brick', 'camera', 'cat', 'cell', 'cells3d', 'checkerboard', 'chelsea', 'clock', 'coffee', 'coins', 'colorwheel', 'data_dir', 'download_all', 'eagle', 'file_hash', 'grass', 'gravel', 'horse', 'hubble_deep_field', 'human_mitosis', 'immunohistochemistry', 'kidney', 'lbp_frontal_face_cascade_filename', 'lfw_subset', 'lily', 'logo', 'microaneurysms', 'moon', 'nickel_solidification', 'page', 'palisades_of_vogt', 'protein_transport', 'retina', 'rocket', 'shepp_logan_phantom', 'skin', 'stereo_motorcycle', 'text', 'vortex']
 </strong></code></pre>
+{% endhint %}
 
 ***
 
 ### Sampling
 
 采样：从连续信号到离散信号。
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
 
 ```python
 import numpy as np
@@ -58,13 +74,19 @@ for i,n in enumerate([5,15,50,1000]):
 plt.show()
 ```
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+</details>
 
 ***
 
 ### Quantization
 
 量化：用多少比特代表每个像素的颜色。
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
 
 ```python
 import numpy as np
@@ -88,7 +110,7 @@ for index,level in enumerate([1,2,4,8]):
 plt.show()
 ```
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+</details>
 
 ***
 

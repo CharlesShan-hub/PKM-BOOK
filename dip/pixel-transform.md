@@ -1,6 +1,6 @@
 ---
-description: 像素级别变换
 icon: '3'
+description: 像素级别变换
 ---
 
 # Pixel Transform
@@ -16,6 +16,12 @@ icon: '3'
 
 Gamma变换（幂次变换）：用于改变亮度。
 
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
+
 ```python
 from skimage import data,io,exposure
 from matplotlib import pyplot as plt
@@ -30,7 +36,7 @@ for i,gamma in enumerate([1,0.2,0.67,25]):
 plt.show()
 ```
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+</details>
 
 ***
 
@@ -43,6 +49,12 @@ plt.show()
 1. 求 pdf，也就是直方图。
 2. 求 cdf。类似从概率密度函数求概率分布函数。$$cdf[t] = \sum_0^tp[t]$$。
 3. 累计概率的 0 到 1，就是颜色的 0 到 1。
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
 
 ```python
 import numpy as np
@@ -122,7 +134,4 @@ plt.show()
 
 ```
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
-
-
-
+</details>
