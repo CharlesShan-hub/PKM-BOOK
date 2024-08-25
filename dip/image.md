@@ -1,5 +1,6 @@
 ---
 icon: '1'
+description: 图像的基本概念
 ---
 
 # Image
@@ -91,7 +92,7 @@ plt.show()
 
 ***
 
-### 像素间关系
+### Neighbor and Distance
 
 1. 邻域：4 邻域(上下左右)，D 邻域(四个角)，8 邻域(4+D)
 2. 欧氏距离：$$D_e = \sqrt{(x-s)^2+(x-t)^2}$$
