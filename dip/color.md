@@ -9,12 +9,6 @@ description: 颜色空间
 
 <img src="../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
-
-
-LMS(Long, Medium, Short)就是运用这一原理的色彩模式。
-
-
-
 ## Color Space
 
 ### LMS
@@ -61,11 +55,31 @@ LMS 中，人眼的三种视锥细胞的响应值是归一化过的。三种视�
 
 <figure><img src="../.gitbook/assets/image (1).png" alt="" width="249"><figcaption><p>https://www.bilibili.com/video/BV1U34y1G7wa/?t=1973</p></figcaption></figure>
 
-XYZ 其实就是 LMS 的线性变换，XYZ 保持了LMS 的很多性质，比如颜色由三色光组成。但是这个变换让上边的那个三角形扭曲了，得到了我们熟悉的 CIE颜色图（CIE chromaticity diagram）。
+XYZ 其实就是 LMS 的线性变换，XYZ 保持了LMS 的很多性质，比如颜色由三色光组成。但是这个变换让上边的那个三角形扭曲了，得到了 XYZ 里边的三角形，但其原理不变：三维空间某个纯颜色在三角形上投影，这个投影的颜色绘制为这个纯颜色在二维上的表示。
+
+<figure><img src="../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+
+得到了我们熟悉的 CIE颜色图（CIE chromaticity diagram）。
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>The Chromaticity Diagram[5]</p></figcaption></figure>
 
-CIE颜色图中上半边曲线是所有频率颜色，纯1颜色，
+CIE颜色图中上半边曲线是所有频率颜色，也就是前边说的纯颜色，红橙黄绿青蓝紫。图中的下半边直线以及区域内部的点均是插值得到的结果！
+
+{% hint style="info" %}
+当然，这个切面肯定不是单纯把 LMS 的切面线性变换了一下这么简单。毕竟 LMS 是后来的理论，XYZ切的角度会不一样。
+{% endhint %}
+
+### RGB
+
+上边的理论需要现代生物知识才能做到，RGB 模型诞生于二十世纪，那时的人们怎么确定的人眼对三原色的响应值呢。
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption><p>A Beginner’s Guide to (CIE) Colorimetry[7]</p></figcaption></figure>
+
+
+
+
+
+
 
 ## Resources and Reference
 
@@ -82,3 +96,7 @@ CIE颜色图中上半边曲线是所有频率颜色，纯1颜色，
 > \[4] [https://en.wikipedia.org/wiki/CIE\_1931\_color\_space](https://en.wikipedia.org/wiki/CIE\_1931\_color\_space)
 >
 > \[5] [https://www.youtube.com/watch?v=O0nYJ0Mjx10](https://www.youtube.com/watch?v=O0nYJ0Mjx10)
+>
+> \[6] [https://www.youtube.com/watch?v=AS1OHMW873s](https://www.youtube.com/watch?v=AS1OHMW873s)
+>
+> \[7] [https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a](https://medium.com/hipster-color-science/a-beginners-guide-to-colorimetry-401f1830b65a)
