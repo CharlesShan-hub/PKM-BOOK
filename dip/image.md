@@ -47,7 +47,7 @@ skimage.data模块有很多demo 图片python
 
 采样：从连续信号到离散信号。
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -82,7 +82,7 @@ plt.show()
 
 量化：用多少比特代表每个像素的颜色。
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
