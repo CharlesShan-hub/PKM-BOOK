@@ -4,6 +4,13 @@ icon: '1'
 
 # Image
 
+> 1. Image：图像
+> 2. Sampling：采样
+> 3. Quantization：量化
+> 4. Neighbor and Distance：邻域与距离
+
+***
+
 ### Image
 
 图像就是数组，每个像素点的颜色是响应值。
@@ -23,7 +30,11 @@ image.show()
 </strong><strong>['astronaut', 'binary_blobs', 'brain', 'brick', 'camera', 'cat', 'cell', 'cells3d', 'checkerboard', 'chelsea', 'clock', 'coffee', 'coins', 'colorwheel', 'data_dir', 'download_all', 'eagle', 'file_hash', 'grass', 'gravel', 'horse', 'hubble_deep_field', 'human_mitosis', 'immunohistochemistry', 'kidney', 'lbp_frontal_face_cascade_filename', 'lfw_subset', 'lily', 'logo', 'microaneurysms', 'moon', 'nickel_solidification', 'page', 'palisades_of_vogt', 'protein_transport', 'retina', 'rocket', 'shepp_logan_phantom', 'skin', 'stereo_motorcycle', 'text', 'vortex']
 </strong></code></pre>
 
+***
+
 ### Sampling
+
+采样：从连续信号到离散信号。
 
 ```python
 import numpy as np
@@ -36,23 +47,54 @@ def generate_image(width, height):
             I[x, y] = np.cos(x/width*2*np.pi) * np.cos(y/height*2*np.pi) * 255
     return I
 
-plt.subplot(1,4,1)
-plt.imshow(generate_image(5, 5), cmap='gray')
-plt.title("5x5")
-plt.axis('off')
-plt.subplot(1,4,2)
-plt.imshow(generate_image(15, 15), cmap='gray')
-plt.title("15x15")
-plt.axis('off')
-plt.subplot(1,4,3)
-plt.imshow(generate_image(50, 50), cmap='gray')
-plt.title("50x50")
-plt.axis('off')
-plt.subplot(1,4,4)
-plt.imshow(generate_image(1000, 1000), cmap='gray')
-plt.title("1000x1000")
-plt.axis('off')
+def plot(index,n):
+    plt.subplot(1,4,index+1)
+    plt.imshow(generate_image(n, n), cmap='gray')
+    plt.title(f"{n}x{n}")
+    plt.axis('off')
+for i,n in enumerate([5,15,50,1000]):
+    plot(i,n)
 plt.show()
 ```
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+***
+
+### Quantization
+
+量化：用多少比特代表每个像素的颜色。
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def generate_image(level):
+    I = np.zeros((16,256))
+    for x in range(256):
+        n = 2**level         # 一共多少个格子
+        length = int(256/n)  # 每个格子有多大
+        I[:, x] = int(x/length) / n
+    return I/np.max(I)
+
+def plot(index,level):
+    plt.subplot(4,1,index+1)
+    plt.imshow(generate_image(level), cmap='gray', vmax=1, vmin=0)
+    plt.title(f"level = {level}")
+    plt.axis('off')
+for index,level in enumerate([1,2,4,8]):
+    plot(index,level)
+plt.show()
+```
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+
+***
+
+### 像素间关系
+
+1. 邻域：4 邻域(上下左右)，D 邻域(四个角)，8 邻域(4+D)
+2. 欧氏距离：$$D_e = \sqrt{(x-s)^2+(x-t)^2}$$
+3. $$D_4$$距离：$$D_4 = |x-s|+|y-t|$$
+4. $$D_8$$距离：$$D_8 = \max(|x-s|+|y-t|)$$
+
