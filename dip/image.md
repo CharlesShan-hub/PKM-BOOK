@@ -12,7 +12,7 @@ description: 图像的基本概念
 
 ***
 
-### Image
+## Image
 
 图像就是数组，每个像素点的颜色是响应值。
 
@@ -43,11 +43,11 @@ skimage.data模块有很多demo 图片python
 
 ***
 
-### Sampling
+## Sampling
 
 采样：从连续信号到离散信号。
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -78,11 +78,11 @@ plt.show()
 
 ***
 
-### Quantization
+## Quantization
 
 量化：用多少比特代表每个像素的颜色。
 
-<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -114,7 +114,7 @@ plt.show()
 
 ***
 
-### Neighbor and Distance
+## Neighbor and Distance
 
 1. 邻域：4 邻域(上下左右)，D 邻域(四个角)，8 邻域(4+D)
 2. 欧氏距离：$$D_e = \sqrt{(x-s)^2+(x-t)^2}$$

@@ -12,7 +12,7 @@ description: 像素级别变换
 
 ***
 
-### Gamma Transform
+## Gamma Transform
 
 Gamma变换（幂次变换）：用于改变亮度。
 
@@ -40,7 +40,7 @@ plt.show()
 
 ***
 
-### Histograms and Histograms Equization
+## Histograms and Histograms Equization
 
 直方图就是图片中不同颜色的占比，是一个统计量。
 
