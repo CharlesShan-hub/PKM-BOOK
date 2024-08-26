@@ -5,10 +5,7 @@ description: 图像的基本概念
 
 # Image
 
-> 1. Image：图像
-> 2. Sampling：采样
-> 3. Quantization：量化
-> 4. Neighbor and Distance：邻域与距离
+<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -47,7 +44,7 @@ skimage.data模块有很多demo 图片python
 
 采样：从连续信号到离散信号。
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
