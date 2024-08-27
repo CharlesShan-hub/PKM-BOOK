@@ -2,6 +2,21 @@
 
 * [Introduction](README.md)
 
+## C
+
+* [Introduction](c/introduction.md)
+* [Background](c/background.md)
+* [Basic Data Type](c/basic-data-type.md)
+
+## C++
+
+* [Introduction](c++/introduction.md)
+* [Page 2](c++/page-2.md)
+
+## Rust
+
+* [Introduction](rust/introduction.md)
+
 ## DIP
 
 * [Introduction](dip/introduction.md)
