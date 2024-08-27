@@ -250,9 +250,10 @@ int main(void)
    3. **扫描宏**：例如 `SCNi16`, `SCNu32`，这些宏用于 `scanf` 类型的函数，确保可以正确地读取指定宽度的整数。
 3. 使用示例
 
-<pre class="language-c"><code class="lang-c">#include &#x3C;stdio.h>
-#include &#x3C;stdint.h>
-#include &#x3C;inttypes.h>
+```c
+#include <stdio.h>
+#include <stdint.h>
+#include <inttypes.h>
 int main() {
     int32_t i = 123456789;
     uint32_t u = 4294967295U;
@@ -264,10 +265,10 @@ int main() {
     printf("sum: %" PRId32 "\n", sum);
     return 0;
 }
-<strong>// int32_t: 123456789
-</strong><strong>// uint32_t: 4294967295
-</strong>// sum: 123456788
-</code></pre>
+// int32_t: 123456789
+// uint32_t: 4294967295
+// sum: 123456788
+```
 
 </details>
 
