@@ -7,6 +7,8 @@
 * [Introduction](c/introduction.md)
 * [Background](c/background.md)
 * [Basic Data Type](c/basic-data-type.md)
+* [stdio](c/stdio.md)
+* [String](c/string.md)
 
 ## C++
 

@@ -9,19 +9,20 @@ icon: '0'
 TODO：
 
 * 读《K\&R》
+* 《CPP》看到第四章了
 
 TODO：
 
-* Key Word
-* Data Type
-* Stdio（Standard IO）
-* Operator & 表达式
-* Loop
-* Branch
-* Function
-* Array & Pointer
-* String
-* Structure
-* Bit Operation
-* C 预处理器
-* C 库
+* [x] Key Word
+* [x] Data Type
+* [ ] Stdio（Standard IO）
+* [ ] Operator & 表达式
+* [ ] Loop
+* [ ] Branch
+* [ ] Function
+* [ ] Array & Pointer
+* [ ] String
+* [ ] Structure
+* [ ] Bit Operation
+* [ ] C 预处理器
+* [ ] C 库
