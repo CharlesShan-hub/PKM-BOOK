@@ -13,7 +13,8 @@
 ## C++
 
 * [Introduction](c++/introduction.md)
-* [Page 2](c++/page-2.md)
+* [预备知识](c++/yu-bei-zhi-shi.md)
+* [开始学习 C++](c++/kai-shi-xue-xi-c++.md)
 
 ## Rust
 
