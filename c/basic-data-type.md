@@ -9,16 +9,6 @@ description: 基础数据类型
 
 <img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
 
-| 最初 K\&R 给出的关键字                            | C90标准添加的关键字 | C99标准添加的关键字 |
-| ----------------------------------------- | ----------- | ----------- |
-| int                                       | signed      | \_Bool      |
-| <mark style="color:blue;">long</mark>     | void        | \_Complex   |
-| <mark style="color:blue;">short</mark>    |             | \_Imaginary |
-| <mark style="color:blue;">unsigned</mark> |             |             |
-| char                                      |             |             |
-| float                                     |             |             |
-| double                                    |             |             |
-
 ***
 
 ## Intenger
