@@ -32,3 +32,4 @@
 * [Pixel Transform](dip/pixel-transform.md)
 * [Space Transform](dip/space-transform.md)
 * [Frequceial Transform](dip/frequceial-transform.md)
+* [Image Compression](dip/image-compression.md)

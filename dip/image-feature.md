@@ -5,6 +5,12 @@ description: 图像本身的特征
 
 # Image Feature
 
+## Overview
+
+<img src="../.gitbook/assets/file.excalidraw (3).svg" alt="" class="gitbook-drawing">
+
+***
+
 ## Color
 
 ### 颜色直方图
@@ -502,17 +508,122 @@ plt.show()
 
 </details>
 
-#### 边界频率
+#### Histogram of gradient magnitudes（边界频率）
 
+计算梯度幅度的直方图。不同的纹理的图片对应的梯度幅度直方图比较稳定，因为取的幅度，所以不受方向影响。
 
+<figure><img src="../.gitbook/assets/image (36).png" alt="" width="563"><figcaption><p>[6]</p></figcaption></figure>
 
-#### 灰度共生矩阵
+论文\[6]的计算方法：
 
+1. 通过 Sobel 算子计算梯度的幅度
+2. 直方图的 bins=16
 
+#### 灰度共生矩阵 / 联合概率矩阵法
+
+该方法的本质是使用条件概率表征纹理特征。
+
+一般采用 0,45,90,135 四个角度的方向来计算距离为 n 的灰度共生矩阵。下面是方向为0，距离 n 为 1 的案例：
+
+<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption><p>一图胜千言[7]</p></figcaption></figure>
+
+另外灰度共生矩阵（GLDM）可以进一步计算的到很多统计量。
+
+论文中提出了 14 种：角二阶矩（能量）​、对比度、熵、相关性、均匀性、逆差矩、和平均、和方差、和熵、差方差（变异差异）​、差熵、局部平稳性、相关信息测度1、相关信息测度2。
+
+<figure><img src="../.gitbook/assets/image (38).png" alt="" width="563"><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
+
+```python
+import matplotlib.pyplot as plt
+from skimage.feature import graycomatrix, graycoprops
+from skimage import data
+
+PATCH_SIZE = 21
+# 载入相机图像
+image = data.camera()
+# 选择图像中的草地区域块
+grass_locations = [(474, 291), (440, 433), (466, 165), (462, 236)]
+grass_patches = []
+for loc in grass_locations:
+    grass_patches.append(image[loc[0]:loc[0] + PATCH_SIZE,
+                               loc[1]:loc[1] + PATCH_SIZE])
+# 选择图像中的天空区域块
+sky_locations = [(54, 48), (21, 233), (90, 380), (18, 330)]
+sky_patches = []
+for loc in sky_locations:
+    sky_patches.append(image[loc[0]:loc[0] + PATCH_SIZE,
+                             loc[1]:loc[1] + PATCH_SIZE])
+# 计算每个块中的灰度共生矩阵属性
+xs = []
+ys = []
+for patch in (grass_patches + sky_patches):
+    glcm = graycomatrix(patch, [5], [0], 256, symmetric=True,  normed=True)
+    xs.append(graycoprops(glcm, 'dissimilarity')[0, 0])
+    ys.append(graycoprops(glcm, 'correlation')[0, 0])
+# 创建绘图
+fig = plt.figure(figsize=(8, 8))
+# 展现原始图像，以及图像块的位置
+ax = fig.add_subplot(3, 2, 1)
+ax.imshow(image, cmap=plt.cm.gray, interpolation='nearest',
+          vmin=0, vmax=255)
+for (y, x) in grass_locations:
+    ax.plot(x + PATCH_SIZE / 2, y + PATCH_SIZE / 2, 'gs')
+for (y, x) in sky_locations:
+    ax.plot(x + PATCH_SIZE / 2, y + PATCH_SIZE / 2, 'bs')
+ax.set_xlabel('Image')
+ax.set_xticks([])
+ax.set_yticks([])
+ax.axis('image')
+# 对于每个块， plot (dissimilarity, correlation)
+ax = fig.add_subplot(3, 2, 2)
+ax.plot(xs[:len(grass_patches)], ys[:len(grass_patches)], 'go',
+        label='Grass')
+ax.plot(xs[len(grass_patches):], ys[len(grass_patches):], 'bo',
+        label='Sky')
+# ax.set_xlabel(' 灰度共生矩阵相似性')
+ax.set_xlabel('Similarity')
+# ax.set_ylabel('灰度共生矩阵相关度')
+ax.set_ylabel('Correlation')
+ax.legend()
+# 展示图像块
+for i, patch in enumerate(grass_patches):
+    ax = fig.add_subplot(3, len(grass_patches), len(grass_patches)*1 + i + 1)
+    ax.imshow(patch, cmap=plt.cm.gray, interpolation='nearest',
+              vmin=0, vmax=255)
+    ax.set_xlabel('Grass %d' % (i + 1))
+for i, patch in enumerate(sky_patches):
+    ax = fig.add_subplot(3, len(sky_patches), len(sky_patches)* 2 + i + 1)
+    ax.imshow(patch, cmap=plt.cm.gray, interpolation='nearest',
+              vmin=0, vmax=255)
+    ax.set_xlabel('Sky %d' % (i + 1))
+# 展示图像块并显示
+fig.suptitle('Grey level co-occurrence matrix features',  fontsize=14)
+plt.show()
+```
+
+</details>
 
 ### Laws纹理能量测量法
 
+{% hint style="info" %}
+我的直觉就是，用了很多简单的“卷积核”，累计出了综合的效果。
+{% endhint %}
 
+主要思路：图像 -> 各种卷积 -> 卷积结果加起来得到所谓能量。
+
+简单的“卷积核”是下面的五个一维向量互相进行矩阵乘法得到：
+
+* Level L5 = \[1 4 6 4 1]&#x20;
+* Edge E5 = \[-1 -2 0 2 1]&#x20;
+* Spot S5 = \[-1 0 2 0 -1]&#x20;
+* Wave W5 = \[-1 2 0 -2 1]&#x20;
+* Ripple R5 = \[1 -4 6 -4 1]
+
+具体内容可以看网页\[8]\[9]，这里就不赘述了。
 
 ### Gabor变换
 
@@ -520,17 +631,27 @@ plt.show()
 
 ### 局部二值模式（BLP）
 
+
+
+***
+
 ## Shape
 
 
+
+***
 
 ## Edge
 
 
 
+***
+
 ## Point
 
 
+
+***
 
 ## Reference
 
@@ -542,4 +663,12 @@ plt.show()
 
 \[4] M. Petrou and P. G. Sevilla, Image Processing: Dealing With Texture, vol. 1. Chichester, U.K.: Wiley, 2006.
 
-\[5] [https://medium.com/@krzysztofdrelczuk/acf-autocorrelation-function-simple-explanation-with-python-example-492484c32711](https://medium.com/@krzysztofdrelczuk/acf-autocorrelation-function-simple-explanation-with-python-example-492484c32711)
+\[5] https://medium.com/@krzysztofdrelczuk/acf-autocorrelation-function-simple-explanation-with-python-example-492484c32711
+
+\[6] M. Sharma and H. Ghosh, ‘‘Histogram of gradient magnitudes: A rotation invariant texture-descriptor,’’ in Proc. IEEE Int. Conf. Image Process. (ICIP), Sep. 2015, pp. 4614–4618.
+
+\[7] [http://matlab.izmiran.ru/help/toolbox/images/enhanc15.html](http://matlab.izmiran.ru/help/toolbox/images/enhanc15.html)
+
+\[8] [https://ojskrede.github.io/inf4300/notes/week\_02/](https://ojskrede.github.io/inf4300/notes/week\_02/)
+
+\[9] [https://courses.cs.washington.edu/courses/cse576/book/ch7.pdf](https://courses.cs.washington.edu/courses/cse576/book/ch7.pdf)
