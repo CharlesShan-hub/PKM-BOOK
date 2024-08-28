@@ -24,8 +24,9 @@
 ## DIP
 
 * [Introduction](dip/introduction.md)
-* [Image](dip/image.md)
-* [Color](dip/color.md)
+* [Image Basic](dip/image-basic.md)
+* [Color Space](dip/color-space.md)
+* [Image Feature](dip/image-feature.md)
 * [Pixel Transform](dip/pixel-transform.md)
 * [Space Transform](dip/space-transform.md)
 * [Frequceial Transform](dip/frequceial-transform.md)
