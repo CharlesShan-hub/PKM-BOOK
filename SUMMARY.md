@@ -7,8 +7,9 @@
 * [Introduction](c/introduction.md)
 * [Background](c/background.md)
 * [Basic Data Type](c/basic-data-type.md)
-* [stdio](c/stdio.md)
+* [stdio.h](c/stdio.h.md)
 * [String](c/string.md)
+* [Preprocessor Directives](c/preprocessor-directives.md)
 
 ## C++
 

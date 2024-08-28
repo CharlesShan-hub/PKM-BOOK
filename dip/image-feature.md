@@ -11,7 +11,7 @@ description: 图像本身的特征
 
 1. 一般颜色直方图：某个色彩通道的直方图。
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -349,9 +349,74 @@ plt.show()
 
 ### 统计纹理分析方法
 
-#### AutoCorrelation Function（自相关函数）\[4]
+#### AutoCorrelation Function（自相关函数）
 
-> * [https://medium.com/@krzysztofdrelczuk/acf-autocorrelation-function-simple-explanation-with-python-example-492484c32711](https://medium.com/@krzysztofdrelczuk/acf-autocorrelation-function-simple-explanation-with-python-example-492484c32711)
+要理解 2D 的自相关函数还是先看看一维的自相关函数。自相关函数代表了一个信号移动一些距离，和自己是相像的程度！
+
+<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption><p>参考了[5]，但不一样</p></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
+
+```python
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 定义正弦波函数
+def sin_wave(t):
+    return np.sin(2*np.pi*t)
+
+# 生成时间序列
+t = np.arange(0, np.pi, 0.005)
+
+# 添加噪声
+noise = np.random.normal(0, 0.2, len(t))
+
+# 合并信号和噪声
+signal = sin_wave(t)
+signal_with_noise = signal + noise
+
+# Calculate autocorrelations
+acf_res1 = sm.tsa.acf(signal,nlags=len(signal))
+acf_res2 = sm.tsa.acf(signal_with_noise,nlags=len(signal))
+
+# 绘制带有噪声的正弦波
+plt.figure(figsize=(15, 4))
+plt.subplot(1,4,1)
+plt.plot(t, signal, label='Signal')
+plt.title('Sinusoidal Signal sin(2πt)')
+plt.xlabel('Time')
+plt.ylabel('Amplitude')
+plt.grid(True)
+
+plt.subplot(1,4,2)
+plt.plot(t, acf_res1)
+plt.title('Autocorrelation Plot')
+plt.xlabel('Time')
+plt.ylabel('Autocorrelation')
+plt.grid(True)
+
+plt.subplot(1,4,3)
+plt.plot(t, signal_with_noise, label='Signal with Noise')
+plt.title('Sinusoidal Signal with Noise')
+plt.xlabel('Time')
+plt.ylabel('Amplitude')
+plt.grid(True)
+
+plt.subplot(1,4,4)
+plt.plot(t, acf_res2)
+plt.title('Autocorrelation Plot')
+plt.xlabel('Time')
+plt.ylabel('Autocorrelation')
+plt.grid(True)
+plt.show()
+```
+
+</details>
+
+接下来就是图像的自相关函数：
 
 {% hint style="info" %}
 注意下面的公式 range 是matlab 对图像的索引，所以从 1 开始，如果用 Python就要再减一
@@ -437,71 +502,6 @@ plt.show()
 
 </details>
 
-要理解 2D 的自相关函数还是先看看一维的自相关函数。自相关函数代表了一个信号移动一些距离，和自己是相像的程度！
-
-<figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
-
-<details>
-
-<summary>Code</summary>
-
-```python
-import statsmodels.api as sm
-import matplotlib.pyplot as plt
-import numpy as np
-
-# 定义正弦波函数
-def sin_wave(t):
-    return np.sin(2*np.pi*t)
-
-# 生成时间序列
-t = np.arange(0, np.pi, 0.005)
-
-# 添加噪声
-noise = np.random.normal(0, 0.2, len(t))
-
-# 合并信号和噪声
-signal = sin_wave(t)
-signal_with_noise = signal + noise
-
-# Calculate autocorrelations
-acf_res1 = sm.tsa.acf(signal,nlags=len(signal))
-acf_res2 = sm.tsa.acf(signal_with_noise,nlags=len(signal))
-
-# 绘制带有噪声的正弦波
-plt.figure(figsize=(15, 4))
-plt.subplot(1,4,1)
-plt.plot(t, signal, label='Signal')
-plt.title('Sinusoidal Signal sin(2πt)')
-plt.xlabel('Time')
-plt.ylabel('Amplitude')
-plt.grid(True)
-
-plt.subplot(1,4,2)
-plt.plot(t, acf_res1)
-plt.title('Autocorrelation Plot')
-plt.xlabel('Time')
-plt.ylabel('Autocorrelation')
-plt.grid(True)
-
-plt.subplot(1,4,3)
-plt.plot(t, signal_with_noise, label='Signal with Noise')
-plt.title('Sinusoidal Signal with Noise')
-plt.xlabel('Time')
-plt.ylabel('Amplitude')
-plt.grid(True)
-
-plt.subplot(1,4,4)
-plt.plot(t, acf_res2)
-plt.title('Autocorrelation Plot')
-plt.xlabel('Time')
-plt.ylabel('Autocorrelation')
-plt.grid(True)
-plt.show()
-```
-
-</details>
-
 #### 边界频率
 
 
@@ -541,3 +541,5 @@ plt.show()
 \[3] [https://github.com/cgreen259/Texture-Toolbox](https://github.com/cgreen259/Texture-Toolbox)
 
 \[4] M. Petrou and P. G. Sevilla, Image Processing: Dealing With Texture, vol. 1. Chichester, U.K.: Wiley, 2006.
+
+\[5] [https://medium.com/@krzysztofdrelczuk/acf-autocorrelation-function-simple-explanation-with-python-example-492484c32711](https://medium.com/@krzysztofdrelczuk/acf-autocorrelation-function-simple-explanation-with-python-example-492484c32711)
