@@ -8,7 +8,7 @@
 * [Background](c/background.md)
 * [Basic Data Type](c/basic-data-type.md)
 * [stdio.h](c/stdio.h.md)
-* [String](c/string.md)
+* [string.h](c/string.h.md)
 * [Preprocessor Directives](c/preprocessor-directives.md)
 
 ## C++
@@ -17,6 +17,7 @@
 * [预备知识](c++/yu-bei-zhi-shi.md)
 * [开始学习 C++](c++/kai-shi-xue-xi-c++.md)
 * [处理数据](c++/chu-li-shu-ju.md)
+* [?](c++/undefined.md)
 
 ## Rust
 

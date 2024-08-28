@@ -7,6 +7,8 @@ description: 基础数据类型
 
 ## Overview
 
+<img src="../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+
 | 最初 K\&R 给出的关键字                            | C90标准添加的关键字 | C99标准添加的关键字 |
 | ----------------------------------------- | ----------- | ----------- |
 | int                                       | signed      | \_Bool      |

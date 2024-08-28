@@ -7,7 +7,7 @@ description: 标准输入输出
 
 ## Overview
 
-<img src="../.gitbook/assets/file.excalidraw.svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
+<img src="../.gitbook/assets/file.excalidraw (2).svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
 
 ## Functions
 
