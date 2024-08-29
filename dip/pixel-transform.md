@@ -16,7 +16,7 @@ description: 像素级别变换
 
 Gamma变换（幂次变换）：用于改变亮度。
 
-<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -50,7 +50,7 @@ plt.show()
 2. 求 cdf。类似从概率密度函数求概率分布函数。$$cdf[t] = \sum_0^tp[t]$$。
 3. 累计概率的 0 到 1，就是颜色的 0 到 1。
 
-<figure><img src="../.gitbook/assets/image (6) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 

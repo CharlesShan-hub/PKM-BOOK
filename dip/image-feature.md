@@ -17,7 +17,7 @@ description: 图像本身的特征
 
 1. 一般颜色直方图：某个色彩通道的直方图。
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -58,7 +58,7 @@ plt.show()
 
 2. 全局累加直方图：当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -271,7 +271,7 @@ $$
 \gamma_{i,j}^{(k)}=\underset{p_1\in I_{(i)}, p_2\in I}{\operatorname{P}}[p_2\in I_{(j)}\mid |p_1-p_2|=k]
 $$
 
-<figure><img src="../.gitbook/assets/image (4).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
 
@@ -343,9 +343,9 @@ plt.show()
 
 <summary>Overview</summary>
 
-<img src="../.gitbook/assets/image (5).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
+<img src="../.gitbook/assets/image (5) (1).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
 
-<img src="../.gitbook/assets/image (6).png" alt="综述[2]" data-size="original">综述总结\[2]
+<img src="../.gitbook/assets/image (6) (1).png" alt="综述[2]" data-size="original">综述总结\[2]
 
 [https://github.com/cgreen259/Texture-Toolbox](https://github.com/cgreen259/Texture-Toolbox)
 
@@ -625,7 +625,7 @@ plt.show()
 
 具体内容可以看网页\[8]\[9]。
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -706,7 +706,9 @@ plt.show()
 
 ### Gabor变换
 
-Babor kernel 是高斯乘正弦波
+Babor kernel 是高斯乘正弦波。
+
+具体方案就是图像和Babor kernel分别变换到频率域，然后做乘法，再变回来。
 
 $$
 G_{\sigma,f_0,\phi}(x,y)=\exp\left(-\frac{1}{2}\left[\frac{x'^2}{\sigma_x^2}+\frac{y'^2}{\sigma_y^2}\right]\right)\cos(2\pi f_0 x'+\phi)
@@ -716,19 +718,282 @@ $$
 \begin{aligned} &x'=x\cos(\theta)+y\sin(\theta),\ &y'=-x\sin(\theta)+y\cos(\theta). \end{aligned}
 $$
 
+<figure><img src="../.gitbook/assets/image.png" alt="" width="375"><figcaption></figcaption></figure>
 
+<details>
 
+<summary>Code</summary>
 
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import ndimage as ndi
+from skimage import data
+from skimage.filters import gabor_kernel
 
+def compute_feats(image, kernels):
+    feats = np.zeros((len(kernels), 2), dtype=np.double)
+    for k, kernel in enumerate(kernels):
+        filtered = ndi.convolve(image, kernel, mode='wrap')
+        feats[k, 0] = filtered.mean()
+        feats[k, 1] = filtered.var()
+    return feats
+def match(feats, ref_feats):
+    min_error = np.inf
+    min_i = None
+    for i in range(ref_feats.shape[0]):
+        error = np.sum((feats - ref_feats[i, :])**2)
+        if error < min_error:
+            min_error = error
+            min_i = i
+    return min_i
+# 准备Gabor卷积核
+kernels = []
+for theta in range(4):
+    theta = theta / 4. * np.pi
+    for sigma in (1, 3):
+        for frequency in (0.05, 0.25):
+            kernel = np.real(gabor_kernel(frequency, theta=theta,sigma_x=sigma, sigma_y=sigma))
+            kernels.append(kernel)
+shrink = (slice(0, None, 3), slice(0, None, 3))
+brick = data.brick().astype(np.float64)
+grass = data.grass().astype(np.float64)
+checkerboard = data.checkerboard().astype(np.float64)
+# brick = data.load('brick.png')[shrink]
+# grass = img_as_float(data.load('grass.png'))[shrink]
+# wall = img_as_float(data.load('rough-wall.png'))[shrink]
+# image_names = ('砖块', '草地', '墙壁')
+image_names = ('brick','grass','checkerboard')
+# images = (brick, grass, wall)
+images = [brick, grass, checkerboard]
+# 准备参考特征
+ref_feats = np.zeros((3, len(kernels), 2), dtype=np.double)
+ref_feats[0, :, :] = compute_feats(brick, kernels)
+ref_feats[1, :, :] = compute_feats(grass, kernels)
+ref_feats[2, :, :] = compute_feats(checkerboard, kernels)
 
+def power(image, kernel):
+    # Normalize images for better comparison. 05
+    image = (image - image.mean()) / image.std()
+    return np.sqrt(ndi.convolve(image, np.real(kernel), mode='wrap')**2 +ndi.convolve(image, np.imag(kernel), mode='wrap')**2)
+# Plot a selection of the filter bank kernels and their responses.
+results = []
+kernel_params = []
+for theta in (0, 1):
+    theta = theta / 4. * np.pi
+    for frequency in (0.1, 0.4):
+        kernel = gabor_kernel(frequency, theta=theta)
+        params  = 'theta=%d,\nfrequency=%.2f'  % (theta * 180 / np.pi, frequency)
+        kernel_params.append(params)
+        # Save kernel and the power image for each image
+        results.append((kernel, [power(img, kernel) for img in images]))
+fig, axes = plt.subplots(nrows=5, ncols=4, figsize=(5, 6))
+plt.gray()
+fig.suptitle('Image responses for Gabor filter kernels', fontsize=12)
+axes[0][0].axis('off')
+# Plot original images
+for label, img, ax in zip(image_names, images, axes[0][1:]):
+    ax.imshow(img)
+    ax.set_title(label, fontsize=9)
+    ax.axis('off')
+for label, (kernel, powers), ax_row in zip(kernel_params, results, axes[1:]):
+    # Plot Gabor kernel
+    ax = ax_row[0]
+    ax.imshow(np.real(kernel), interpolation='nearest')
+    ax.set_xlabel(label, fontsize=7)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    # Plot Gabor responses with the contrast normalized for each filter
+    vmin = min([np.min(item) for item in powers])
+    vmax = max([np.max(item) for item in powers])
+    for patch, ax in zip(powers, ax_row[1:]):
+        ax.imshow(patch, vmin=vmin, vmax=vmax)
+        ax.axis('off')
+plt.show()
+```
 
-### 局部二值模式（BLP）
+</details>
 
+### 局部二值模式（Local Binary Pattern, BLP）
 
+{% hint style="info" %}
+&#x20;通过中心像素与相邻像素的亮度区别，体现出了亮度变换，也就是梯度。
+{% endhint %}
+
+基本的LBP算子：3×3的矩形块，有1个中心像素和8个邻域像素分别对应9个灰度值。以中心像素的灰度值为阈值，将其邻域的8个灰度值与阈值比较，大于中心灰度值的像素用1表示，反之用0表示。
+
+根据顺时针方向读出8个二进制值。每个位置有自己的权重。求出这个 3 x 3 的块的值。（下图 为 25）
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>[10]</p></figcaption></figure>
+
+因为人类视觉系统对纹理的感知与平均灰度（亮度）无关，而局部二值模式方法注重像素灰度的变化，所以它符合人类视觉对图像纹理的感知特点。LBP计算过程如图5-6所示。
+
+<figure><img src="../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
+
+```python
+"""
+基于二值模式的图像纹理分类
+"""
+import numpy as np
+import matplotlib.pyplot as plt
+METHOD = 'uniform'
+# plt.rcParams['font.size'] = 9
+
+def plot_circle(ax, center, radius, color):
+    circle = plt.Circle(center, radius, facecolor=color,edgecolor='0.5')
+    ax.add_patch(circle)
+def plot_lbp_model(ax, binary_values):
+    """LBP 方法模型绘制."""
+    # Geometry spec
+    theta = np.deg2rad(45)
+    R = 1
+    r = 0.15
+    w = 1.5
+    gray = '0.5'
+    # Draw the central pixel.
+    plot_circle(ax, (0, 0), radius=r, color=gray)
+    # Draw the surrounding pixels.
+    for i, facecolor in enumerate(binary_values):
+        x = R * np.cos(i * theta)
+        y = R * np.sin(i * theta)
+        plot_circle(ax, (x, y), radius=r, color=str(facecolor))
+    # Draw the pixel grid.
+    for x in np.linspace(-w, w, 4):
+        ax.axvline(x, color=gray)
+        ax.axhline(x, color=gray)
+    # Tweak the layout.
+    ax.axis('image')
+    ax.axis('off')
+    size = w + 0.2
+    ax.set_xlim(-size, size)
+    ax.set_ylim(-size, size)
+fig, axes = plt.subplots(ncols=5, figsize=(7, 2))
+titles = ['flat', 'flat', 'edge', 'corner', 'non-uniform']
+binary_patterns = [np.zeros(8),
+                   np.ones(8),
+                   np.hstack([np.ones(4), np.zeros(4)]),
+                   np.hstack([np.zeros(3), np.ones(5)]),
+                   [1, 0, 0, 1, 1, 1, 0, 0]]
+for ax, values, name in zip(axes, binary_patterns, titles):
+    plot_lbp_model(ax, values)
+    ax.set_title(name)
+
+#二值模式特征提取部分
+from skimage.transform import rotate
+from skimage.feature import local_binary_pattern
+from skimage import data
+from skimage.color import label2rgb
+# settings for LBP
+radius = 3
+n_points = 8 * radius
+def overlay_labels(image, lbp, labels):
+    mask = np.logical_or.reduce([lbp == each for each in labels])
+    return label2rgb(mask, image=image, bg_label=0, alpha=0.5)
+def highlight_bars(bars, indexes):
+    for i in indexes:
+        bars[i].set_facecolor('r')
+image = data.brick()
+lbp = local_binary_pattern(image, n_points, radius, METHOD)
+def hist(ax, lbp):
+    n_bins = int(lbp.max() + 1)
+    return ax.hist(lbp.ravel(), bins=n_bins, range= (0, n_bins), facecolor='0.5')# normed=True,
+# 绘制LBP直方图
+fig, (ax_img, ax_hist) = plt.subplots(nrows=2, ncols=3,  figsize=(9, 6))
+plt.gray()
+titles = ('edge', 'flat', 'corner')
+w = width = radius - 1
+edge_labels = range(n_points // 2 - w, n_points // 2 + w + 1)
+flat_labels = list(range(0, w + 1)) + list(range(n_points - w,  n_points + 2))
+i_14 = n_points // 4             # 1/4th of the histogram
+i_34 = 3 * (n_points // 4)      # 3/4th of the histogram
+corner_labels = (list(range(i_14 - w, i_14 + w + 1)) +
+                 list(range(i_34 - w, i_34 + w + 1)))
+label_sets = (edge_labels, flat_labels, corner_labels)
+for ax, labels in zip(ax_img, label_sets):
+    ax.imshow(overlay_labels(image, lbp, labels))
+for ax, labels, name in zip(ax_hist, label_sets, titles):
+    counts, _, bars = hist(ax, lbp)
+    highlight_bars(bars, labels)
+    ax.set_ylim(top=np.max(counts[:-1]))
+    ax.set_xlim(right=n_points + 2)
+    ax.set_title(name)
+ax_hist[0].set_ylabel('Percentage')
+for ax in ax_img:
+    ax.axis('off')
+#使用LBP对图像纹理进行分类
+radius = 2
+n_points = 8 * radius
+def kullback_leibler_divergence(p, q):
+    p = np.asarray(p)
+    q = np.asarray(q)
+    filt = np.logical_and(p != 0, q != 0)
+    return np.sum(p[filt] * np.log2(p[filt] / q[filt]))
+def match(refs, img):
+    best_score = 10
+    best_name = None
+    lbp = local_binary_pattern(img, n_points, radius, METHOD)
+    n_bins = int(lbp.max() + 1)
+    hist, _ = np.histogram(lbp, density=True, bins=n_bins, range= (0, n_bins))
+    for name, ref in refs.items():
+        ref_hist, _ = np.histogram(ref, density=True, bins=n_bins,
+                                 range=(0, n_bins))
+        score = kullback_leibler_divergence(hist, ref_hist)
+        if score < best_score:
+            best_score = score
+            best_name = name
+    return best_name
+brick = data.brick()
+grass = data.grass()
+wall = data.gravel()
+refs = {
+    'brick': local_binary_pattern(brick, n_points, radius, METHOD),
+    'grass': local_binary_pattern(grass, n_points, radius, METHOD),
+    'wall': local_binary_pattern(wall, n_points, radius, METHOD)
+}
+# 对特征进行分类
+print('Rotated images matched against references using LBP:')
+print('original: brick, rotated: 30deg, match result: ',
+      match(refs, rotate(brick, angle=30, resize=False)))
+print('original: brick, rotated: 70deg, match result: ',
+      match(refs, rotate(brick, angle=70, resize=False)))
+print('original: grass, rotated: 145deg, match result: ',
+      match(refs, rotate(grass, angle=145, resize=False)))
+# 绘制LBP纹理直方图
+fig, ((ax1, ax2, ax3), (ax4, ax5, ax6)) = plt.subplots(nrows=2, ncols=3, figsize=(9, 6))
+plt.gray()
+ax1.imshow(brick)
+ax1.axis('off')
+hist(ax4, refs['brick'])
+ax4.set_ylabel('Percentage')
+ax2.imshow(grass)
+ax2.axis('off')
+hist(ax5, refs['grass'])
+ax5.set_xlabel('Uniform LBP values')
+ax3.imshow(wall)
+ax3.axis('off')
+hist(ax6, refs['wall'])
+plt.show()
+```
+
+</details>
 
 ***
 
 ## Shape
+
+### 基于轮廓特征
+
+
+
+### 基于区域特征
 
 
 
@@ -765,3 +1030,5 @@ $$
 \[8] [https://ojskrede.github.io/inf4300/notes/week\_02/](https://ojskrede.github.io/inf4300/notes/week\_02/)
 
 \[9] [https://courses.cs.washington.edu/courses/cse576/book/ch7.pdf](https://courses.cs.washington.edu/courses/cse576/book/ch7.pdf)
+
+\[10] https://aihalapathirana.medium.com/understanding-the-local-binary-pattern-lbp-a-powerful-method-for-texture-analysis-in-computer-4fb55b3ed8b8
