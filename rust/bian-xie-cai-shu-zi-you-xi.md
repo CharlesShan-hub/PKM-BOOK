@@ -1,6 +1,6 @@
 ---
-description: https://rustwiki.org/zh-CN/book/ch02-00-guessing-game-tutorial.html
 icon: '2'
+description: https://rustwiki.org/zh-CN/book/ch02-00-guessing-game-tutorial.html
 ---
 
 # 编写猜数字游戏
@@ -68,28 +68,34 @@ fn main() {
 
 语法比较，io 后的 expect
 
+{% code title="Rust" %}
 ```rust
 io::stdin()
   .read_line(&mut guess)
   .expect("Failed to read line");
 ```
+{% endcode %}
 
+{% code title="Swift" %}
 ```swift
 guard let guess = readLine() else {
     print("Failed to read line")
     return ""
 }
 ```
+{% endcode %}
 
 语法比较，引用
 
+{% code title="Rust" %}
 ```rust
 io::stdin()
   .read_line(&mut guess)
   .expect("Failed to read line");
 ```
+{% endcode %}
 
-<pre class="language-cpp"><code class="lang-cpp">#include &#x3C;iostream>
+<pre class="language-cpp" data-title="C++"><code class="lang-cpp">#include &#x3C;iostream>
 
 <strong>void modifyValue(int &#x26;value)
 </strong>{
@@ -112,13 +118,16 @@ int main()
 
 语法比较，result 和 error
 
+{% code title="Rust" %}
 ```rust
 let guess: u32 = match guess.trim().parse() {
     Ok(num) => num,
     Err(_) => continue,
 };
 ```
+{% endcode %}
 
+{% code title="JavaScript" %}
 ```javascript
 contract.methods.addEventApprove(index,approve,identity).send({from:account})
 .then(function(res){
@@ -127,6 +136,7 @@ contract.methods.addEventApprove(index,approve,identity).send({from:account})
     console.log("To do list reply Failed!",error);
 });
 ```
+{% endcode %}
 
 
 
