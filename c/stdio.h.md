@@ -13,7 +13,7 @@ description: 标准输入输出
 
 ### printf
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>printf format specifications quick reference[2]</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>printf format specifications quick reference[2]</p></figcaption></figure>
 
 <details>
 

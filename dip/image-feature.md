@@ -17,7 +17,7 @@ description: 图像本身的特征
 
 1. 一般颜色直方图：某个色彩通道的直方图。
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -623,9 +623,102 @@ plt.show()
 * Wave W5 = \[-1 2 0 -2 1]&#x20;
 * Ripple R5 = \[1 -4 6 -4 1]
 
-具体内容可以看网页\[8]\[9]，这里就不赘述了。
+具体内容可以看网页\[8]\[9]。
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
+
+```python
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+
+# 定义Laws滤波器
+basic_filters = {
+    'L3': np.array([[  1,   2,   1]]),             # Gray Level
+    'E3': np.array([[  1,   0,  -1]]),             # Edge
+    'S3': np.array([[  1,   2,  -1]]),             # Spot(点)
+    'L5': np.array([[  1,   4,   6,   4,   1]]),
+    'E5': np.array([[ -1,  -2,   0,   2,   1]]),
+    'S5': np.array([[ -1,   0,   2,   0,  -1]]),
+    'W5': np.array([[ -1,   2,   0,  -2,   1]]),   # Wave
+    'R5': np.array([[  1,  -4,   6,  -4,   1]]),   # 涟漪（Ripple）  
+    'R5': np.array([[  1,  -4,   6,  -4,   1]]),   # 涟漪（Ripple）  
+    'L7': np.array([[  1,   6,  15,  20,  15,  6,  1]]),
+    'E7': np.array([[ -1,  -4,  -5,   0,   5,  4,  1]]),
+    'S7': np.array([[ -1,  -2,   1,   4,   1, -2, -1]]),
+    'W7': np.array([[ -1,   0,   3,   0,  -3,  0,  1]]),
+    'R7': np.array([[  1,  -2,  -1,   4,  -1, -2,  1]]),
+    'O7': np.array([[ -1,   6, -15,  20, -15,  6, -1]]), # 振荡（Oscillation）
+}
+
+# 创建更复杂的Laws滤波器
+laws_filters = {
+    'E5L5': np.dot(basic_filters['E5'].T, basic_filters['L5']),
+    'R5R5': np.dot(basic_filters['R5'].T, basic_filters['R5']),
+    'E5S5': np.dot(basic_filters['E5'].T, basic_filters['S5']),
+    'L5S5': np.dot(basic_filters['L5'].T, basic_filters['S5']),
+} 
+# ... 可以添加更多组合
+
+# 读取图像
+from skimage import data
+image = data.camera().astype(np.float32)
+
+# 初始化纹理能量字典
+texture_energies = {}
+filtered_images = {}
+
+# 应用Laws滤波器并计算纹理能量
+for filter_name, filter_kernel in laws_filters.items():
+    # 应用滤波器
+    filtered_images[filter_name] = cv2.filter2D(image, -1, filter_kernel)
+    
+    # 计算纹理能量
+    energy = np.sum(filtered_images[filter_name]**2) # type: ignore
+    
+    # 保存结果
+    texture_energies[filter_name] = energy
+
+# 打印纹理能量
+for filter_name, energy in texture_energies.items():
+    print(f"Texture energy for {filter_name}: {energy}")
+
+# 可视化滤波后的图像（可选）
+def plot(n,index,image,name):
+    plt.subplot(1,n,index)
+    plt.imshow(image, cmap='gray')
+    plt.title(name)
+    plt.axis('off')
+
+plot(5,1,image,'Origin')
+for i, (name, image) in enumerate(zip(laws_filters.keys(), filtered_images.values())):
+    plot(5,i+2,image,name)
+plt.tight_layout()
+plt.show()
+
+```
+
+</details>
 
 ### Gabor变换
+
+Babor kernel 是高斯乘正弦波
+
+$$
+G_{\sigma,f_0,\phi}(x,y)=\exp\left(-\frac{1}{2}\left[\frac{x'^2}{\sigma_x^2}+\frac{y'^2}{\sigma_y^2}\right]\right)\cos(2\pi f_0 x'+\phi)
+$$
+
+$$
+\begin{aligned} &x'=x\cos(\theta)+y\sin(\theta),\ &y'=-x\sin(\theta)+y\cos(\theta). \end{aligned}
+$$
+
+
+
+
 
 
 
