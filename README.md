@@ -1,9 +1,8 @@
 ---
 icon: tv-retro
 description: Just enjoy the show. :)
-cover: >-
-  https://images.unsplash.com/photo-1721367632166-0d851a5349af?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjQ5ODU5MzV8&ixlib=rb-4.0.3&q=85
-coverY: 0
+cover: .gitbook/assets/35941724985828_.pic.jpg
+coverY: -57.45370370370371
 layout:
   cover:
     visible: true
