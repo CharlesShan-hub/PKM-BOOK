@@ -1,8 +1,8 @@
 ---
-icon: tv-retro
-description: Just enjoy the show. :)
-cover: .gitbook/assets/35941724985828_.pic.jpg
-coverY: -57.45370370370371
+icon: tree-palm
+description: 告诉我，在我往后漫长的飘摇。飘摇中的倦鸟也归巢。转个圈，一年就这样过去了。今夜的江滩公园没有烟花跨年。
+cover: .gitbook/assets/35951724986127_.pic_hd.jpg
+coverY: 0
 layout:
   cover:
     visible: true
@@ -19,6 +19,10 @@ layout:
     visible: true
 ---
 
-# Charles NoteBook
+# Charles Digital Graden
 
-欢迎来到我的数字花园，这里希望尝试制作一些学习的笔记本。
+***
+
+## Overview
+
+欢迎来到我的数字花园，这里边记录一些学习的笔记。余生很短，且行且珍惜。

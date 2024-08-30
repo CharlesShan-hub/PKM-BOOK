@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Charles NoteBook](README.md)
+* [Charles Digital Graden](README.md)
 
 ## C
 
