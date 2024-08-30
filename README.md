@@ -1,8 +1,8 @@
 ---
-description: Just enjoy the show. :)
 icon: tv-retro
+description: Just enjoy the show. :)
 cover: .gitbook/assets/title.jpg
-coverY: -130.9802872158768
+coverY: -196.62295388254347
 layout:
   cover:
     visible: true
