@@ -268,5 +268,21 @@ fn takes_and_gives_back(a_string: String) -> String { // a_string 进入作用�
 
 上边说借用没有所有权，**切片，也没有所有权**。切片是对几个钟一段连续元素序列的引用。
 
+就像指向一片内存空间的指针只能有一个（所有权），字符串和字符串中的位置也存在绑定关系。所以 slice 是很有必要的。
 
+基本语法如下：
+
+```rust
+fn main() {
+    let s = String::from("hello");
+    
+    let slice = &s[0..2]; // 左闭右开
+    let slice = &s[..2];  // 从0 开始，可以省略
+    
+    let slice = &s[3..len];
+    let slice = &s[3..];  // 包含尾部也可以省略，这个和 python 一样
+}
+```
+
+字符串是`String`，字符串的切片是`&str`
 
