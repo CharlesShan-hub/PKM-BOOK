@@ -1,12 +1,13 @@
 ---
 icon: tv-retro
 description: Just enjoy the show. :)
-cover: .gitbook/assets/title.jpg
-coverY: -196.62295388254347
+cover: >-
+  https://images.unsplash.com/photo-1721367632166-0d851a5349af?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxOTcwMjR8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjQ5ODU5MzV8&ixlib=rb-4.0.3&q=85
+coverY: 0
 layout:
   cover:
     visible: true
-    size: hero
+    size: full
   title:
     visible: true
   description:
