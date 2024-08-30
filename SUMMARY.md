@@ -32,6 +32,7 @@
 * [通用编程概念](rust/tong-yong-bian-cheng-gai-nian.md)
 * [所有权](rust/suo-you-quan.md)
 * [结构体](rust/jie-gou-ti.md)
+* [枚举和模式匹配](rust/mei-ju-he-mo-shi-pi-pei.md)
 
 ## DIP
 
