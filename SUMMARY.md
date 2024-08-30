@@ -8,6 +8,7 @@
 * [Background](c/background.md)
 * [Basic Data Type](c/basic-data-type.md)
 * [Arguments](c/arguments.md)
+* [Control](c/control.md)
 * [stdio.h](c/stdio.h.md)
 * [string.h](c/string.h.md)
 * [Preprocessor Directives](c/preprocessor-directives.md)
