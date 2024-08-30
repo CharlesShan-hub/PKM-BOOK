@@ -31,6 +31,7 @@
 * [编写猜数字游戏](rust/bian-xie-cai-shu-zi-you-xi.md)
 * [通用编程概念](rust/tong-yong-bian-cheng-gai-nian.md)
 * [所有权](rust/suo-you-quan.md)
+* [结构体](rust/jie-gou-ti.md)
 
 ## DIP
 

@@ -17,8 +17,8 @@ TODO：
 * [x] Data Type
 * [ ] Stdio（Standard IO）
 * [ ] Operator & 表达式
-* [ ] Loop
-* [ ] Branch
+* [x] Loop
+* [x] Branch
 * [ ] Function
 * [ ] Array & Pointer
 * [ ] String
