@@ -33,6 +33,7 @@
 * [所有权](rust/suo-you-quan.md)
 * [结构体](rust/jie-gou-ti.md)
 * [枚举和模式匹配](rust/mei-ju-he-mo-shi-pi-pei.md)
+* [包、carte、模块](rust/bao-carte-mo-kuai.md)
 
 ## DIP
 
