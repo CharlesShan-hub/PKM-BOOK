@@ -26,7 +26,7 @@
 
 ## Rust
 
-* [Introduction](rust/introduction.md)
+* [README](rust/readme.md)
 * [入门指南](rust/ru-men-zhi-nan.md)
 * [编写猜数字游戏](rust/bian-xie-cai-shu-zi-you-xi.md)
 * [通用编程概念](rust/tong-yong-bian-cheng-gai-nian.md)
