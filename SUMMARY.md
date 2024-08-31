@@ -4,17 +4,24 @@
 
 ## C
 
-* [Introduction](c/introduction.md)
-* [Background](c/background.md)
-* [Basic Data Type](c/basic-data-type.md)
-* [Arguments](c/arguments.md)
-* [Control](c/control.md)
-* [Preprocessor Directives](c/preprocessor-directives.md)
-* [stdbool.h](c/stdbool.h.md)
-* [iso646.h](c/iso646.h.md)
-* [stdio.h](c/stdio.h.md)
-* [string.h](c/string.h.md)
-* [ctypes.h](c/ctypes.h.md)
+* [README](c/readme.md)
+* [Basic](c/basic/README.md)
+  * [Background](c/basic/background.md)
+  * [Basic Data Type](c/basic/basic-data-type.md)
+  * [Arguments](c/basic/arguments.md)
+  * [Control](c/basic/control.md)
+  * [Function](c/basic/function.md)
+* [Pointer](c/pointer/README.md)
+  * [Array and Pointer](c/pointer/array-and-pointer.md)
+* [IO](c/io.md)
+* [Advanced](c/advanced/README.md)
+  * [Preprocessor Directives](c/advanced/preprocessor-directives.md)
+* [Library](c/library/README.md)
+  * [stdbool.h](c/library/stdbool.h.md)
+  * [iso646.h](c/library/iso646.h.md)
+  * [stdio.h](c/library/stdio.h.md)
+  * [string.h](c/library/string.h.md)
+  * [ctypes.h](c/library/ctypes.h.md)
 
 ## C++
 

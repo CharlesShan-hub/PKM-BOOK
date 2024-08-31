@@ -7,13 +7,13 @@ description: 标准输入输出
 
 ## Overview
 
-<img src="../.gitbook/assets/file.excalidraw (2).svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
 
 ## Functions
 
 ### printf
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>printf format specifications quick reference[2]</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>printf format specifications quick reference[2]</p></figcaption></figure>
 
 <details>
 
@@ -208,6 +208,28 @@ int main(void)
 // 1 2 3
 // The last integer was 3
 ```
+
+</details>
+
+### getchar 和 putchar
+
+<details>
+
+<summary>Demo</summary>
+
+<pre class="language-c"><code class="lang-c">/* echo_eof.c -- repeats input to end of file */
+#include &#x3C;stdio.h>
+int main(void)
+{
+    int ch;
+    
+<strong>    while ((ch = getchar()) != EOF)
+</strong><strong>        putchar(ch);
+</strong>    
+    return 0;
+}
+
+</code></pre>
 
 </details>
 

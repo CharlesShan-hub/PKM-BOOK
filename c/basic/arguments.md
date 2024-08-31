@@ -29,8 +29,8 @@ description: 运算符，表达式和语句
 
 ### 逻辑运算符
 
-{% content-ref url="iso646.h.md" %}
-[iso646.h.md](iso646.h.md)
+{% content-ref url="../library/iso646.h.md" %}
+[iso646.h.md](../library/iso646.h.md)
 {% endcontent-ref %}
 
 * 与或非：&&，||，！
