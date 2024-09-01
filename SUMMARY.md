@@ -16,12 +16,17 @@
 * [IO](c/io.md)
 * [Advanced](c/advanced/README.md)
   * [Preprocessor Directives](c/advanced/preprocessor-directives.md)
+  * [Compile](c/advanced/compile.md)
 * [Library](c/library/README.md)
+  * [complex.h](c/library/complex.h.md)
+  * [stdint.h](c/library/stdint.h.md)
+  * [inttypes.h](c/library/inttypes.h.md)
   * [stdbool.h](c/library/stdbool.h.md)
   * [iso646.h](c/library/iso646.h.md)
   * [stdio.h](c/library/stdio.h.md)
   * [string.h](c/library/string.h.md)
   * [ctypes.h](c/library/ctypes.h.md)
+  * [stdarg.h](c/library/stdarg.h.md)
 
 ## C++
 

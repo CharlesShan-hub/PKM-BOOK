@@ -7,7 +7,7 @@ description: 基础数据类型
 
 ## Overview
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -145,7 +145,12 @@ char 代表字符，采用 ASCII 码，占用内存 8 bits。
 
 ### \_Bool
 
-C99添加了布尔类型，占用 1bit。 我们可以直接就使用`_Bool`，也可以通过引入`stdbool.h`来使用`bool`
+* C99添加了布尔类型，占用 1bit。 我们可以直接就使用`_Bool`
+* 也可以通过引入`stdbool.h`来使用`bool`
+
+{% content-ref url="../library/stdbool.h.md" %}
+[stdbool.h.md](../library/stdbool.h.md)
+{% endcontent-ref %}
 
 <details>
 
@@ -223,46 +228,17 @@ int main(void)
 
 ### stdint.h & inttypes.h
 
-* stdint.h：用于各种 int 的声明
-* inttypes.h：用于各种 int 的 printf
+> stdint.h：用于各种 int 的声明
+>
+> inttypes.h：用于各种 int 的 printf
 
-<details>
+{% content-ref url="../library/stdint.h.md" %}
+[stdint.h.md](../library/stdint.h.md)
+{% endcontent-ref %}
 
-<summary> Details（GPT）</summary>
-
-1. stdint.h：`stdint.h` 头文件定义了一系列与整数大小相关的宏和数据类型，这些类型在不同的平台上具有固定的大小，确保了代码的可移植性。
-   1. **固定宽度的整数类型**：例如 `int8_t`, `int16_t`, `int32_t`, `int64_t` 用于表示有符号整数，以及 `uint8_t`, `uint16_t`, `uint32_t`, `uint64_t` 用于表示无符号整数。
-   2. **最小宽度整数类型**：例如 `int_least8_t`, `int_least16_t`, `int_least32_t`, `int_least64_t` 和 `uint_least8_t`, `uint_least16_t`, `uint_least32_t`, `uint_least64_t`，它们保证至少有指定宽度的存储大小，但可能更宽。
-   3. **最快最小宽度整数类型**：例如 `int_fast8_t`, `int_fast16_t`, `int_fast32_t`, `int_fast64_t` 和 `uint_fast8_t`, `uint_fast16_t`, `uint_fast32_t`, `uint_fast64_t`，它们保证至少有指定宽度的存储大小，并且尽可能地快。
-   4. **最大宽度整数类型**：`intmax_t` 和 `uintmax_t`，它们提供了最大宽度的有符号和无符号整数类型。
-   5. **极限值宏**：例如 `INT8_MAX`, `INT16_MAX`, `INT32_MAX`, `INT64_MAX` 以及它们的 `MIN` 和 `UMAX` 变体，定义了对应类型可以表示的最大值和最小值。
-2. inttypes.h：`inttypes.h` 头文件提供了格式化宏，用于与 `stdint.h` 中定义的整数类型一起使用。这些宏用于确保在不同的平台上，格式化字符串的行为是一致的。
-   1. **格式化宏**：例如 `PRIi8`, `PRIi16`, `PRIi32`, `PRIi64` 用于有符号整数，`PRIu8`, `PRIu16`, `PRIu32`, `PRIu64` 用于无符号整数。这些宏可以在 `printf` 和 `scanf` 类型的函数中使用，以确保正确地打印和读取指定宽度的整数。
-   2. **大数格式化宏**：例如 `PRId64`, `PRIo64`, `PRIu64`, `PRIx64`，用于格式化 `int64_t` 和 `uint64_t` 类型的值。
-   3. **扫描宏**：例如 `SCNi16`, `SCNu32`，这些宏用于 `scanf` 类型的函数，确保可以正确地读取指定宽度的整数。
-3. 使用示例
-
-```c
-#include <stdio.h>
-#include <stdint.h>
-#include <inttypes.h>
-int main() {
-    int32_t i = 123456789;
-    uint32_t u = 4294967295U;
-    // 使用 stdint.h 中的类型
-    int32_t sum = i + (int32_t)u;
-    // 使用 inttypes.h 中的格式化宏
-    printf("int32_t: %" PRId32 "\n", i);
-    printf("uint32_t: %" PRIu32 "\n", u);
-    printf("sum: %" PRId32 "\n", sum);
-    return 0;
-}
-// int32_t: 123456789
-// uint32_t: 4294967295
-// sum: 123456788
-```
-
-</details>
+{% content-ref url="../library/inttypes.h.md" %}
+[inttypes.h.md](../library/inttypes.h.md)
+{% endcontent-ref %}
 
 ***
 
@@ -393,6 +369,10 @@ int main(void)
 * `complex.h`
   * 复数：float complex, double complex, long double complex
   * 虚数：I, float imaginary, double imaginary, long double imaginary
+
+{% content-ref url="../library/complex.h.md" %}
+[complex.h.md](../library/complex.h.md)
+{% endcontent-ref %}
 
 <details>
 

@@ -1,9 +1,15 @@
 ---
-description: 一些很基础的东西，以及一些背景介绍
 icon: gopuram
+description: 一些很基础的东西，以及一些背景介绍
 ---
 
 # Background
+
+## Overview
+
+* C 标准变化历程
+* 不同操作系统的编译与调试工具
+* Hello Word Demo
 
 ## C Standard
 
