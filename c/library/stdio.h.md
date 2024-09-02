@@ -13,8 +13,6 @@ description: 标准输入输出
 
 ### printf
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>printf format specifications quick reference[2]</p></figcaption></figure>
-
 <details>
 
 <summary>Demo</summary>
@@ -42,6 +40,14 @@ int main(void)
 // Farewell! thou art too dear for my possessing,
 // $15600
 </code></pre>
+
+</details>
+
+<details>
+
+<summary>一图胜千言</summary>
+
+<img src="../../.gitbook/assets/image (1) (1).png" alt="printf format specifications quick reference[2]" data-size="original">
 
 </details>
 
@@ -150,14 +156,18 @@ int main(void)
 
 ### scanf
 
-{% hint style="info" %}
+{% hint style="warning" %}
 scanf() 最不常用，因为他容易卡住。最好用 getchar()或者fgets()吧。
 {% endhint %}
 
-scanf 与 printf 两点不一样：
+<details>
 
-1. 变量前要加&
-2. double 的转换说明是 lf 而不是 f
+<summary>scanf 与 printf 两点不一样</summary>
+
+* 变量前要加&
+* double 的转换说明是 lf 而不是 f
+
+</details>
 
 <details>
 
@@ -211,7 +221,44 @@ int main(void)
 
 </details>
 
-### getchar 和 putchar
+<details>
+
+<summary>如果输入里边有空格，scanf 会认为这是两个输入！另外可以指定输入字符串长度</summary>
+
+```c
+/* scan_str.c -- using scanf() */
+#include <stdio.h>
+int main(void)
+{
+    char name1[11], name2[11];
+    int count;
+
+    printf("Please enter 2 names.\n");
+    count = scanf("%5s %10s", name1, name2);
+    printf("I read the %d names %s and %s.\n",
+           count, name1, name2);
+
+    return 0;
+}
+
+// (base) kimshan@MacBook-Pro output % ./"scan_str"
+// Please enter 2 names.
+// 123 45
+// I read the 2 names 123 and 45.
+// (base) kimshan@MacBook-Pro output % ./"scan_str"
+// Please enter 2 names.
+// 1234567890
+// I read the 2 names 12345 and 67890.
+// (base) kimshan@MacBook-Pro output % ./"scan_str"
+// Please enter 2 names.
+// 1234567890 1234567890
+// I read the 2 names 12345 and 67890.
+
+```
+
+</details>
+
+### getchar, putchar
 
 <details>
 
@@ -232,6 +279,171 @@ int main(void)
 </code></pre>
 
 </details>
+
+### gets, puts
+
+{% hint style="danger" %}
+不要用gets这个函数
+{% endhint %}
+
+<details>
+
+<summary>gets 会访问未规定的内存！！不要用这个函数！C99已经废除，不过大多数编译器保留了。</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    char array1[8];
+    fflush(stdin);
+    gets(array1); // 1234567
+    puts(array1); // 1234567
+    char array2[8];
+    fflush(stdin);
+    gets(array2); // 12345678
+    puts(array2); // 12345678
+    char array3[8];
+    fflush(stdin);
+    gets(array3); // 123456789
+    puts(array3); // 123456789
+    return 0;
+}
+
+// (base) kimshan@MacBook-Pro output % ./"a"
+// warning: this program uses gets(), which is unsafe.
+// 1234567
+// 1234567
+// 12345678
+// 12345678
+// 123456789
+// 123456789
+// (base) kimshan@MacBook-Pro output
+```
+
+</details>
+
+<details>
+
+<summary>puts看到空字符才会结束。下面的例子打印不是字符串的东西，会出 bug</summary>
+
+```c
+/* nono.c -- no! */
+#include <stdio.h>
+int main(void)
+{
+    char side_a[] = "Side A";
+    char dont[] = {'W', 'O', 'W', '!'};
+    char side_b[] = "Side B";
+
+    puts(dont); /* dont is not a string */
+    // WOW!Side A
+
+    return 0;
+}
+```
+
+</details>
+
+### fgets, fputs
+
+<details>
+
+<summary>fgets 会留出\0的位置，超出范围的长度会被截断；fputs 不会自动换行</summary>
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    char array1[8];
+    fflush(stdin);
+    fgets(array1, sizeof(array1), stdin); // 1234567
+    fputs(array1, stdout); // 1234567
+    char array2[8];
+    fflush(stdin);
+    fgets(array2, sizeof(array2), stdin); // 12345678
+    fputs(array2, stdout); // 1234567
+    char array3[8];
+    fflush(stdin);
+    fgets(array3, sizeof(array3), stdin); // 123456789
+    fputs(array3, stdout); // 1234567
+    return 0;
+}
+
+// (base) kimshan@MacBook-Pro output % ./"a"
+// 1234567
+// 123456712345678
+// 1234567123456789
+// 1234567%
+// (base) kimshan@MacBook-Pro output %
+```
+
+</details>
+
+### gets\_s
+
+{% hint style="danger" %}
+很多编译器不支持这个 C11 的新函数！
+{% endhint %}
+
+<details>
+
+<summary>你是否觉得 fgets 还要用 sizeof 有点麻烦，那就用gets_s吧。但是它没有fgets灵活</summary>
+
+
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    char array1[8];
+    fflush(stdin);
+    gets_s(array1, 8);
+    puts(array1);
+    char array2[8];
+    fflush(stdin);
+    gets_s(array2, 8);
+    puts(array2);
+    char array3[8];
+    fflush(stdin);
+    gets_s(array3, 8);
+    puts(array3);
+    return 0;
+}
+```
+
+</details>
+
+<details>
+
+<summary>我们写一个自己的 s_gets</summary>
+
+```c
+char * s_gets(char * st, int n)
+{
+    char * ret_val;
+    int i = 0;
+    
+    ret_val = fgets(st, n, stdin);
+    if (ret_val)
+    {
+        while (st[i] != '\n' && st[i] != '\0')
+            i++;
+        if (st[i] == '\n')
+            st[i] = '\0';
+        else // must have words[i] == '\0'
+            while (getchar() != '\n')
+                continue;
+    }
+    return ret_val;
+}
+```
+
+</details>
+
+
 
 ## Reference
 

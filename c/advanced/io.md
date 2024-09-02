@@ -1,6 +1,6 @@
 ---
-description: 输入输出
 icon: pen-field
+description: 输入输出
 ---
 
 # IO
@@ -14,7 +14,7 @@ icon: pen-field
 
 ## 结束键盘输入
 
-文件、流和键盘输入：[stdio.h.md](library/stdio.h.md "mention")
+文件、流和键盘输入：[stdio.h.md](../library/stdio.h.md "mention")
 
 文件结尾
 
