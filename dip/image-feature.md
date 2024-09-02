@@ -718,7 +718,7 @@ $$
 \begin{aligned} &x'=x\cos(\theta)+y\sin(\theta),\ &y'=-x\sin(\theta)+y\cos(\theta). \end{aligned}
 $$
 
-<figure><img src="../.gitbook/assets/image.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt="" width="375"><figcaption></figcaption></figure>
 
 <details>
 
@@ -814,7 +814,9 @@ plt.show()
 
 </details>
 
-### 局部二值模式（Local Binary Pattern, BLP）
+### 局部二值模式
+
+（Local Binary Pattern, BLP）
 
 {% hint style="info" %}
 &#x20;通过中心像素与相邻像素的亮度区别，体现出了亮度变换，也就是梯度。
@@ -828,9 +830,9 @@ plt.show()
 
 因为人类视觉系统对纹理的感知与平均灰度（亮度）无关，而局部二值模式方法注重像素灰度的变化，所以它符合人类视觉对图像纹理的感知特点。LBP计算过程如图5-6所示。
 
-<figure><img src="../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2) (2).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
@@ -989,23 +991,128 @@ plt.show()
 
 ## Shape
 
+> 形状特征的表示方法可以分为两类：
+>
+> 一是基于轮廓特征，典型方法是傅里叶描述符方法；
+>
+> 二是基于区域特征，典型方法是形状无关矩方法。
+>
+> 轮廓特征中只用到物体的边界，而区域特征则需要考虑到整个形状区域。下文将详细介绍这两类方法，另外也会简要介绍一些简单形状特征。
+
 ### 基于轮廓特征
 
+傅里叶描述子
 
+> 参考：
+>
+> \[11] 基于傅里叶描述子的物体形状识别的研究
+>
+> \[12] [https://blog.csdn.net/Lemon\_jay/article/details/89349006](https://blog.csdn.net/Lemon\_jay/article/details/89349006)
+
+我的理解是，其实有了很多的备选的边界，然后精髓是把图像的 xy 轴当成实轴虚轴，进行傅里叶变换，取前几项进行近似（这样就平滑了）
+
+<figure><img src="../.gitbook/assets/image.png" alt="" width="188"><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Code</summary>
+
+
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from skimage import measure
+# 构建测试数据
+x, y = np.ogrid[-np.pi:np.pi:100j, -np.pi:np.pi:100j]
+r = np.sin(np.exp((np.sin(x)**3 + np.cos(y)**2)))
+# 找出轮廓边界
+contours = measure.find_contours(r, 0.8)
+# 显示对应边界
+fig, ax = plt.subplots()
+ax.imshow(r, interpolation='nearest', cmap=plt.cm.gray)
+for n, contour in enumerate(contours):
+    ax.plot(contour[:, 1], contour[:, 0], linewidth=2)
+ax.axis('image')
+ax.set_xticks([])
+ax.set_yticks([])
+plt.show()
+# 提取傅里叶形状描述符
+contour_array = contour
+contour_complex = np.empty(contour_array.shape[:-1], dtype=complex)
+contour_complex.real = contour_array[:, 0]
+contour_complex.imag = contour_array[:, 1]
+fourier_result = np.fft.fft(contour_complex)
+print(fourier_result.shape)
+```
+
+</details>
 
 ### 基于区域特征
 
+图像区域的某些矩对于平移、旋转、尺度等几何变换具有一些不变的特性
 
+预先准备
+
+1. (j+k)阶矩：$$M _ { j k } = \int \int x ^ { j } y ^ { k } f ( x , y ) d x d y \quad j , k = 0 , 1 , 2 , \cdots$$
+2. 为了描述物体的形状，假设f(x,y)的目标物体取值为1，背景为0：$$M_{00}=\sum_{x=1}^N\sum_{y=1}^M f(x,y)$$
+
+质心坐标与中心距
+
+1. 当j=1，k=0时，$$M_{10}$$对二值图像来讲就是物体上所有点的**x坐标的总和**
+2. 类似，$$M_{01}$$就是物体上所有点的**y坐标的总和**
+3. 所以 $$\bar{x}=\frac{M_{10}}{M_{00}}$$, $$\bar{y}=\frac{M_{01}}{M_{00}}$$就是二值图像中一个物体的**质心坐标**。
+4. 为了获得矩的不变特征，往往采用中心矩以及归一化的**中心距**。 （$$\overline{x}$$，$$\overline{y}$$是物体的质心。中心矩以质心作为原点进行计算，因此它具有位置无关性。）
+
+$$
+M'_{jk}=\sum_{x=1}^{N}\sum_{y=1}^{M}(x-\overline{x})^j(y-\overline{y})^kf(x,y)
+$$
+
+主轴
+
+使二阶中心距变得最小的旋转角$$\theta$$：
+
+$$
+\tan 2\theta=\frac{2\mu_{11}}{\mu_{20}- \mu_{02} }
+$$
+
+将x、y轴分别旋转$$\theta$$角得坐标轴x和y'，x'、y称为该物体的主轴。如果物体在计算矩之前旋转$$\theta$$角，或相对于x', y轴计算短，那么计算后得出的矩具有旋转不变性。
 
 ***
 
 ## Edge
 
+> [space-transform.md](space-transform.md "mention")
 
+### 一阶边缘检测
+
+1. Robert
+2. Sobel
+3. &#x20;Prewitt
+
+### 二阶边缘检测
+
+1. Laplace
+2. LoG = Gaussian + Laplace = 平滑 + 边缘
 
 ***
 
 ## Point
+
+> 一是基于模板的角点检测算法；二是基于边缘的角点检测算法；三是基于图像灰度变化的角点检测算法
+
+SUSAN算法：
+
+> SUSAN以及后续研究：\[13] [https://core.ac.uk/download/41438484.pdf](https://core.ac.uk/download/41438484.pdf)
+
+1. 用圆形模板，根据亮度值是否相似于核心点亮度的，把区域分成核值相似区USAN与核值不相似区
+2. 模板在图像上移动时&#x20;
+   1. 当圆形模板完全在背景或者目标区域时 ,其 USAN区域最大
+   2. 当核心在边缘时 , USAN 区域减少一半
+   3. 当核心在角点时 , USAN 区域最小
+3. 可以通过计算每 1 个像素的 USAN 值，并与设定的门限值进行比较， 如果该像素的 USAN 值小于门限 值，则该点可以认为是 1 个边缘点
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
 
 
 
@@ -1032,3 +1139,11 @@ plt.show()
 \[9] [https://courses.cs.washington.edu/courses/cse576/book/ch7.pdf](https://courses.cs.washington.edu/courses/cse576/book/ch7.pdf)
 
 \[10] https://aihalapathirana.medium.com/understanding-the-local-binary-pattern-lbp-a-powerful-method-for-texture-analysis-in-computer-4fb55b3ed8b8
+
+\[11] [https://www.doc88.com/p-7176387138708.html](https://www.doc88.com/p-7176387138708.html)
+
+\[12] [https://blog.csdn.net/Lemon\_jay/article/details/89349006](https://blog.csdn.net/Lemon\_jay/article/details/89349006)
+
+\[13] [https://core.ac.uk/download/41438484.pdf](https://core.ac.uk/download/41438484.pdf)
+
+\[14] [https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045](https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045)
