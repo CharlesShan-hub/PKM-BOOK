@@ -30,6 +30,7 @@
   * [string.h](c/library/string.h.md)
   * [ctypes.h](c/library/ctypes.h.md)
   * [stdarg.h](c/library/stdarg.h.md)
+  * [stdlib.h](c/library/stdlib.h.md)
 
 ## C++
 

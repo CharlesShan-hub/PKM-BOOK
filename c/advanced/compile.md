@@ -1,6 +1,6 @@
 ---
-description: 编译
 icon: desktop-arrow-down
+description: 编译
 ---
 
 # Compile
@@ -178,5 +178,34 @@ Thank you and goodbye.
 ```
 
 
+
+</details>
+
+## 命令行参数
+
+<details>
+
+<summary>Demo</summary>
+
+<pre class="language-c"><code class="lang-c">/* repeat.c -- main() with arguments */
+#include &#x3C;stdio.h>
+<strong>int main(int argc, char *argv[])
+</strong>{
+    int count;
+
+    printf("The command line has %d arguments:\n", argc - 1);
+    for (count = 1; count &#x3C; argc; count++)
+<strong>        printf("%d: %s\n", count, argv[count]);
+</strong>    printf("\n");
+
+    return 0;
+}
+
+// (base) kimshan@MacBook-Pro output % ./"repeat" a b c
+// The command line has 3 arguments:
+// 1: a
+// 2: b
+// 3: c
+</code></pre>
 
 </details>

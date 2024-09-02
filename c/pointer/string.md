@@ -117,10 +117,17 @@ int main(void)
   * `scanf`
   * `puts`：会自动换行
   * `fputs`：不会自动换行
+* 格式化
+  * `sprintf()`
 
 {% hint style="info" %}
 &#x20;详见：[string.h.md](../library/string.h.md "mention")
 {% endhint %}
+
+* strlen()
+* strcat(), strncat()
+* strcmp(), strncmp()
+* strcpy(), strncpy()
 
 
 
