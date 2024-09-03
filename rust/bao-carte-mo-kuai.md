@@ -150,15 +150,136 @@ pub fn eat_at_restaurant() {
 
 ## [**7.4.** 使用 use 关键字将名称引入作用域](https://rustwiki.org/zh-CN/book/ch07-04-bringing-paths-into-scope-with-the-use-keyword.html)
 
+> use
+>
+> use as&#x20;
+>
+> pub use
+>
+> Cargo中假如 dependencies
+>
+> 嵌套 use
 
+每次引用都需要假如一长串的后缀太麻烦了。所以感觉直接 use
 
+注意我们习惯引入到模块，而不是引用到函数。所以下面例子是`use crate::front_of_house::hosting;`而不是`use crate::front_of_house::hosting::add_to_waitlist;`
 
+<pre class="language-rust"><code class="lang-rust">mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+<strong>use crate::front_of_house::hosting; // 绝对路径
+</strong><strong>use front_of_house::hosting; // 相对路径
+</strong>
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}
+fn main() {}
+
+</code></pre>
+
+类似 python的 import as，rust 是 use as
+
+<pre class="language-rust"><code class="lang-rust"><strong>use std::fmt::Result;
+</strong><strong>use std::io::Result as IoResult;
+</strong>
+fn function1() -> Result {
+    // --snip--
+    Ok(())
+}
+
+fn function2() -> IoResult&#x3C;()> {
+    // --snip--
+    Ok(())
+}
+</code></pre>
+
+重导出：pub use
+
+让调用你编写的代码的代码能够像在自己的作用域内引用这些类型，可以结合 `pub` 和 `use`。这个技术被称为 “_重导出_（_re-exporting_）”，因为这样做将项引入作用域并同时使其可供其他代码引入自己的作用域。
+
+```rust
+mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}
+
+```
+
+Cargo.toml 中假如某个包然后才能 use
+
+<pre class="language-toml"><code class="lang-toml"><strong>[dependencies]
+</strong><strong>rand = "0.8.3"
+</strong></code></pre>
+
+<pre class="language-rust"><code class="lang-rust"><strong>use rand::Rng;
+</strong>
+fn main() {
+    let secret_number = rand::thread_rng().gen_range(1..101);
+}
+</code></pre>
+
+嵌套 use，如果我们需要从一个包里边 use 很多东西。类似 python 的 from .. import 一大堆
+
+```rust
+// use std::cmp::Ordering;
+// use std::io;
+use std::{cmp::Ordering, io};
+
+// use std::io;
+// use std::io::Write;
+use std::io::{self, Write};
+
+// 引入所有内容
+use std::collections::*;
+```
 
 ***
 
 ## [**7.5.** 将模块分割进不同文件](https://rustwiki.org/zh-CN/book/ch07-05-separating-modules-into-different-files.html)
 
+例如我们想把上边的 add\_to\_waitlist放在自己的文件里边
 
+{% code title="src/front_of_house.rs" %}
+```rust
+pub mod hosting {
+    pub fn add_to_waitlist() {}
+}
+```
+{% endcode %}
 
+{% code title="src/lib.rs" %}
+```rust
+mod front_of_house;
 
+pub use crate::front_of_house::hosting;
+
+pub fn eat_at_restaurant() {
+    hosting::add_to_waitlist();
+}
+```
+{% endcode %}
+
+可以进一步修改，（如果想扩充 host），src/lib.rs中的引用不会改变：
+
+{% code title=" src/front_of_house/hosting.rs" %}
+```rust
+pub fn add_to_waitlist() {}
+```
+{% endcode %}
+
+{% code title="src/front_of_house.rs" %}
+```rust
+pub mod hosting;
+```
+{% endcode %}
 
