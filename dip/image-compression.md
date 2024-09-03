@@ -165,7 +165,9 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 
 </details>
 
-### 行程编码
+### RLE编码
+
+> 比较简单，也可以略
 
 行程长度编码（Run- Length Encoding，RLE）压缩算法是Windows系统中使用的一种图像文件压缩方法
 
@@ -173,7 +175,18 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 
 ### LZW编码
 
+> wiki\[1], 各种版本的 LZW 实现\[2], geeksforgeeks\[3]
 
+* 数据流（CharStream）​：对象（文本文件的数据序列）
+* 编码流（CodeStream）：输出对象（经过压缩运算的编码数据）​
+* 编译表（String Table）​：编译表不是事先创建好的，而是根据原始文件数据动态创建的
+* LZW压缩算法的基本原理：提取原始文本文件数据中的不同字符，基于这些字符创建一个编译表，然后用编译表中的字符的索引替代原始文本文件数据中的相应字符，减少原始数据大小。
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>[4] encoding <a href="https://www.bilibili.com/video/BV1rp4y117WB">https://www.bilibili.com/video/BV1rp4y117WB</a></p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>[5] <a href="https://www.bilibili.com/video/BV15p4y1C71G">https://www.bilibili.com/video/BV15p4y1C71G</a></p></figcaption></figure>
+
+详细过程感觉并不好记，使用时随时翻阅资料吧
 
 ***
 
@@ -183,29 +196,155 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 
 ### DM 编码
 
+* wiki\[6]：[https://en.wikipedia.org/wiki/Delta\_modulation](https://en.wikipedia.org/wiki/Delta\_modulation)
+* 精髓是用变换来保存序列。
+* 做法是用上行和下行两种信号模拟一个连续信号，把连续信号转换成离散。
+* 需要用过采样，即以比奈奎斯特速率高几倍的速率对模拟信号采样。
+* DM 是 DPCM 的最简单形式。
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
+<details>
 
+<summary>Demo</summary>
+
+比如对\[33, 35, 34, 36, 35]进行编码，步长为 4.5
+
+![](<../.gitbook/assets/image (3).png>)
+
+结果就是\[33, 1, 0, 1, 0]，其中 33 代表初始的位置，1 代表上升，0 代表下降。
+
+</details>
 
 ### DPCM 编码
 
+* wiki\[7]：[https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation](https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation)
+* 精髓也是用变化代替绝对值。
+  * 这个变化是用某个像素的一边（下例是 左，左上，上三个方向）来预测这个像素。然后用预测值与本像素相减，得到误差。
+  * 这个误差会经过量化，这一步引入了误差，也达到了压缩的目的。
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Demo</summary>
 
 
 
+```python
+import numpy as np
+from skimage import data
+from skimage import transform
+from matplotlib import pyplot as plt
 
+def quantize_error(error,level):
+    max=255
+    min=-255
+    q=(max-min)/level
+    i=1
+    while(error>=min+q*i):
+        i=i+1
+    quantized_error=min+q*(i-1)+q/2
+    return  quantized_error
 
+def DPCM_encoder(img,level):
+    N=img.shape[0]
+    predictor=np.zeros(shape=(N,N))
+    quantized_error=np.zeros(shape=(N,N))
+    for i in range(N):
+        for j in range(N):
+            if i==0:
+                if j==0:
+                    predicted=0
+                else:
+                    predicted=0.95*predictor[i,j-1]
+            else:predicted=0.95*predictor[i-1,j]+0.95*predictor[i,j-1]-0.95**2*predictor[i-1,j-1]
+            error=img[i,j]-predicted
+            quantized_error[i,j]=quantize_error(error,level)
+            predictor[i,j]=predicted+quantized_error[i,j]
+        for j in range(i,N):
+            if i==0:
+                predicted = 0.95 * predictor[j - 1, i]
+            else:predicted=0.95*predictor[j-1,i]+0.95*predictor[j,i-1]-0.95**2*predictor[j-1,i-1]
+            error=img[j,i]-predicted
+            quantized_error[j,i]=quantize_error(error,level)
+            predictor[j,i]=predicted+quantized_error[j,i]
+    return quantized_error
+
+def DPCM_decoder(error):
+    N=error.shape[0]
+    img=np.zeros(shape=(N,N))
+    predictor=np.zeros(shape=(N,N))
+    for i in range(N):
+        for j in range(N):
+            if i==0:
+                if j==0:
+                    predicted=0
+                else:
+                    predicted=0.95*predictor[i,j-1]
+            else:
+             predicted=0.95*predictor[i-1,j]+0.95*predictor[i,j-1]-0.95**2*predictor[i-1,j-1]
+            img[i,j]=predicted+error[i,j]
+            predictor[i,j]=predicted+error[i,j]
+    return img
+
+if __name__ == '__main__':
+    levels=32
+    img=data.coffee()
+    img=transform.resize(img,(img.shape[0],img.shape[0],3), preserve_range=True)
+    plt.subplot(1,3,1)
+    plt.title("Original")
+    plt.imshow(img/255.0)
+    img_r=img[:,:,0]
+    encoded_img_r=DPCM_encoder(img_r,levels)
+    decoded_img_r=DPCM_decoder(encoded_img_r)
+    decoded_img_r=decoded_img_r.reshape((decoded_img_r.shape[0], decoded_img_r.shape[1],1))
+    img_g = img[:, :, 1]
+    encoded_img_g = DPCM_encoder(img_g, levels)
+    decoded_img_g = DPCM_decoder(encoded_img_g)
+    decoded_img_g = decoded_img_g.reshape((decoded_img_g.shape[0],decoded_img_g.shape[1],1))
+    img_b = img[:, :, 2]
+    encoded_img_b = DPCM_encoder(img_b, levels)
+    decoded_img_b = DPCM_decoder(encoded_img_b)
+    decoded_img_b = decoded_img_b.reshape((decoded_img_b. shape[0],decoded_img_b.shape[1],1))
+    decoded_img=np.concatenate([decoded_img_r,decoded_img_g, decoded_img_b],2)
+    
+    plt.subplot(1,3,2)
+    plt.title("Reconstructed")
+    plt.imshow(decoded_img/255.0)
+    plt.subplot(1,3,3)
+    plt.title("Error")
+    error = np.abs((img-decoded_img))
+    error/=np.max(error)
+    plt.imshow(error*4,vmin=0, vmax=1)
+    plt.show()
+```
+
+</details>
 
 ***
 
 ## 变换编码
 
 > 将空域上的图像变换到另一变换域上，变换后图像的大部分能量只集中到少数几个变换系数上，采用适当的量化和熵编码就可以有效地压缩图像。
+>
+> 典型的准最佳变换有DCT（离散余弦变换）​、DFT（离散傅里叶变换）​、WHT（Walsh Hadama变换）​、HrT（Haar变换）等。
 
 ### K-L 变换
 
+* K-L 变换又称 Hotelling 变换，特征向量变换或主分量方法（这个就是主成分分析法吧。。）
 
 
 
+
+
+<details>
+
+<summary>Demo</summary>
+
+
+
+</details>
 
 ### DCT 变换
 
@@ -226,4 +365,18 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 ***
 
 ## Reference
+
+\[1] [https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch](https://en.wikipedia.org/wiki/Lempel%E2%80%93Ziv%E2%80%93Welch)
+
+\[2] [https://rosettacode.org/wiki/LZW\_compression](https://rosettacode.org/wiki/LZW\_compression)
+
+\[3] [https://www.geeksforgeeks.org/lzw-lempel-ziv-welch-compression-technique/](https://www.geeksforgeeks.org/lzw-lempel-ziv-welch-compression-technique/)
+
+\[4] [https://www.bilibili.com/video/BV1rp4y117WB](https://www.bilibili.com/video/BV1rp4y117WB)
+
+\[5] [https://www.bilibili.com/video/BV15p4y1C71G](https://www.bilibili.com/video/BV15p4y1C71G)
+
+\[6] [https://en.wikipedia.org/wiki/Delta\_modulation](https://en.wikipedia.org/wiki/Delta\_modulation)
+
+\[7] [https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation](https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation)
 

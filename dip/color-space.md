@@ -17,7 +17,7 @@ description: 颜色空间
 
 光是电磁波，按照频率可以绘制出光谱。人眼的三种视锥细胞分别可以吸收三种频率的光。自然界各种频率的光，对于人眼而言，只要转换成三种细胞的吸收情况就可以了。&#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt="https://upload.wikimedia.org/wikipedia/commons/d/d1/Cone_spectral_sensitivities.png"><figcaption><p>LMS Response over the light wavelength (from Wikipedia). L is roughly centered on red, M on green and S on blue. Note that the responses overlap significantly, especially for the L and M cones.[1]</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt="https://upload.wikimedia.org/wikipedia/commons/d/d1/Cone_spectral_sensitivities.png"><figcaption><p>LMS Response over the light wavelength (from Wikipedia). L is roughly centered on red, M on green and S on blue. Note that the responses overlap significantly, especially for the L and M cones.[1]</p></figcaption></figure>
 
 人眼的三种视锥细胞对光的响应值的公式如下\[3]，视锥响应函数![{\displaystyle {\bar {l\}}(\lambda ),{\bar {m\}}(\lambda ),{\bar {s\}}(\lambda )}](https://wikimedia.org/api/rest\_v1/media/math/render/svg/1b09aeb060e8ce50c6fcaa63ca4e6ee62ed0f10a) 是LMS颜色空间的颜色匹配函数：
 
@@ -43,7 +43,7 @@ LMS代表Long（长波长，对应红色）、Medium（中波长，对应绿色�
 
 LMS 中，人眼的三种视锥细胞的响应值是归一化过的。三种视锥细胞的真实的响应函数是这样的。
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption><p>XYZ color matching functions, CIE 1931 and Stockman &#x26; Sharpe 2006.[4]</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>XYZ color matching functions, CIE 1931 and Stockman &#x26; Sharpe 2006.[4]</p></figcaption></figure>
 
 可以看到，上图中的蓝色响应函数的最大值很大，如果它被标准化到 1，相比红色和绿色而言会有很多的颜色被压缩。所以 XYZ 把 LMS 的蓝色维度保持不变，保持了三种响应函数彼此的一个比例关系，从而让色彩空间看起来更加“舒展”，这样如果后续需要进行抽样，可以更均衡的表示各种颜色。
 
@@ -55,7 +55,7 @@ LMS 中，人眼的三种视锥细胞的响应值是归一化过的。三种视�
 
 下面我们还是回到 LMS，想象由坐标轴三个顶点进行连线，将颜色空间切开。这个切面的三个点就是三个最极限的纯色，三角形内部的点就是三个顶点插值的结果。另外，三角形上任意一点与原点相连，可以提现亮度的变化（原点是黑色，三角形上一点是某一颜色的最亮）
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt="" width="249"><figcaption><p>https://www.bilibili.com/video/BV1U34y1G7wa/?t=1973</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt="" width="249"><figcaption><p>https://www.bilibili.com/video/BV1U34y1G7wa/?t=1973</p></figcaption></figure>
 
 XYZ 其实就是 LMS 的线性变换，XYZ 保持了LMS 的很多性质，比如颜色由三色光组成。但是这个变换让上边的那个三角形扭曲了，得到了 XYZ 里边的三角形，但其原理不变：三维空间某个纯颜色在三角形上投影，这个投影的颜色绘制为这个纯颜色在二维上的表示。
 
