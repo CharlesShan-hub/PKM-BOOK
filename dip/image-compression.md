@@ -334,9 +334,134 @@ if __name__ == '__main__':
 
 * K-L 变换又称 Hotelling 变换，特征向量变换或主分量方法（这个就是主成分分析法吧。。）
 
+步骤1：读取图片，将图片信息以8x8图像方块合成一个向量，将整张图片分割成一个n\*64的矩阵A。&#x20;
+
+步骤2：计算向量数据矩阵A的协方差矩阵（64x64）。&#x20;
+
+步骤3：对协方差矩阵进行特征分解，并按特征值大小排列特征向量D。&#x20;
+
+步骤4：计算AD，得到kl变换矩阵K。
+
+步骤5：将矩阵K的后m列置为0。&#x20;
+
+步骤6：通过K\*D^T得新矩阵A，并将其重新还原图像。
+
+<figure><img src="../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
+
+<details>
+
+<summary>Demo[8]</summary>
 
 
 
+```python
+import cv2  
+import numpy as np  
+import matplotlib.pyplot as plt
+import skimage.data as data
+
+def img2vec(image, blocksize):
+    image_w, image_h = img.shape
+    # 图像方块数据转换为向量
+    img_block_vec = np.zeros((int(image_w*image_h/blocksize/blocksize), blocksize*blocksize))
+    i = 0
+    for r in range(0,image.shape[0], blocksize):
+        for c in range(0,image.shape[1], blocksize):
+            block = image[r:r+blocksize,c:c+blocksize]
+            block = np.resize(block, (1, blocksize*blocksize))
+            img_block_vec[i] = block
+            i += 1
+    return img_block_vec
+
+def vec2img(vectors, blocksize):
+    # 向量数据转换为图像
+    img_kl = np.zeros((new_w, new_h))
+    i = 0
+    for r in range(0,img_kl.shape[0], blocksize):
+        for c in range(0,img_kl.shape[1], blocksize):
+            block = vectors[i]
+            block = np.resize(block, (blocksize, blocksize))
+            i += 1
+            img_kl[r:r+blocksize,c:c+blocksize] = block
+    return img_kl.astype(int)
+
+def kl_transform(vectors, principal_n):
+    # 计算协方差矩阵和特征
+    cov_matrix = np.cov(vectors.T)
+    _, fvec = np.linalg.eig(cov_matrix)    # 输出的特征值默认降序排列
+    img_kl_block_vec = np.dot(vectors, fvec)
+    # 压缩，将非前N个主成分置为0
+    img_kl_block_vec[:,principal_n:] = 0
+    return np.dot(img_kl_block_vec, fvec.T)
+
+
+if __name__ == "__main__":
+    # filename = '3.png'
+    blocksize = 8           # 像素块
+    principal_n1 = 16       # 贡献度高的前N个特征值个数
+    principal_n2 = 8       # 贡献度高的前N个特征值个数
+    principal_n3 = 4       # 贡献度高的前N个特征值个数
+
+    # 读取图片
+    # img = cv2.imread(filename)
+    img = data.astronaut()
+    # img = np.array(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY))   #灰度化处理
+    img = np.array(cv2.cvtColor(img, cv2.COLOR_RGB2GRAY))   #灰度化处理
+
+    # 图像大小设置为blocksize倍数
+    image_w, image_h = img.shape
+    new_w, new_h = image_w//blocksize*blocksize, image_h//blocksize*blocksize
+    img = cv2.resize(img, (new_h, new_w))
+    vec = img2vec(img, blocksize)
+    kl1 = vec2img(kl_transform(vec, principal_n1), blocksize)
+    kl2 = vec2img(kl_transform(vec, principal_n2), blocksize)
+    kl3 = vec2img(kl_transform(vec, principal_n3), blocksize)
+
+    plt.subplot(1, 4, 1)
+    plt.imshow(img, 'gray')
+    plt.subplot(1, 4, 2)
+    plt.imshow(kl1, 'gray')
+    plt.subplot(1, 4, 3)
+    plt.imshow(kl2, 'gray')
+    plt.subplot(1, 4, 4)
+    plt.imshow(kl3, 'gray')
+    plt.show()
+
+```
+
+</details>
+
+### DCT 变换
+
+发送者首先将输入图像分解为8×8或16×16的块，然后再对每个图像块进行二维DCT，接着对DCT系数进行量化、编码和传输。
+
+接收者通过对量化的DCT系数进行解码，并对每个图像块进行二维DCT逆变换。
+
+最后将操作完成后所有的块拼接起来构成一幅单一的图像。
+
+对于一般的图像而言，大多数DCT系数值都接近0，所以去掉这些系数不会对重建图像的质量产生较大的影响。因此，利用DCT进行图像压缩确实可以节约大量的存储空间。
+
+DCT：
+
+$$
+F(u,v) = \frac{2}{N} C(u)C(v) \sum_{x=0}^{N-1}\sum_{y=0}^{N-1} \cos\left[\frac{\pi(2x+1)u}{2N}\right] f(x,y)\cos\left[\frac{\pi(2y+1)v}{2N}\right]
+$$
+
+iDCT：
+
+$$
+f(x,y) = \frac{2}{N} \sum_{u=0}^{N-1}\sum_{v=0}^{N-1} C(u)C(v) \cos\left[\frac{\pi(2x+1)u}{2N}\right] F(u,v)\cos\left[\frac{\pi(2y+1)v}{2N}\right]
+$$
+
+$$
+C(u), C(v) =
+\begin{cases} 
+\frac{1}{\sqrt{2}} & u, v = 0 \\
+1 & \text{其他}
+\end{cases}
+$$
+
+<figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -344,13 +469,94 @@ if __name__ == '__main__':
 
 
 
+```python
+from math import cos, pi, sqrt
+import numpy as np
+from skimage import data
+from matplotlib import pyplot as plt
+def dct_2d(image, numberCoefficients=0):
+    nc = numberCoefficients
+    height = image.shape[0]
+    width = image.shape[1]
+    imageRow = np.zeros_like(image).astype(float)
+    imageCol = np.zeros_like(image).astype(float)
+    for h in range(height):
+        imageRow[h, :] = dct_1d(image[h, :], nc)
+    for w in range(width):
+        imageCol[:, w] = dct_1d(imageRow[:, w], nc)
+    return imageCol
+# def dct_1d(image, numberCoefficients=0):
+#     nc = numberCoefficients
+#     n = len(image)
+#     newImage = np.zeros_like(image).astype(float)
+#     for k in range(n):
+#         sum = 0
+#         for i in range(n):
+#             sum += image[i] * cos(2 * pi * k / (2.0 * n) * i +  (k * pi) / (2.0 * n))
+#         ck = sqrt(0.5) if k == 0 else 1
+#         newImage[k] = sqrt(2.0 / n) * ck * sum
+#     if nc > 0:
+#         newImage.sort()
+#         for i in range(nc, n):
+#             newImage[i] = 0
+#     return newImage
+
+def dct_1d(image, numberCoefficients=0):
+    nc = numberCoefficients
+    n = len(image)
+    newImage = np.zeros_like(image).astype(float)
+    for k in range(n):
+        sum = 0
+        for i in range(n):
+            sum += image[i] * cos(pi * (2 * i + 1) * k / (2.0 * n))
+        ck = sqrt(0.5) if k == 0 else 1
+        newImage[k] = sqrt(2.0 / n) * ck * sum
+    if nc > 0 and nc < n:
+        newImage[nc:] = 0  # Zero out coefficients after nc
+    return newImage
+
+def idct_2d(image):
+    height = image.shape[0]
+    width = image.shape[1]
+    imageRow = np.zeros_like(image).astype(float)
+    imageCol = np.zeros_like(image).astype(float)
+    for h in range(height):
+        imageRow[h, :] = idct_1d(image[h, :])
+    for w in range(width):
+        imageCol[:, w] = idct_1d(imageRow[:, w])
+    return imageCol
+def idct_1d(image):
+    n = len(image)
+    newImage = np.zeros_like(image).astype(float)
+    for i in range(n):
+        sum = 0
+        for k in range(n):
+            ck = sqrt(0.5) if k == 0 else 1
+            sum += ck * image[k] * cos(2 * pi * k / (2.0 * n) *  i + (k * pi) / (2.0 * n))
+        newImage[i] = sqrt(2.0 / n) * sum
+    return newImage
+if __name__ == '__main__':
+    image=data.coffee()[::8,::8,:]/255.0
+    imgResult1 = dct_2d(image, 10)
+    imgResult2 = dct_2d(image, 20)
+    idct_img1 = idct_2d(imgResult1)
+    idct_img2 = idct_2d(imgResult2)
+    plt.subplot(1,4,1)
+    plt.title("Origin")
+    plt.imshow(image)
+    plt.subplot(1,4,2)
+    plt.title("Freq Domain")
+    plt.imshow(imgResult1)
+    plt.subplot(1,4,3)
+    plt.title("Coefficient=10")
+    plt.imshow(idct_img1)
+    plt.subplot(1,4,4)
+    plt.title("Coefficient=20")
+    plt.imshow(idct_img2)
+    plt.show()
+```
+
 </details>
-
-### DCT 变换
-
-
-
-
 
 ***
 
@@ -360,7 +566,17 @@ if __name__ == '__main__':
 
 ### JPEG
 
+1. 先把整个图像分解成多个8×8的图像块
+2. 8×8的图像块经过DCT后，低频分量都集中在左上角，高频分量则分布在右下角。
+3. 使用量化操作去掉高频分量，量化操作就是将某一个值除以量化表中的对应值。
 
+<figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
+
+4. 采用之字型（zig-zag）顺序进行行程编码（对每一个 8x8 的块进行一次zig-zag）
+
+<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
+
+5. 得到DC码字和AC行程码字后，为了进一步提高压缩比，再进行熵编码，可采用哈夫曼编码。
 
 ***
 
@@ -379,4 +595,6 @@ if __name__ == '__main__':
 \[6] [https://en.wikipedia.org/wiki/Delta\_modulation](https://en.wikipedia.org/wiki/Delta\_modulation)
 
 \[7] [https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation](https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation)
+
+\[8] [https://blog.csdn.net/gmynebula/article/details/134887145](https://blog.csdn.net/gmynebula/article/details/134887145)
 
