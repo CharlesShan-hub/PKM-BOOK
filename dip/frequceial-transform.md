@@ -196,3 +196,27 @@ plt.show()
 ```
 
 </details>
+
+## Wavelet
+
+Haar 小波基函数，(a) 为缩放因子，(b) 为平移因子
+
+$$
+\psi_{a,b}(x)=|a|^{-1/2}\psi\left(\frac{x-b}{a}\right)
+$$
+
+对于离散小波：i为缩放因子，j为平移因子
+
+$$
+a=2^j, b=ia
+$$
+
+$$
+\phi_j^{i}(x)=2^{j/2}\phi(2^j x-i)
+$$
+
+<figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption><p>[1]</p></figcaption></figure>
+
+## Reference
+
+\[1] [https://mathworld.wolfram.com/HaarFunction.html](https://mathworld.wolfram.com/HaarFunction.html)
