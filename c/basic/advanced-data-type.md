@@ -612,9 +612,33 @@ typedef+结构(上边结构里边)
 
 <img src="../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
 
+* 数组明后边的\[]和函数名后边的()具有相同优先级，他们优先级高于\*
 
+```c
+int *p[10]; // 含有十个指针的数组
+int (*p)[10]; // 指向含有十个整数的数组的指针
+```
 
+```c
+// 含有4 个指针的数组
+    int *p[4];
+    p[0] = &a[0][0];
+    p[1] = &a[0][1];
+    p[2] = &a[1][0];
+    p[3] = &a[1][1];
+    printf("%p %p %p %p\n", p[0], p[1], p[2], p[3]);
+    printf("%d %d %d %d\n", *p[0], *p[1], *p[2], *p[3]);
+    // 0x7ff7ba96b810 0x7ff7ba96b814 0x7ff7ba96b81c 0x7ff7ba96b820
+    // 11 12 21 22
 
+    // 指向数组的指针
+    int num[4] = {100, 200, 300, 400};
+    int(*q)[4] = num;
+    printf("%p, sizeof(int)=%u,sizeof(q)=%u, sizeof(*q)=%u\n", q, sizeof(int), sizeof(q), sizeof(*q));
+    printf("%d %d %d %d\n", (*q)[0], (*q)[1], (*q)[2], (*q)[3]);
+    // 0x7ff7be28a7e0, sizeof(int)=4,sizeof(q)=8, sizeof(*q)=16
+    // 100 200 300 400
+```
 
 
 

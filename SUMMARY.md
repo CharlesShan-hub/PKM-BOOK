@@ -22,6 +22,7 @@
   * [Storage](c/advanced/storage.md)
   * [IO](c/advanced/io.md)
   * [File](c/advanced/file.md)
+  * [Bit Operation](c/advanced/bit-operation.md)
 * [Library](c/library/README.md)
   * [complex.h](c/library/complex.h.md)
   * [stdint.h](c/library/stdint.h.md)
