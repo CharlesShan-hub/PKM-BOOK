@@ -604,3 +604,25 @@ typedef 是编译器解释的，#define 是预处理器解释的。
 
 typedef+结构(上边结构里边)
 
+***
+
+## 复杂声明
+
+`int a[2][3];`
+
+<img src="../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
