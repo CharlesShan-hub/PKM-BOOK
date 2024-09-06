@@ -241,23 +241,260 @@ int main(void)
 
 
 
-## C 预处理器的其他功能
+## #undef、#ifdef、#ifndef、#else、#endif
+
+<details>
+
+<summary> 取消定义</summary>
+
+```c
+#define LIMIT 400
+#undef LIMIT
+```
+
+</details>
+
+<details>
+
+<summary> 条件编译</summary>
 
 
 
-## 通用选择表达式
+<pre class="language-c"><code class="lang-c">/* ifdef.c -- uses conditional compilation */
+#include &#x3C;stdio.h>
+#define JUST_CHECKING
+#define LIMIT 4
+
+int main(void)
+{
+    int i;
+    int total = 0;
+
+    for (i = 1; i &#x3C;= LIMIT; i++)
+    {
+        total += 2*i*i + 1;
+<strong>#ifdef JUST_CHECKING
+</strong>        printf("i=%d, running total = %d\n", i, total);
+#endif
+    }
+    printf("Grand total = %d\n", total);
+    
+    return 0;
+}
+
+// (base) kimshan@MacBook-Pro output % ./"ifdef"
+// i=1, running total = 3
+// i=2, running total = 12
+// i=3, running total = 31
+// i=4, running total = 64
+// Grand total = 64
+</code></pre>
+
+</details>
+
+<details>
+
+<summary>ifndef</summary>
 
 
 
-## 内联函数
+<pre class="language-cpp"><code class="lang-cpp">// names.h --revised with include protection
+
+<strong>#ifndef NAMES_H_
+</strong><strong>#define NAMES_H_
+</strong>
+// constants
+#define SLEN 32
+
+// structure declarations
+struct names_st
+{
+    char first[SLEN];
+    char last[SLEN];
+};
+
+// typedefs
+typedef struct names_st names;
+
+// function prototypes
+void get_names(names *);
+void show_names(const names *);
+char * s_gets(char * st, int n);
+
+#endif
+
+</code></pre>
+
+</details>
+
+## #if, #elif, #else
+
+<details>
+
+<summary>demo</summary>
+
+```c
+#if SYS == 1
+    #include "ibm.h"
+#elif SYS == 2
+    #include "vax.h"
+#elif SYS == 3
+    #include "mac.h"
+#else
+    #include "general.h"
+#endif
+```
+
+```c
+#if defined (IBMPC)
+    #include "ibmpc.h"
+#elif defined (VAX)
+    #include "vax.h"
+#elif defined (MAX)
+    #inclue "mac.h"
+#else
+    #include "general.h"
+```
+
+</details>
+
+## 预定宏
+
+<table><thead><tr><th width="179">宏</th><th>含义</th></tr></thead><tbody><tr><td><strong>DATE</strong></td><td>预处理的日期（"Mmm dd yyyy"形式的字符串常量，如Nov 23 2013）</td></tr><tr><td><strong>FILE</strong></td><td>表示当前源代码文件名的字符串字面量</td></tr><tr><td><strong>LINE</strong></td><td>表示当前源代码文件中行号的整型常量</td></tr><tr><td><strong>STDC</strong></td><td>设置为1时，表明实现遵循C标准</td></tr><tr><td><strong>STDC_HOSTED</strong></td><td>本机环境设置为1；否则设置为0</td></tr><tr><td><strong>STDC_VERSION</strong></td><td>支持C99标准，设置为199901L；支持C11标准，设置为201112L</td></tr><tr><td><strong>TIME</strong></td><td>翻译代码的时间，格式为“hh:mm:ss”</td></tr></tbody></table>
+
+<details>
+
+<summary>Demo</summary>
 
 
 
-## C 库概述和一些特殊用途的方便函数
+```c
+// predef.c -- predefined identifiers
+#include <stdio.h>
+void why_me();
+
+int main()
+{
+    printf("The file is %s.\n", __FILE__);
+    printf("The date is %s.\n", __DATE__);
+    printf("The time is %s.\n", __TIME__);
+    printf("The version is %ld.\n", __STDC_VERSION__);
+    printf("This is line %d.\n", __LINE__);
+    printf("This function is %s\n", __func__);
+    why_me();
+
+    return 0;
+}
+
+void why_me()
+{
+    printf("This function is %s\n", __func__);
+    printf("This is line %d.\n", __LINE__);
+}
+
+// (base) kimshan@MacBook-Pro output % ./"predef"
+// The file is /Volumes/Charles/books/C/C Primer Plus配套资料/Ch16/predef.c.
+// The date is Sep  6 2024.
+// The time is 14:51:47.
+// The version is 201710.
+// This is line 11.
+// This function is main
+// This function is why_me
+// This is line 21.
+// (base) kimshan@Mac
+```
+
+</details>
+
+## #line、#error
+
+\#line可以重置行号和文件名
+
+\#error，这个需要 C11
+
+## #pragma
+
+<details>
+
+<summary>#pragma 有什么用(GPT)</summary>
+
+\#pragma 是一个指令，用于给编译器一些指示。它不是ISO C的一部分，不过大多数C/C++编译器都支持它，只是支持的pragma不同。 下面是一些常见的用法：
+
+1. **打包结构**：`#pragma pack(push, 1)` 和 `#pragma pack(pop)` 可以用来改变结构的内存对齐方式，强制编译器按照指定的方式进行内存对齐。
+2. **优化开关**：`#pragma optimize("on")` 和 `#pragma optimize("off")` 用于控制编译器的优化选项。
+3. **警告抑制**：某些编译器允许通过#pragma来禁用特定的警告信息。
+4. **指定段或函数属性**：在Windows平台上，可以使用#pragma来指定DLL导出的函数和数据。
+5. **消息输出**：`#pragma message("`string`")` 可以让编译器输出自定义的消息到屏幕上。 不同的编译器可能支持不同的#pragma指令，因此在使用时需要参考具体的编译器文档。
+
+</details>
+
+## 泛型（C11）
+
+<details>
+
+<summary>Demo</summary>
 
 
 
+```c
+//  mytype.c
 
+#include <stdio.h>
+
+#define MYTYPE(X) _Generic((X),\
+int: "int",\
+float : "float",\
+double: "double",\
+default: "other"\
+)
+
+int main(void)
+{
+    int d = 5;
+    
+    printf("%s\n", MYTYPE(d));     // d is type int
+    printf("%s\n", MYTYPE(2.0*d)); // 2.0* d is type double
+    printf("%s\n", MYTYPE(3L));    // 3L is type long
+    printf("%s\n", MYTYPE(&d));    // &d is type int *
+    return 0;
+}
+
+// (base) kimshan@MacBook-Pro output % ./"mytype"
+// int
+// double
+// other
+// other
+```
+
+</details>
+
+## 内联函数（C99）
+
+普通函数通过堆栈调用。内联函数会把调用的地方替换成函数内容
+
+<details>
+
+<summary>Demo</summary>
+
+在C语言中，`inline` 关键字用于告诉编译器将一个函数定义为内联函数。内联函数在调用时不会产生函数调用开销，因为它会在调用点直接展开成函数体代码。这通常用于函数体较小的函数，以减少函数调用的开销。 以下是一个简单的 C 语言内联函数的例子：
+
+<pre class="language-c"><code class="lang-c">#include &#x3C;stdio.h>
+// 定义一个内联函数，用于计算两个数的和
+<strong>inline int add(int a, int b) {
+</strong>    return a + b;
+}
+int main() {
+    int x = 5;
+    int y = 3;
+    int sum = add(x, y); // 调用内联函数
+    printf("The sum is: %d\n", sum);
+    return 0;
+}
+</code></pre>
+
+在这个例子中，`add` 函数被声明为 `inline`，这意味着编译器会在每次调用 `add` 函数时，直接将 `add` 函数的代码插入到调用点，而不是生成一个函数调用。这通常会提高程序的运行效率，特别是当函数体较小时。
+
+</details>
 
 ## 问题集锦
 

@@ -16,6 +16,7 @@
   * [Array](c/pointer/array.md)
   * [Pointer](c/pointer/pointer.md)
   * [String](c/pointer/string.md)
+  * [ADT](c/pointer/adt.md)
 * [Advanced](c/advanced/README.md)
   * [Compile](c/advanced/compile.md)
   * [Storage](c/advanced/storage.md)
@@ -34,6 +35,9 @@
   * [ctypes.h](c/library/ctypes.h.md)
   * [stdarg.h](c/library/stdarg.h.md)
   * [stdlib.h](c/library/stdlib.h.md)
+  * [math.h](c/library/math.h.md)
+  * [tgmath.h](c/library/tgmath.h.md)
+  * [assert.h](c/library/assert.h.md)
 
 ## C++
 
