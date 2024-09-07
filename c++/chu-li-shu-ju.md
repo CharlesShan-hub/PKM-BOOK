@@ -7,7 +7,7 @@ description: >-
 
 # 处理数据
 
-### 3.1 简单变量
+3.1 简单变量
 
 #### 3.1.1 变量名
 
@@ -36,17 +36,282 @@ TODO
 #### 3.1.3 short、int、long、long long
 
 1. 用 [climits.md](library/climits.md "mention") 来确定各种整形的最大最小值
-2.
+2. 赋值竟然可以这样：`int a = {}; // 这个就是 0`，`int b = {100}; // 就是 100`
+
+#### 3.1.4 无符号类型
+
+why：比如人口等，不需要负数，无符号类型可以扩展数的范围
+
+<details>
+
+<summary>无符号类型的越界</summary>
+
+```cpp
+// exceed.cpp -- exceeding some integer limits
+#include <iostream>
+#define ZERO 0     // makes ZERO symbol for 0 value
+#include <climits> // defines INT_MAX as largest int value
+int main()
+{
+    using namespace std;
+    short sam = SHRT_MAX;     // initialize a variable to max value
+    unsigned short sue = sam; // okay if variable sam already defined
+
+    cout << "Sam has " << sam << " dollars and Sue has " << sue;
+    cout << " dollars deposited." << endl
+         << "Add $1 to each account." << endl
+         << "Now ";
+    sam = sam + 1;
+    sue = sue + 1;
+    cout << "Sam has " << sam << " dollars and Sue has " << sue;
+    cout << " dollars deposited.\nPoor Sam!" << endl;
+    sam = ZERO;
+    sue = ZERO;
+    cout << "Sam has " << sam << " dollars and Sue has " << sue;
+    cout << " dollars deposited." << endl;
+    cout << "Take $1 from each account." << endl
+         << "Now ";
+    sam = sam - 1;
+    sue = sue - 1;
+    cout << "Sam has " << sam << " dollars and Sue has " << sue;
+    cout << " dollars deposited." << endl
+         << "Lucky Sue!" << endl;
+    // cin.get();
+    return 0;
+}
+```
+
+```bash
+(base) kimshan@MacBook-Pro output % ./"exceed"
+Sam has 32767 dollars and Sue has 32767 dollars deposited.
+Add $1 to each account.
+Now Sam has -32768 dollars and Sue has 32768 dollars deposited.
+Poor Sam!
+Sam has 0 dollars and Sue has 0 dollars deposited.
+Take $1 from each account.
+Now Sam has -1 dollars and Sue has 65535 dollars deposited.
+Lucky Sue!
+```
+
+</details>
+
+#### 3.1.5 如何选择具体的整型
+
+原则：能省则省
+
+#### 3.1.6 整形字面量
+
+<details>
+
+<summary> 不同进制的字面量</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// hexoct1.cpp -- shows hex and octal literals
+#include &#x3C;iostream>
+int main()
+{
+    using namespace std;
+<strong>    int chest = 42;   // decimal integer literal
+</strong><strong>    int waist = 0x42; // hexadecimal integer literal
+</strong><strong>    int inseam = 042; // octal integer literal
+</strong>
+    cout &#x3C;&#x3C; "Monsieur cuts a striking figure!\n";
+    cout &#x3C;&#x3C; "chest = " &#x3C;&#x3C; chest &#x3C;&#x3C; " (42 in decimal)\n";
+    cout &#x3C;&#x3C; "waist = " &#x3C;&#x3C; waist &#x3C;&#x3C; " (0x42 in hex)\n";
+    cout &#x3C;&#x3C; "inseam = " &#x3C;&#x3C; inseam &#x3C;&#x3C; " (042 in octal)\n";
+    // cin.get();
+    return 0;
+}
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"hexoct1"
+Monsieur cuts a striking figure!
+chest = 42 (42 in decimal)
+waist = 66 (0x42 in hex)
+inseam = 34 (042 in octal)
+```
+
+</details>
+
+<details>
+
+<summary>print成不同进制：std::hex，std::oct</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// hexoct2.cpp -- display values in hex and octal
+#include &#x3C;iostream>
+using namespace std;
+int main()
+{
+    using namespace std;
+    int chest = 42;
+    int waist = 42; 
+    int inseam = 42;
+
+    cout &#x3C;&#x3C; "Monsieur cuts a striking figure!"  &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "chest = " &#x3C;&#x3C; chest &#x3C;&#x3C; " (decimal for 42)" &#x3C;&#x3C; endl;
+<strong>    cout &#x3C;&#x3C; hex;      // manipulator for changing number base
+</strong>    cout &#x3C;&#x3C; "waist = " &#x3C;&#x3C; waist &#x3C;&#x3C; " (hexadecimal for 42)" &#x3C;&#x3C; endl;
+<strong>    cout &#x3C;&#x3C; oct;      // manipulator for changing number base
+</strong>    cout &#x3C;&#x3C; "inseam = " &#x3C;&#x3C; inseam &#x3C;&#x3C; " (octal for 42)" &#x3C;&#x3C; endl;
+    // cin.get();
+    return 0; 
+}
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"hexoct2"
+Monsieur cuts a striking figure!
+chest = 42 (decimal for 42)
+waist = 2a (hexadecimal for 42)
+inseam = 52 (octal for 42)
+```
+
+</details>
+
+#### 3.1.7 常量
+
+<table><thead><tr><th width="81">进制</th><th width="106">int</th><th>long</th><th>long long</th></tr></thead><tbody><tr><td>十</td><td>1234</td><td>1234L 或 1234l</td><td>1234LL 或 1234ll</td></tr><tr><td>八</td><td>01234</td><td>01234L 或 01234l</td><td>01234LL 或 01234ll</td></tr><tr><td>十六</td><td>0x1234</td><td>0x1234L 或 0x1234l</td><td>0x1234LL 或 0x1234ll</td></tr></tbody></table>
+
+#### 3.1.8 字符：ASCII（大小位 1 个字节）
+
+<details>
+
+<summary>1. cin 来输入一个字符</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// chartype.cpp -- the char type
+#include &#x3C;iostream>
+int main()
+{
+    using namespace std;
+    char ch; // declare a char variable
+
+    cout &#x3C;&#x3C; "Enter a character: " &#x3C;&#x3C; endl;
+<strong>    cin >> ch;
+</strong>    cout &#x3C;&#x3C; "Hola! ";
+    cout &#x3C;&#x3C; "Thank you for the " &#x3C;&#x3C; ch &#x3C;&#x3C; " character." &#x3C;&#x3C; endl;
+    // cin.get();
+    // cin.get();
+    return 0;
+}
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"chartype"
+Enter a character: 
+M
+Hola! Thank you for the M character.
+```
+
+</details>
+
+<details>
+
+<summary>2. char and int</summary>
+
+```cpp
+// morechar.cpp -- the char type and int type contrasted
+#include <iostream>
+int main()
+{
+    using namespace std;
+    char ch = 'M'; // assign ASCII code for M to ch
+    int i = ch;    // store same code in an int
+    cout << "The ASCII code for " << ch << " is " << i << endl;
+
+    cout << "Add one to the character code:" << endl;
+    ch = ch + 1; // change character code in ch
+    i = ch;      // save new character code in i
+    cout << "The ASCII code for " << ch << " is " << i << endl;
+
+    // using the cout.put() member function to display a char
+    cout << "Displaying char ch using cout.put(ch): ";
+    cout.put(ch);
+
+    // using cout.put() to display a char constant
+    cout.put('!');
+
+    cout << endl
+         << "Done" << endl;
+    // cin.get();
+    return 0;
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"morechar"
+The ASCII code for M is 77
+Add one to the character code:
+The ASCII code for N is 78
+Displaying char ch using cout.put(ch): N!
+Done
+```
+
+</details>
+
+<details>
+
+<summary>3. 既生“&#x3C;&#x3C;”何生".put()" ：历史原因</summary>
+
+答案与历史有关。在 C++的 Release 2.0 之前，cout 将字符变量显示为字符，而将字符常量(如 ‘M’和‘N’)显示为数字。问题是，C++的早期版本与 C 一样，也将把字符常量存储为 int 类型。也就是 说，‘M’的编码 77 将被存储在一个 16 位或 32 位的单元中。而 char 变量一般占 8 位。
+
+遗憾的是，这意味着对 cout 来说，‘M’和 ch 看上去有天壤之别，虽然它们存储的值相同。因此，下 面的语句将打印$字符的 ASCII 码，而不是字符$：
+
+```
+cout << '$';
+```
+
+在Release 2.0之后，C++将字符常量存储为char类型，而不是int类型。这意味着cout现在可以正确 处理字符常量了。
+
+</details>
+
+4. 转义字符
+
+| 字符名称         | ASCII符号 | C++代码 | 十进制ASCII码 | 十六进制ASCII码 |
+| ------------ | ------- | ----- | --------- | ---------- |
+| 换行符（NL (LF)） | NL(LF)  | `\n`  | 10        | 0xA        |
+| 水平制表符（HT）    | HT      | `\t`  | 9         | 0x9        |
+| 垂直制表符（VT）    | VT      | `\v`  | 11        | 0xB        |
+| 退格（BS）       | BS      | `\b`  | 8         | 0x8        |
+| 回车（CR）       | CR      | `\r`  | 13        | 0xD        |
+| 振铃（BEL）      | BEL     | `\a`  | 7         | 0x7        |
+| 反斜杠（\）       | \\      | `\\`  | 92        | 0x5C       |
+| 问号（?）        | ?       | `\?`  | 63        | 0x3F       |
+| 单引号（'）       | '       | `\'`  | 39        | 0x27       |
+| 双引号（"）       | "       | `\"`  | 34        | 0x22       |
+
+5. signed char 和 unsigned char
+
+与 int 不同的是，char 在默认情况下既不是没有符号，也不是有符号。是否有符号由 C++实现决定， 这样编译器开发人员可以最大限度地将这种类型与硬件属性匹配起来。如果 char 有某种特定的行为对您来 说非常重要，则可以显式地将类型设置为 signed char 或 unsigned char
+
+```cpp
+char a; // 可能是有符号，也有可能无符号
+unsigned char b; // 一定丝滑无符号
+signed char c; // 一定是无符号
+```
+
+6. wcha\_t（宽字符类型）：用来表示比如日语，汉语这种 ASCII 表示不了的字符。
+
+```cpp
+wchar_t bob = L'P';
+wcout << L"tall" << endl;
+```
+
+#### 3.1.7 bool
+
+* true：true，非 0 的整数比如-1, 10
+* false：false，整数 0
 
 ***
 
 ### 3.2 const 限定符
 
+通用模板如下
 
+```cpp
+const 类型 名字 = value;
+```
 
-
-
-
+const 比 define 好：可以限制类型，可以更精确的控制作用域
 
 ***
 
