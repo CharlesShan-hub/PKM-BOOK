@@ -7,7 +7,7 @@ description: >-
 
 # 处理数据
 
-3.1 简单变量
+### 3.1 简单变量
 
 #### 3.1.1 变量名
 
@@ -317,19 +317,293 @@ const 比 define 好：可以限制类型，可以更精确的控制作用域
 
 ### 3.3 浮点数
 
+#### 3.3.1 书写浮点数
 
+1. 直接写小数点：12.34，8.0
+2. 科学计数法（E 和 e 都可以）：2.52e+8，8.33E-3，3.3e2
 
+#### 3.3.2 浮点类型
 
+<details>
+
+<summary>Demo</summary>
+
+```cpp
+// floatnum.cpp -- floating-point types
+#include <iostream>
+int main()
+{
+    using namespace std; 
+    cout.setf(ios_base::fixed, ios_base::floatfield); // fixed-point
+    float tub = 10.0 / 3.0;     // good to about 6 places
+    double mint = 10.0 / 3.0;   // good to about 15 places
+    const float million = 1.0e6;
+
+    cout << "tub = " << tub;
+    cout << ", a million tubs = " << million * tub;
+    cout << ",\nand ten million tubs = ";
+    cout << 10 * million * tub << endl;
+
+    cout << "mint = " << mint << " and a million mints = ";
+    cout << million * mint << endl;
+    // cin.get();
+    return 0;
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"floatnum"
+tub = 3.333333, a million tubs = 3333333.250000,
+and ten million tubs = 33333332.000000
+mint = 3.333333 and a million mints = 3333333.333333
+```
+
+</details>
+
+1. `cout.setf()`：用来重新定义输出的小数位数。floatfield 是 6，就是说保留六位小数。
+2. 这个例子可以看出 float 和 double 的有效位的区别，float 只有 32-9=24bits 表示位数，也就是24/4=6 位有效数字。
+
+{% hint style="info" %}
+弹幕大神：因为尾数：2^23是8388608个数字，也就是没有触及边界的情况下，7位精确，但是触及边界就6位精确
+{% endhint %}
+
+#### 3.3.3 浮点常量
+
+```cpp
+1.234f   // float const
+2.45E20F // float const
+2.345E28 // double const
+2.2L     // long double const
+```
+
+#### 3.3.4 浮点数的优缺点
+
+<details>
+
+<summary> 浮点数损失精度</summary>
+
+```cpp
+// fltadd.cpp -- precision problems with float
+#include <iostream>
+int main()
+{
+    using namespace std;
+    float a = 2.34E+22f;
+    float b = a + 1.0f;
+
+    cout << "a = " << a << endl;
+    cout << "b - a = " << b - a << endl;
+    // cin.get();
+    return 0;
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"fltadd"
+a = 2.34e+22
+b - a = 0
+```
+
+</details>
 
 ***
 
 ### 3.4 C++算术运算符
 
+#### 3.4.1 运算符优先级和结合性
 
+```
++,-,*,/,%
+```
 
+取余数只能整数和整数运算
 
+#### 3.4.2 除法分支
 
+<details>
 
+<summary>Demo</summary>
+
+```cpp
+// divide.cpp -- integer and floating-point division
+// 如果两个操作数都是整数，则 C++将执行整数除法。
+// 这意味着结果的小数部分将被丢弃，使得最后的结果是一个整数。
+// 如果其中有一个(或两个)操作数是浮点值，则小数部分将保留，结果为浮点数
+#include <iostream>
+int main()
+{
+    using namespace std;
+    cout.setf(ios_base::fixed, ios_base::floatfield);
+    cout << "Integer division: 9/5 = " << 9 / 5  << endl;
+    cout << "Floating-point division: 9.0/5.0 = ";
+    cout << 9.0 / 5.0 << endl;
+    cout << "Mixed division: 9.0/5 = " << 9.0 / 5  << endl;
+    cout << "double constants: 1e7/9.0 = ";
+    cout << 1.e7 / 9.0 <<  endl;
+    cout << "float constants: 1e7f/9.0f = ";
+    cout << 1.e7f / 9.0f <<  endl;
+    // cin.get();
+    return 0;
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"divide"
+Integer division: 9/5 = 1
+Floating-point division: 9.0/5.0 = 1.800000
+Mixed division: 9.0/5 = 1.800000
+double constants: 1e7/9.0 = 1111111.111111
+float constants: 1e7f/9.0f = 1111111.125000
+```
+
+</details>
+
+#### 3.4.3 求模运算符
+
+<details>
+
+<summary>Demo</summary>
+
+```cpp
+// modulus.cpp -- uses % operator to convert lbs to stone
+#include <iostream>
+int main()
+{
+    using namespace std;
+    const int Lbs_per_stn = 14;
+    int lbs;
+
+    cout << "Enter your weight in pounds: ";
+    cin >> lbs;
+    int stone = lbs / Lbs_per_stn;      // whole stone
+    int pounds = lbs % Lbs_per_stn;     // remainder in pounds
+    cout << lbs << " pounds are " << stone
+         << " stone, " << pounds << " pound(s).\n";
+    // cin.get();
+    // cin.get();
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"modulus"
+Enter your weight in pounds: 100
+100 pounds are 7 stone, 2 pound(s).
+```
+
+</details>
+
+#### 3.4.4 类型转换
+
+情况：赋值，表达式求值，函数传参
+
+<details>
+
+<summary>Demo</summary>
+
+```cpp
+// assign.cpp -- type changes on assignment
+#include <iostream>
+int main()
+{
+    using namespace std;
+    cout.setf(ios_base::fixed, ios_base::floatfield);
+    float tree = 3;     // int converted to float
+    int guess = 3.9832; // float converted to int
+    int debt = 7.2E12;  // result not defined in C++
+    cout << "tree = " << tree << endl;
+    cout << "guess = " << guess << endl;
+    cout << "debt = " << debt << endl;
+    // cin.get();
+    return 0;
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"assign"
+tree = 3.000000
+guess = 3
+debt = 4098
+```
+
+</details>
+
+<details>
+
+<summary>{}的初始化，不允许类型转换</summary>
+
+```cpp
+const int code = 66; // √
+int x = 66; // √
+char c1 {31325}; // √
+char c2 = {66}; // √
+char c3 {code}; // √
+char c4 = {x}; // x  {}里边不能是变量
+char c5 = x; // √
+```
+
+</details>
+
+<details>
+
+<summary>强制类型转换</summary>
+
+```cpp
+// typecast.cpp -- forcing type changes
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int auks, bats, coots;
+
+    // the following statement adds the values as double,
+    // then converts the result to int
+    auks = 19.99 + 11.99;
+
+    // these statements add values as int
+    bats = (int) 19.99 + (int) 11.99;   // old C syntax
+    coots = int (19.99) + int (11.99);  // new C++ syntax
+    cout << "auks = " << auks << ", bats = " << bats;
+    cout << ", coots = " << coots << endl;
+
+    char ch = 'Z';
+    cout << "The code for " << ch << " is ";    // print as char
+    cout << int(ch) << endl;                    // print as int
+    cout << "Yes, the code is ";
+    cout << static_cast<int>(ch) << endl;       // using static_cast
+   // cin.get();
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"typecast"
+auks = 31, bats = 30, coots = 30
+The code for Z is 90
+Yes, the code is 90
+```
+
+</details>
+
+#### 3.4.5 C++11 中的 auto 声明
+
+使用关键字auto，而不指定变量的类型，编译器将把变量的类型设置成 与初始值相同（推断完就固定了，不能改了）
+
+```cpp
+auto a = 1.0;
+auto b = 3;
+```
+
+其实 auto 更适合 STL，标准模块库
+
+```cpp
+std::vector<double> scores;
+// std::vector<double>::iterator pv = scoress.begin();
+auto pv = scoress.begin();
+```
 
 
 
