@@ -1,5 +1,6 @@
 ---
 icon: arrow-up-to-line
+description: 整型的最大值和最小值
 ---
 
 # climits
