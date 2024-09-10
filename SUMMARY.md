@@ -46,6 +46,7 @@
 * [开始学习 C++](c++/kai-shi-xue-xi-c++.md)
 * [处理数据](c++/chu-li-shu-ju.md)
 * [复合类型](c++/fu-he-lei-xing.md)
+* [循环和关系表达式](c++/xun-huan-he-guan-xi-biao-da-shi.md)
 * [Library](c++/library/README.md)
   * [climits](c++/library/climits.md)
   * [cstring](c++/library/cstring.md)

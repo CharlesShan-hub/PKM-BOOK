@@ -607,38 +607,681 @@ have a combined volume of 2000.5 cubic feet.
 
 ### 4.6 枚举
 
+<details>
+
+<summary>Demo</summary>
+
 ```cpp
-enum spectrum = {red, orange, yellow, green, blue, violet};
-// 0,1,2,3,4,5
-enum spectrum = {red, orange, yellow=10, green, blue, violet};
-// 0,1,10,11,12,13
-int c = red+blue; // x
-int d = spectrum(rea+blue); //√
+#include <iostream>
+#include <climits>
+#include <stdio.h>
+
+enum spectrum
+{
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    violet,
+    indigo,
+    ultraviolt
+};
+
+int main()
+{
+    using namespace std;
+
+    spectrum band;
+    // 赋值给枚举
+    band = blue; // √
+    // band = 2; // x
+    band = spectrum(2); // √
+
+    // 枚举赋值给别人
+    int num = band;
+    cout << "num = " << num << ", band = " << band << endl; // num = 2, band = 2
+
+    // enum spectrum1
+    // {
+    //     red,
+    //     orange,
+    //     yellow,
+    //     green,
+    //     blue,
+    //     violet
+    // };
+    // 0,1,2,3,4,5
+    // enum spectrum2
+    // {
+    //     red,
+    //     orange,
+    //     yellow = 10,
+    //     green,
+    //     blue,
+    //     violet
+    // };
+    // 0,1,10,11,12,13
+
+    spectrum r = red;
+    spectrum b = blue;
+    int c = r + b;           // √
+    int d = spectrum(r + b); // √
+    spectrum e = spectrum(r + b); // √
+
+    return 0;
+}
 ```
+
+</details>
 
 ***
 
 ### 4.7 指针和自由存储空间
 
+<details>
 
+<summary>&#x26;取地址</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// address.cpp -- using the &#x26; operator to find addresses
+#include &#x3C;iostream>
+int main()
+{
+    using namespace std;
+    int donuts = 6;
+    double cups = 4.5;
+
+    cout &#x3C;&#x3C; "donuts value = " &#x3C;&#x3C; donuts;
+<strong>    cout &#x3C;&#x3C; " and donuts address = " &#x3C;&#x3C; &#x26;donuts &#x3C;&#x3C; endl;
+</strong>// NOTE: you may need to use unsigned (&#x26;donuts)
+// and unsigned (&#x26;cups)
+    cout &#x3C;&#x3C; "cups value = " &#x3C;&#x3C; cups;
+<strong>    cout &#x3C;&#x3C; " and cups address = " &#x3C;&#x3C; &#x26;cups &#x3C;&#x3C; endl;
+</strong>    // cin.get();
+    return 0; 
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"address"
+donuts value = 6 and donuts address = 0x7ff7b597c7f8
+cups value = 4.5 and cups address = 0x7ff7b597c7f0
+```
+
+</details>
+
+<details>
+
+<summary>*解引用</summary>
+
+```cpp
+// pointer.cpp -- our first pointer variable
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int updates = 6;        // declare a variable
+    int * p_updates;        // declare pointer to an int
+
+    p_updates = &updates;   // assign address of int to pointer
+
+// express values two ways
+    cout << "Values: updates = " << updates;
+    cout << ", *p_updates = " << *p_updates << endl;
+
+// express address two ways
+    cout << "Addresses: &updates = " << &updates;
+    cout << ", p_updates = " << p_updates << endl;
+
+// use pointer to change value
+    *p_updates = *p_updates + 1;
+    cout << "Now updates = " << updates << endl;
+    // cin.get();
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"pointer"
+Values: updates = 6, *p_updates = 6
+Addresses: &updates = 0x7ff7b51f67f8, p_updates = 0x7ff7b51f67f8
+Now updates = 7
+```
+
+</details>
+
+<details>
+
+<summary> 指针初始化，C++中 int* 本身是一种复合类型</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// init_ptr.cpp -- initialize a pointer
+#include &#x3C;iostream>
+int main()
+{
+    using namespace std;
+    int higgens = 5;
+<strong>    int * pt = &#x26;higgens;
+</strong>
+    cout &#x3C;&#x3C; "Value of higgens = " &#x3C;&#x3C; higgens
+         &#x3C;&#x3C; "; Address of higgens = " &#x3C;&#x3C; &#x26;higgens &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "Value of *pt = " &#x3C;&#x3C; *pt
+         &#x3C;&#x3C; "; Value of pt = " &#x3C;&#x3C; pt &#x3C;&#x3C; endl;
+    // cin.get();
+    return 0; 
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"init_ptr"
+Value of higgens = 5; Address of higgens = 0x7ff7b875b7f8
+Value of *pt = 5; Value of pt = 0x7ff7b875b7f8
+```
+
+</details>
+
+<details>
+
+<summary>指针的危险</summary>
+
+```cpp
+// 不要这样
+long *p;
+*p = 2333333; // 这样就会把不知道什么地方的值改成了2333333
+```
+
+</details>
+
+<details>
+
+<summary>new（C 里边的malloc，C++用 new）</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// use_new.cpp -- using the new operator
+#include &#x3C;iostream>
+int main()
+{
+    using namespace std;
+    int nights = 1001;
+<strong>    int * pt = new int;         // allocate space for an int
+</strong>    *pt = 1001;                 // store a value there
+
+    cout &#x3C;&#x3C; "nights value = ";
+    cout &#x3C;&#x3C; nights &#x3C;&#x3C; ": location " &#x3C;&#x3C; &#x26;nights &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "int ";
+    cout &#x3C;&#x3C; "value = " &#x3C;&#x3C; *pt &#x3C;&#x3C; ": location = " &#x3C;&#x3C; pt &#x3C;&#x3C; endl;
+
+<strong>    double * pd = new double;   // allocate space for a double
+</strong>    *pd = 10000001.0;           // store a double there
+
+    cout &#x3C;&#x3C; "double ";
+    cout &#x3C;&#x3C; "value = " &#x3C;&#x3C; *pd &#x3C;&#x3C; ": location = " &#x3C;&#x3C; pd &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "location of pointer pd: " &#x3C;&#x3C; &#x26;pd &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "size of pt = " &#x3C;&#x3C; sizeof(pt);
+    cout &#x3C;&#x3C; ": size of *pt = " &#x3C;&#x3C; sizeof(*pt) &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "size of pd = " &#x3C;&#x3C; sizeof pd;
+    cout &#x3C;&#x3C; ": size of *pd = " &#x3C;&#x3C; sizeof(*pd) &#x3C;&#x3C; endl;
+    // cin.get();
+    return 0;
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"use_new"
+nights value = 1001: location 0x7ff7bf9de7f8
+int value = 1001: location = 0x7fcef4f06030
+double value = 1e+07: location = 0x7fcef4f06040
+location of pointer pd: 0x7ff7bf9de7e8
+size of pt = 8: size of *pt = 4
+size of pd = 8: size of *pd = 8
+```
+
+</details>
+
+<details>
+
+<summary>数组的 new 和 delete</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// arraynew.cpp -- using the new operator for arrays
+#include &#x3C;iostream>
+int main()
+{
+    using namespace std;
+<strong>    double * p3 = new double [3]; // space for 3 doubles
+</strong>    p3[0] = 0.2;                  // treat p3 like an array name
+    p3[1] = 0.5;
+    p3[2] = 0.8;
+    cout &#x3C;&#x3C; "p3[1] is " &#x3C;&#x3C; p3[1] &#x3C;&#x3C; ".\n";
+    p3 = p3 + 1;                  // increment the pointer
+    cout &#x3C;&#x3C; "Now p3[0] is " &#x3C;&#x3C; p3[0] &#x3C;&#x3C; " and ";
+    cout &#x3C;&#x3C; "p3[1] is " &#x3C;&#x3C; p3[1] &#x3C;&#x3C; ".\n";
+    p3 = p3 - 1;                  // point back to beginning
+<strong>    delete [] p3;                 // free the memory
+</strong>    // cin.get();
+    return 0; 
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"arraynew"
+p3[1] is 0.5.
+Now p3[0] is 0.5 and p3[1] is 0.8.
+```
+
+</details>
 
 ***
 
 ### 4.8 指针、数组和指针算数
 
+<details>
 
+<summary>Demo</summary>
+
+1. `pw = pw + 1;`如果pw 指向 double，+1一下地址+8，如果 pw 指向 short，+1 一下地址+2
+2. 数组和指针的区别来了！数组是常量，指针可以+1！
+
+```cpp
+// addpntrs.cpp -- pointer addition
+#include <iostream>
+int main()
+{
+    using namespace std;
+    double wages[3] = {10000.0, 20000.0, 30000.0};
+    short stacks[3] = {3, 2, 1};
+
+// Here are two ways to get the address of an array
+    double * pw = wages;     // name of an array = address
+    short * ps = &stacks[0]; // or use address operator
+// with array element
+    cout << "pw = " << pw << ", *pw = " << *pw << endl;
+    pw = pw + 1;
+    cout << "add 1 to the pw pointer:\n";
+    cout << "pw = " << pw << ", *pw = " << *pw << "\n\n";
+
+    cout << "ps = " << ps << ", *ps = " << *ps << endl;
+    ps = ps + 1;
+    cout << "add 1 to the ps pointer:\n";
+    cout << "ps = " << ps << ", *ps = " << *ps << "\n\n";
+
+    cout << "access two elements with array notation\n";
+    cout << "stacks[0] = " << stacks[0] 
+         << ", stacks[1] = " << stacks[1] << endl;
+    cout << "access two elements with pointer notation\n";
+
+    cout << "*stacks = " << *stacks
+         << ", *(stacks + 1) =  " << *(stacks + 1) << endl;
+
+    cout << sizeof(wages) << " = size of wages array\n";
+    cout << sizeof(pw) << " = size of pw pointer\n";
+    // cin.get();
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"addpntrs"
+pw = 0x7ff7b86cd7e0, *pw = 10000
+add 1 to the pw pointer:
+pw = 0x7ff7b86cd7e8, *pw = 20000
+
+ps = 0x7ff7b86cd7d6, *ps = 3
+add 1 to the ps pointer:
+ps = 0x7ff7b86cd7d8, *ps = 2
+
+access two elements with array notation
+stacks[0] = 3, stacks[1] = 2
+access two elements with pointer notation
+*stacks = 3, *(stacks + 1) =  2
+24 = size of wages array
+8 = size of pw pointer
+```
+
+</details>
+
+<details>
+
+<summary>输入字符串（静态）</summary>
+
+
+
+```cpp
+// ptrstr.cpp -- using pointers to strings
+#include <iostream>
+#include <cstring>              // declare strlen(), strcpy()
+int main()
+{
+    using namespace std;
+    char animal[20] = "bear";   // animal holds bear
+    const char * bird = "wren"; // bird holds address of string
+    char * ps;                  // uninitialized
+
+    cout << animal << " and ";  // display bear
+    cout << bird << "\n";       // display wren
+    // cout << ps << "\n";      //may display garbage, may cause a crash
+
+    cout << "Enter a kind of animal: ";
+    cin >> animal;              // ok if input < 20 chars
+    // cin >> ps; Too horrible a blunder to try; ps doesn't
+    //            point to allocated space
+
+    ps = animal;                // set ps to point to string
+    cout << ps << "!\n";       // ok, same as using animal
+    cout << "Before using strcpy():\n";
+    cout << animal << " at " << (int *) animal << endl;
+    cout << ps << " at " << (int *) ps << endl;
+
+    ps = new char[strlen(animal) + 1];  // get new storage
+    strcpy(ps, animal);         // copy string to new storage
+    cout << "After using strcpy():\n";
+    cout << animal << " at " << (int *) animal << endl;
+    cout << ps << " at " << (int *) ps << " " << &ps << endl;
+    delete [] ps;
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"ptrstr"
+bear and wren
+Enter a kind of animal: snake
+snake!
+Before using strcpy():
+snake at 0x7ff7b2c327e0
+snake at 0x7ff7b2c327e0
+After using strcpy():
+snake at 0x7ff7b2c327e0
+snake at 0x7faa28804080 0x7ff7b2c327c8
+```
+
+</details>
+
+<details>
+
+<summary>输入字符串（动态）</summary>
+
+
+
+```cpp
+// newstrct.cpp -- using new with a structure
+#include <iostream>
+struct inflatable   // structure definition
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable * ps = new inflatable; // allot memory for structure
+    cout << "Enter name of inflatable item: ";
+    cin.get(ps->name, 20);            // method 1 for member access
+    cout << "Enter volume in cubic feet: ";
+    cin >> (*ps).volume;              // method 2 for member access
+    cout << "Enter price: $";
+    cin >> ps->price;
+    cout << "Name: " << (*ps).name << endl;              // method 2
+    cout << "Volume: " << ps->volume << " cubic feet\n"; // method 1
+    cout << "Price: $" << ps->price << endl;             // method 1
+    delete ps;                        // free memory used by structure
+    // cin.get();
+    // cin.get();
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"newstrct"
+Enter name of inflatable item: Cookie  
+Enter volume in cubic feet: 20
+Enter price: $100
+Name: Cookie
+Volume: 20 cubic feet
+Price: $100
+```
+
+</details>
+
+<details>
+
+<summary>delete来释放内存，然后重新输入</summary>
+
+
+
+```cpp
+// delete.cpp -- using the delete operator
+#include <iostream>
+#include <cstring>      // or string.h
+using namespace std;
+char * getname(void);   // function prototype
+int main()
+{
+    char * name;        // create pointer but no storage
+    name = getname();   // assign address of string to name
+
+    cout << name << " at " << (int *) name << "\n";
+    delete [] name;     // memory freed
+
+    name = getname();   // reuse freed memory
+    cout << name << " at " << (int *) name << "\n";
+    delete [] name;     // memory freed again
+    // cin.get();
+    // cin.get();
+    return 0;
+}
+
+char * getname()        // return pointer to new string
+{
+    char temp[80];      // temporary storage
+    cout << "Enter last name: ";
+    cin >> temp;
+    char * pn = new char[strlen(temp) + 1];
+    strcpy(pn, temp);   // copy string into smaller space
+
+    return pn;          // temp lost when function ends
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"delete"
+Enter last name: Charles 
+Charles at 0x7fcb09804080
+Enter last name: Shan
+Shan at 0x7fcb08f06030
+```
+
+</details>
 
 ***
 
 ### 4.9 类型组合
 
+<details>
 
+<summary>其实就是把上边的综合这些一个Demo</summary>
+
+
+
+```cpp
+// mixtypes.cpp --some type combinations
+#include <iostream>
+
+struct antarctica_years_end
+{
+    int year;
+ /* some really interesting data, etc. */
+};
+
+int main()
+{
+    antarctica_years_end s01, s02, s03; 
+    s01.year = 1998;
+    antarctica_years_end * pa = &s02;
+    pa->year = 1999;
+    antarctica_years_end trio[3]; // array of 3 structures
+    trio[0].year = 2003;
+    std::cout << trio->year << std::endl;
+    const antarctica_years_end * arp[3] = {&s01, &s02, &s03};
+    std::cout << arp[1]->year << std::endl;
+    const antarctica_years_end ** ppa = arp; 
+    auto ppb = arp; // C++0x automatic type deduction
+// or else use const antarctica_years_end ** ppb = arp; 
+    std::cout << (*ppa)->year << std::endl;
+    std::cout << (*(ppb+1))->year << std::endl;
+    // std::cin.get();
+    return 0;
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"mixtypes"
+2003
+1999
+1998
+1999
+```
+
+</details>
 
 ***
 
 ### 4.10 数组的替代品
 
+<details>
+
+<summary> vector</summary>
 
 
 
+```cpp
+#include <iostream>
+#include <vector>
+
+int main()
+{
+    using namespace std;
+    // 创建一个空的 vector 来存储整数
+    vector<int> numbers;
+
+    // 向 vector 添加一些元素
+    numbers.push_back(10);
+    numbers.push_back(20);
+    numbers.push_back(30);
+    numbers.push_back(40);
+    numbers.push_back(50);
+
+    // 输出 vector 中的元素
+    cout << "Vector contains:" << endl;
+    for (int i = 0; i < numbers.size(); ++i)
+    {
+        cout << "Element at index " << i << ": " << numbers[i] << endl;
+    }
+
+    // 使用迭代器来访问 vector 中的元素
+    cout << "Accessing elements using iterators:" << endl;
+    for (vector<int>::iterator it = numbers.begin(); it != numbers.end(); ++it)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    // 修改 vector 中的元素
+    numbers[2] = 300; // 将索引为 2 的元素修改为 300
+
+    // 再次输出 vector 中的元素，查看修改结果
+    cout << "After modification, vector contains:" << endl;
+    for (int number : numbers)
+    {
+        cout << number << " ";
+    }
+    cout << endl;
+
+    // 删除 vector 中的最后一个元素
+    numbers.pop_back();
+
+    // 输出 vector 中的元素数量
+    cout << "The vector now contains " << numbers.size() << " elements." << endl;
+
+    return 0;
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"test1"
+Vector contains:
+Element at index 0: 10
+Element at index 1: 20
+Element at index 2: 30
+Element at index 3: 40
+Element at index 4: 50
+Accessing elements using iterators:
+10 20 30 40 50 
+After modification, vector contains:
+10 20 300 40 50 
+The vector now contains 4 elements.
+```
+
+</details>
+
+<details>
+
+<summary>array</summary>
+
+```cpp
+// choices.cpp -- array variations
+#include <iostream>
+#include <vector>   // STL C++98
+#include <array>    // C++0x
+int main()
+{
+    using namespace std;
+// C, original C++
+    double a1[4] = {1.2, 2.4, 3.6, 4.8};
+// C++98 STL
+    vector<double> a2(4);   // create vector with 4 elements
+// no simple way to initialize in C98
+    a2[0] = 1.0/3.0;
+    a2[1] = 1.0/5.0;
+    a2[2] = 1.0/7.0;
+    a2[3] = 1.0/9.0;
+// C++0x -- create and initialize array object
+    array<double, 4> a3 = {3.14, 2.72, 1.62, 1.41};  
+    array<double, 4> a4;
+    a4 = a3;     // valid for array objects of same size
+// use array notation
+    cout << "a1[2]: " << a1[2] << " at " << &a1[2] << endl;
+    cout << "a2[2]: " << a2[2] << " at " << &a2[2] << endl;
+    cout << "a3[2]: " << a3[2] << " at " << &a3[2] << endl;
+    cout << "a4[2]: " << a4[2] << " at " << &a4[2] << endl;
+// misdeed
+    a1[-2] = 20.2;
+    cout << "a1[-2]: " << a1[-2] <<" at " << &a1[-2] << endl;
+    cout << "a3[2]: " << a3[2] << " at " << &a3[2] << endl;
+    cout << "a4[2]: " << a4[2] << " at " << &a4[2] << endl;
+    //  cin.get();
+    return 0;
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"choices"
+a1[2]: 3.6 at 0x7ff7b52d77e0
+a2[2]: 0.142857 at 0x7f8f71004090
+a3[2]: 1.62 at 0x7ff7b52d77a0
+a4[2]: 1.62 at 0x7ff7b52d7780
+a1[-2]: 20.2 at 0x7ff7b52d77c0
+a3[2]: 1.62 at 0x7ff7b52d77a0
+a4[2]: 1.62 at 0x7ff7b52d7780
+```
+
+</details>
 
