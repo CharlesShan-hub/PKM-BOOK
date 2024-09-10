@@ -90,9 +90,11 @@ int e[3] {0};
 
 ### 4.2 字符串
 
+参考：[cstring.md](library/cstring.md "mention")
+
 <details>
 
-<summary>Demo</summary>
+<summary>cin，遇到空白 （空格、制表符和换行符）代表输入结束</summary>
 
 ```cpp
 // strings.cpp -- storing strings in an array
@@ -135,15 +137,327 @@ Here are the first 3 characters of my name: C++
 
 </details>
 
+<details>
 
+<summary>cin.getline，遇到换行符代表输入结束，换行符可以被自动删掉</summary>
+
+{% code title="错误的输入案例" %}
+```cpp
+// instr1.cpp -- reading more than one string
+#include <iostream>
+int main()
+{
+    using namespace std;
+    const int ArSize = 20;
+    char name[ArSize];
+    char dessert[ArSize];
+
+    cout << "Enter your name:\n";
+    cin >> name;
+    cout << "Enter your favorite dessert:\n";
+    cin >> dessert;
+    cout << "I have some delicious " << dessert;
+    cout << " for you, " << name << ".\n";
+    // cin.get();
+	// cin.get();
+    return 0; 
+}
+```
+{% endcode %}
+
+```
+(base) kimshan@MacBook-Pro output % ./"instr1"
+Enter your name:
+Jassica Windy
+Enter your favorite dessert:
+I have some delicious Windy for you, Jassica.
+```
+
+{% code title="正确的" %}
+```cpp
+// instr2.cpp -- reading more than one word with getline
+#include <iostream>
+int main()
+{
+    using namespace std;
+    const int ArSize = 20;
+    char name[ArSize];
+    char dessert[ArSize];
+
+    cout << "Enter your name:\n";
+    cin.getline(name, ArSize);  // reads through newline
+    cout << "Enter your favorite dessert:\n";
+    cin.getline(dessert, ArSize);
+    cout << "I have some delicious " << dessert;
+    cout << " for you, " << name << ".\n";
+    // cin.get();
+    return 0; 
+}
+
+```
+{% endcode %}
+
+```
+(base) kimshan@MacBook-Pro output % ./"instr2"
+Enter your name:
+Jassica Windy
+Enter your favorite dessert:
+Cookie
+I have some delicious Cookie for you, Jassica Windy.
+```
+
+</details>
+
+<details>
+
+<summary>cin.get，遇到换行符代表输入结束，换行符可以不被删掉，要再 get 一下</summary>
+
+```cpp
+// instr3.cpp -- reading more than one word with get() & get()
+#include <iostream>
+int main()
+{
+    using namespace std;
+    const int ArSize = 20;
+    char name[ArSize];
+    char dessert[ArSize];
+
+    cout << "Enter your name:\n";
+    cin.get(name, ArSize).get();    // read string, newline
+    cout << "Enter your favorite dessert:\n";
+    cin.get(dessert, ArSize).get();
+    cout << "I have some delicious " << dessert;
+    cout << " for you, " << name << ".\n";
+    // cin.get();
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"instr3"
+Enter your name:
+Tony's Fu
+Enter your favorite dessert:
+Soup
+I have some delicious Soup for you, Tony's Fu.
+```
+
+</details>
+
+<details>
+
+<summary>输入混合的字符串和数字（cin 会留一个回车在缓冲区）</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// numstr.cpp -- following number input with line input
+#include &#x3C;iostream>
+int main()
+{
+    using namespace std;
+    cout &#x3C;&#x3C; "What year was your house built?\n";
+    int year;
+<strong>    (cin >> year).get();
+</strong><strong>    // cin.get();
+</strong>    cout &#x3C;&#x3C; "What is its street address?\n";
+    char address[80];
+    cin.getline(address, 80);
+    cout &#x3C;&#x3C; "Year built: " &#x3C;&#x3C; year &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "Address: " &#x3C;&#x3C; address &#x3C;&#x3C; endl;
+    cout &#x3C;&#x3C; "Done!\n";
+    // cin.get();
+    return 0;
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"numstr"
+What year was your house built?
+2022
+What is its street address?
+No1
+Year built: 2022
+Address: No1
+Done!
+```
+
+</details>
 
 ***
 
 ### 4.3 string类简介
 
+C++98 加入了 std::string。string 可以自动调整大小，char\[]不可以。
 
+<details>
 
+<summary>char[] vs string</summary>
 
+```cpp
+// Init
+char array1[20]; // √
+char array2[20] = "Hello"; // √
+char array3[] = "Hello"; // √
+char array4[20] = {"Hello"}; // √
+char array5[] = {"Hello"}; // √
+
+string str1 = "Hello"; √
+string str2 = {"Hello"}; √
+
+// Assign
+array1 = array2;// x
+str1 = str2; // √
+
+// 拼接
+str1 += str2; // √
+```
+
+```cpp
+// strtype2.cpp - assigning, adding, and appending
+#include <iostream>
+#include <string>               // make string class available
+int main()
+{
+    using namespace std;
+    string s1 = "penguin";
+    string s2, s3;
+
+    cout << "You can assign one string object to another: s2 = s1\n";
+    s2 = s1;
+    cout << "s1: " << s1 << ", s2: " << s2 << endl;
+    cout << "You can assign a C-style string to a string object.\n";
+    cout << "s2 = \"buzzard\"\n";
+    s2 = "buzzard";
+    cout << "s2: " << s2 << endl;
+    cout << "You can concatenate strings: s3 = s1 + s2\n";
+    s3 = s1 + s2;
+    cout << "s3: " << s3 << endl;
+    cout << "You can append strings.\n";
+    s1 += s2;
+    cout <<"s1 += s2 yields s1 = " << s1 << endl;
+    s2 += " for a day";
+    cout <<"s2 += \" for a day\" yields s2 = " << s2 << endl;
+
+    //cin.get();
+    return 0; 
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"strtype2"
+You can assign one string object to another: s2 = s1
+s1: penguin, s2: penguin
+You can assign a C-style string to a string object.
+s2 = "buzzard"
+s2: buzzard
+You can concatenate strings: s3 = s1 + s2
+s3: penguinbuzzard
+You can append strings.
+s1 += s2 yields s1 = penguinbuzzard
+s2 += " for a day" yields s2 = buzzard for a day
+```
+
+</details>
+
+<details>
+
+<summary>string的其他操作，比如.size（class  vs cstring）</summary>
+
+```cpp
+// strtype3.cpp -- more string class features
+#include <iostream>
+#include <string>               // make string class available
+#include <cstring>              // C-style string library
+int main()
+{
+    using namespace std;
+    char charr1[20]; 
+    char charr2[20] = "jaguar"; 
+    string str1;  
+    string str2 = "panther";
+
+    // assignment for string objects and character arrays
+    str1 = str2;                // copy str2 to str1
+    strcpy(charr1, charr2);     // copy charr2 to charr1
+ 
+    // appending for string objects and character arrays
+    str1 += " paste";           // add paste to end of str1
+    strcat(charr1, " juice");   // add juice to end of charr1
+
+    // finding the length of a string object and a C-style string
+    int len1 = str1.size();     // obtain length of str1
+    int len2 = strlen(charr1);  // obtain length of charr1
+ 
+    cout << "The string " << str1 << " contains "
+         << len1 << " characters.\n";
+    cout << "The string " << charr1 << " contains "
+         << len2 << " characters.\n";
+    // cin.get();
+
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"strtype3"
+The string panther paste contains 13 characters.
+The string jaguar juice contains 12 characters.
+```
+
+</details>
+
+<details>
+
+<summary>cin.getline(charr, 20); vs getline(cin, str);</summary>
+
+```cpp
+// strtype4.cpp -- line input
+#include <iostream>
+#include <string>               // make string class available
+#include <cstring>              // C-style string library
+int main()
+{
+    using namespace std;
+    char charr[20]; 
+    string str;
+
+    cout << "Length of string in charr before input: " 
+         << strlen(charr) << endl;
+    cout << "Length of string in str before input: "
+         << str.size() << endl;
+    cout << "Enter a line of text:\n";
+    cin.getline(charr, 20);     // indicate maximum length
+    cout << "You entered: " << charr << endl;
+    cout << "Enter another line of text:\n";
+    getline(cin, str);          // cin now an argument; no length specifier
+    cout << "You entered: " << str << endl;
+    cout << "Length of string in charr after input: " 
+         << strlen(charr) << endl;
+    cout << "Length of string in str after input: "
+         << str.size() << endl;
+    // cin.get();
+
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"strtype4"
+Length of string in charr before input: 0 
+Length of string in str before input: 0
+Enter a line of text:
+qwertyuio
+You entered: qwertyuio
+Enter another line of text:
+asdfghjkl
+You entered: asdfghjkl
+Length of string in charr after input: 9
+Length of string in str after input: 9
+```
+
+</details>
 
 ***
 
