@@ -463,21 +463,158 @@ Length of string in str after input: 9
 
 ### 4.4 结构简介
 
+数组要求类型相同，结构可以是不同类型
 
+<details>
 
+<summary>Demo</summary>
 
+<pre class="language-cpp"><code class="lang-cpp">// structur.cpp -- a simple structure
+#include &#x3C;iostream>
+struct inflatable   // structure declaration
+{
+    char name[20];
+    float volume;
+    double price;
+};
+
+int main()
+{
+    using namespace std;
+    inflatable guest =
+    {
+        "Glorious Gloria",  // name value
+        1.88,               // volume value
+        29.99               // price value
+    };  // guest is a structure variable of type inflatable
+// It's initialized to the indicated values
+<strong>    inflatable pal = // C++里边可以不写成 struct inflatable pal
+</strong>    {
+        "Audacious Arthur",
+        3.12,
+        32.99
+    };  // pal is a second variable of type inflatable
+// NOTE: some implementations require using
+// static inflatable guest =
+
+    cout &#x3C;&#x3C; "Expand your guest list with " &#x3C;&#x3C; guest.name;
+    cout &#x3C;&#x3C; " and " &#x3C;&#x3C; pal.name &#x3C;&#x3C; "!\n";
+// pal.name is the name member of the pal variable
+    cout &#x3C;&#x3C; "You can have both for $";
+    cout &#x3C;&#x3C; guest.price + pal.price &#x3C;&#x3C; "!\n";
+    // cin.get();
+    return 0; 
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"structur"
+Expand your guest list with Glorious Gloria and Audacious Arthur!
+You can have both for $62.98!
+```
+
+</details>
+
+<details>
+
+<summary>C++的结构体可以直接赋值！</summary>
+
+<pre class="language-cpp"><code class="lang-cpp">// assgn_st.cpp -- assigning structures
+#include &#x3C;iostream>
+struct inflatable
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable bouquet =
+    {
+        "sunflowers",
+        0.20,
+        12.49
+    };
+    inflatable choice;
+    cout &#x3C;&#x3C; "bouquet: " &#x3C;&#x3C; bouquet.name &#x3C;&#x3C; " for $";
+    cout &#x3C;&#x3C; bouquet.price &#x3C;&#x3C; endl;
+
+<strong>    choice = bouquet;  // assign one structure to another
+</strong>    cout &#x3C;&#x3C; "choice: " &#x3C;&#x3C; choice.name &#x3C;&#x3C; " for $";
+    cout &#x3C;&#x3C; choice.price &#x3C;&#x3C; endl;
+    // cin.get();
+    return 0; 
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"assgn_st"
+bouquet: sunflowers for $12.49
+choice: sunflowers for $12.49
+```
+
+</details>
+
+<details>
+
+<summary>结构体数组</summary>
+
+```cpp
+// arrstruc.cpp -- an array of structures
+#include <iostream>
+struct inflatable
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable guests[2] =          // initializing an array of structs
+    {
+        {"Bambi", 0.5, 21.99},      // first structure in array
+        {"Godzilla", 2000, 565.99}  // next structure in array
+    };
+
+    cout << "The guests " << guests[0].name << " and " << guests[1].name
+         << "\nhave a combined volume of "
+         << guests[0].volume + guests[1].volume << " cubic feet.\n";
+    // cin.get();
+    return 0; 
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"arrstruct"
+The guests Bambi and Godzilla
+have a combined volume of 2000.5 cubic feet.
+```
+
+</details>
 
 ***
 
 ### 4.5 共用体
 
-
+只能存一个元素的结构体，用 union 关键字
 
 ***
 
 ### 4.6 枚举
 
-
+```cpp
+enum spectrum = {red, orange, yellow, green, blue, violet};
+// 0,1,2,3,4,5
+enum spectrum = {red, orange, yellow=10, green, blue, violet};
+// 0,1,10,11,12,13
+int c = red+blue; // x
+int d = spectrum(rea+blue); //√
+```
 
 ***
 
