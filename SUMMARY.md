@@ -50,6 +50,7 @@
 * [Library](c++/library/README.md)
   * [climits](c++/library/climits.md)
   * [cstring](c++/library/cstring.md)
+  * [ctime](c++/library/ctime.md)
 
 ## Rust
 
