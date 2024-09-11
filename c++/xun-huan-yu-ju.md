@@ -6,9 +6,13 @@ description: >-
   环。最后，您将学习如何创建二维数组以及如何使用嵌套循环来处 理它们。
 ---
 
-# 循环和关系表达式
+# 循环语句
 
 ## 5.1 for循环
+
+{% hint style="success" %}
+推荐跳过
+{% endhint %}
 
 <details>
 
@@ -125,7 +129,13 @@ int main()
 
 </details>
 
+***
+
 ## 5.2 while 循环
+
+{% hint style="success" %}
+推荐跳过
+{% endhint %}
 
 <details>
 
@@ -204,18 +214,121 @@ done
 
 </details>
 
+***
+
 ## 5.3 do while 循环
 
+{% hint style="success" %}
+推荐跳过
+{% endhint %}
 
+<details>
 
-## 5.4 基于范围的 for 循环(C++11)
+<summary>Basic Demo</summary>
 
+```cpp
+do {
+    body
+} while (test-condition);
+```
 
+</details>
+
+***
+
+## 5.4 基于范围的 for 循环
+
+{% hint style="info" %}
+C++11新特性
+{% endhint %}
+
+<details>
+
+<summary>Basic Demo</summary>
+
+遍历数字所有元素，就算没有初始化那也遍历
+
+```cpp
+#include <iostream>
+#include <ctime>
+
+int main()
+{
+    using namespace std;
+
+    int array1[] = {100, 200, 300};
+    for (int x : array1)
+        cout << x << " \n";
+
+    int array2[4] = {140, 250, 360};
+    for (int x : array2)
+        cout << x << " \n";
+
+    return 0;
+}
+
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"test1"
+100 
+200 
+300 
+140 
+250 
+360 
+0 
+```
+
+</details>
+
+***
 
 ## 5.5 循环和文本输入
 
+{% hint style="success" %}
+用的时候看一看就好
+{% endhint %}
+
+<details>
+
+<summary> 最终完善的代码（利用 EOF）</summary>
+
+Mac的 EOF 是 command+D
+
+Windows 的 EOF是 control+Z+enter
+
+<pre class="language-cpp"><code class="lang-cpp">// textin4.cpp -- reading chars with cin.get()
+#include &#x3C;iostream>
+int main(void)
+{
+    using namespace std;
+    int ch;                         // should be int, not char
+    int count = 0;
+
+<strong>    while ((ch = cin.get()) != EOF) // test for end-of-file
+</strong>    {
+        cout.put(char(ch));
+        ++count;
+    }
+    cout &#x3C;&#x3C; endl &#x3C;&#x3C; count &#x3C;&#x3C; " characters read\n";
+	return 0; 
+}
+
+</code></pre>
+
+```
+(base) kimshan@MacBook-Pro output % ./"textin4"
+Hello World
+Hello World
+A B CCC ddddd ###jhrfijiwj
+A B CCC ddddd ###jhrfijiwj
+^D
+39 characters read
+```
+
+</details>
 
 
-## 5.6 嵌套循环和二维数组
 
 [^1]: in ctime
