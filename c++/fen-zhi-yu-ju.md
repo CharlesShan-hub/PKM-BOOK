@@ -118,9 +118,119 @@ Bye
 
 ## 6.7 读取数字的循环
 
+<details>
 
+<summary>Demo</summary>
+
+```cpp
+// cingolf.cpp -- non-numeric input skipped
+#include <iostream>
+const int Max = 5;
+int main()
+{
+    using namespace std;
+// get data
+    int golf[Max];
+    cout << "Please enter your golf scores.\n";
+    cout << "You must enter " << Max << " rounds.\n";
+    int i;
+    for (i = 0; i < Max; i++)
+    {
+        cout << "round #" << i+1 << ": ";
+        while (!(cin >> golf[i])) {
+            cin.clear();     // reset input
+            while (cin.get() != '\n')
+                continue;    // get rid of bad input
+            cout << "Please enter a number: ";
+        }
+    }
+// calculate average
+    double total = 0.0;
+    for (i = 0; i < Max; i++)
+        total += golf[i];
+// report results
+    cout << total / Max << " = average score "
+            << Max << " rounds\n";
+    // cin.get();
+    // cin.get();
+    return 0; 
+}
+```
+
+```
+(base) kimshan@MacBook-Pro output % ./"cingolf"
+Please enter your golf scores.
+You must enter 5 rounds.
+round #1: 90
+round #2: 98
+round #3: 91
+round #4: 97
+round #5: 95
+94.2 = average score 5 rounds
+```
+
+</details>
 
 ***
 
 ## 6.8 简单文件输入/输出
 
+<details>
+
+<summary>读文件并做错误处理的 Demo</summary>
+
+```cpp
+// sumafile.cpp -- functions with an array argument
+#include <iostream>
+#include <fstream>          // file I/O support
+#include <cstdlib>          // support for exit()
+const int SIZE = 60;
+int main()
+{
+    using namespace std;
+    char filename[SIZE];
+    ifstream inFile;        // object for handling file input
+
+    cout << "Enter name of data file: ";
+    cin.getline(filename, SIZE);
+    inFile.open(filename);  // associate inFile with a file
+    if (!inFile.is_open())  // failed to open file
+    {
+        cout << "Could not open the file " << filename << endl;
+        cout << "Program terminating.\n";
+        // cin.get();    // keep window open
+        exit(EXIT_FAILURE);
+    }
+    double value;
+    double sum = 0.0;
+    int count = 0;          // number of items read
+
+    inFile >> value;        // get first value
+    while (inFile.good())   // while input good and not at EOF
+    {
+        ++count;            // one more item read
+        sum += value;       // calculate running total
+        inFile >> value;    // get next value
+    }
+    if (inFile.eof())
+        cout << "End of file reached.\n";
+    else if (inFile.fail())
+        cout << "Input terminated by data mismatch.\n";
+    else
+        cout << "Input terminated for unknown reason.\n";
+    if (count == 0)
+        cout << "No data processed.\n";
+    else
+    {
+        cout << "Items read: " << count << endl;
+        cout << "Sum: " << sum << endl;
+        cout << "Average: " << sum / count << endl;
+    }
+    inFile.close();         // finished with the file
+    // cin.get();
+    return 0;
+}
+
+```
+
+</details>
