@@ -95,6 +95,22 @@
   * [brotli-python](python/library/brotli-python.md)
   * [brotlipy](python/library/brotlipy.md)
   * [bzip2](python/library/bzip2.md)
+  * [ca-certificates](python/library/ca-certificates.md)
+  * [cachetools](python/library/cachetools.md)
+  * [certifi](python/library/certifi.md)
+  * [cffi](python/library/cffi.md)
+  * [chardet](python/library/chardet.md)
+  * [charset-normalizer](python/library/charset-normalizer.md)
+  * [click](python/library/click.md)
+  * [cloudpickle](python/library/cloudpickle.md)
+  * [colorama](python/library/colorama.md)
+  * [comm](python/library/comm.md)
+  * [contourpy](python/library/contourpy.md)
+  * [cookiecutter](python/library/cookiecutter.md)
+  * [coverage](python/library/coverage.md)
+  * [cryptography](python/library/cryptography.md)
+  * [cycler](python/library/cycler.md)
+  * [cyrus-sasl](python/library/cyrus-sasl.md)
 
 ## Rust
 
