@@ -55,7 +55,14 @@
     * [chrono](language/c++/library/chrono.md)
 * [Python](language/python/README.md)
   * [Basic](language/python/basic/README.md)
-    * [Page 1](language/python/basic/page-1.md)
+    * [Basic DataType](language/python/basic/basic-datatype.md)
+    * [Control Flow](language/python/basic/control-flow.md)
+    * [Function](language/python/basic/function.md)
+    * [Data Structure](language/python/basic/data-structure.md)
+    * [Module](language/python/basic/module.md)
+    * [IO](language/python/basic/io.md)
+    * [Exception](language/python/basic/exception.md)
+    * [Class](language/python/basic/class.md)
   * [Library](language/python/library/README.md)
     * [absl-py](language/python/library/absl-py.md)
     * [ahrs](language/python/library/ahrs.md)
@@ -135,6 +142,8 @@
   * [结构体](language/rust/jie-gou-ti.md)
   * [枚举和模式匹配](language/rust/mei-ju-he-mo-shi-pi-pei.md)
   * [包、carte、模块](language/rust/bao-carte-mo-kuai.md)
+* [JSON](language/json/README.md)
+  * [Basic](language/json/basic.md)
 
 ## Algrithm
 
