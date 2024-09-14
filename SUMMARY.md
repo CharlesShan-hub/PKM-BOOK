@@ -111,6 +111,12 @@
   * [cryptography](python/library/cryptography.md)
   * [cycler](python/library/cycler.md)
   * [cyrus-sasl](python/library/cyrus-sasl.md)
+  * [d2l](python/library/d2l.md)
+  * [debugpy](python/library/debugpy.md)
+  * [decorator](python/library/decorator.md)
+  * [defusedxml](python/library/defusedxml.md)
+  * [depthai](python/library/depthai.md)
+  * [depthai-pipeline-graph](python/library/depthai-pipeline-graph.md)
 
 ## Rust
 
