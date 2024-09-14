@@ -31,4 +31,7 @@ layout:
 
 ### Programming Language
 
-<table data-view="cards"><thead><tr><th></th><th></th><th><select></select></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td></td><td></td><td></td><td><a href="broken-reference">Broken link</a></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th><select></select></th><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td>Where dreams began.</td><td></td><td></td><td><a href=".gitbook/assets/C_Programming_Language.svg.png">C_Programming_Language.svg.png</a></td><td><a href="broken-reference">Broken link</a></td></tr><tr><td></td><td>C is easy to shoot yourself in the foot; C++ is even easier to blow your whole leg off.</td><td></td><td></td><td><a href=".gitbook/assets/ISO_C++_Logo.svg.png">ISO_C++_Logo.svg.png</a></td><td></td></tr><tr><td></td><td>Life is short, I use Python.</td><td></td><td></td><td><a href=".gitbook/assets/python-logo.png">python-logo.png</a></td><td></td></tr><tr><td></td><td>My biggest compliment to Rust is that it's boring, and this is an amazing compliment.</td><td></td><td></td><td><a href=".gitbook/assets/5430905.png">5430905.png</a></td><td></td></tr></tbody></table>
+
+### Markdown Language
+
