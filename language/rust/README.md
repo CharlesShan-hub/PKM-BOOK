@@ -1,9 +1,9 @@
 ---
-icon: '0'
 description: README
+icon: hourglass-clock
 ---
 
-# README
+# Rust
 
 按照邓老师 B 站以及那个网站来总结，因为是第一次学，所以就写成代码集锦吧。
 

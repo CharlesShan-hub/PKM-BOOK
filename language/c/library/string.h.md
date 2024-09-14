@@ -7,7 +7,7 @@ description: 字符串
 
 ## Overview
 
-<img src="../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="https://www.runoob.com/ [1]" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="https://www.runoob.com/ [1]" class="gitbook-drawing">
 
 1. 字符串 = 真正的字符串内容+'\0'，'\0'用来代表字符串结束。
 2. scanf 和printf用 %s 占位字符串

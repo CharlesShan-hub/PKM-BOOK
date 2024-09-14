@@ -1,13 +1,13 @@
 ---
-description: 时间
 icon: clock
+description: 时间
 ---
 
 # time.h
 
 ## APIs
 
-<img src="../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 <table><thead><tr><th width="298">Time manipulation - Functions</th><th>Description</th></tr></thead><tbody><tr><td><a href="https://cplusplus.com/reference/ctime/clock/"><strong>clock</strong></a></td><td>Clock program (function)</td></tr><tr><td><a href="https://cplusplus.com/reference/ctime/difftime/"><strong>difftime</strong></a></td><td>Return difference between two times (function)</td></tr><tr><td><a href="https://cplusplus.com/reference/ctime/mktime/"><strong>mktime</strong></a></td><td>Convert tm structure to time_t (function)</td></tr><tr><td><a href="https://cplusplus.com/reference/ctime/time/"><strong>time</strong></a></td><td>Get current time (function)</td></tr></tbody></table>
 

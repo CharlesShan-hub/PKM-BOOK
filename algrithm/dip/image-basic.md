@@ -5,7 +5,7 @@ description: 图像的基本概念
 
 # Image Basic
 
-<img src="../.gitbook/assets/file.excalidraw (1) (1) (1) (1).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (1) (1) (1) (1).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -13,7 +13,7 @@ description: 图像的基本概念
 
 图像就是数组，每个像素点的颜色是响应值。
 
-<figure><img src="../.gitbook/assets/tmp1irw0f42.jpg" alt="宇航员的图片" width="256"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/tmp1irw0f42.jpg" alt="宇航员的图片" width="256"><figcaption></figcaption></figure>
 
 <details>
 
@@ -44,7 +44,7 @@ skimage.data模块有很多demo 图片python
 
 采样：从连续信号到离散信号。
 
-<figure><img src="../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -79,7 +79,7 @@ plt.show()
 
 量化：用多少比特代表每个像素的颜色。
 
-<figure><img src="../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 

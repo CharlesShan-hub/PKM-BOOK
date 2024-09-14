@@ -1,8 +1,9 @@
 ---
-icon: '0'
+description: README
+icon: hourglass-clock
 ---
 
-# Introduction
+# C++
 
 {% embed url="https://github.com/ShujiaHuang/Cpp-Primer-Plus-6th" %}
 

@@ -7,7 +7,7 @@ description: 标准输入输出
 
 ## Overview
 
-<img src="../../.gitbook/assets/file.excalidraw (2) (1).svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (2) (1).svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
 
 ## Functions
 
@@ -47,7 +47,7 @@ int main(void)
 
 <summary>一图胜千言</summary>
 
-<img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt="printf format specifications quick reference[2]" data-size="original">
+<img src="../../../.gitbook/assets/image (1) (1) (1) (1).png" alt="printf format specifications quick reference[2]" data-size="original">
 
 </details>
 
