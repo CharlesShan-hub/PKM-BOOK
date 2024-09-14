@@ -117,6 +117,22 @@
   * [defusedxml](python/library/defusedxml.md)
   * [depthai](python/library/depthai.md)
   * [depthai-pipeline-graph](python/library/depthai-pipeline-graph.md)
+  * [depthai-sdk](python/library/depthai-sdk.md)
+  * [dill](python/library/dill.md)
+  * [dm-tree](python/library/dm-tree.md)
+  * [docstring-to-markdown](python/library/docstring-to-markdown.md)
+  * [docutils](python/library/docutils.md)
+  * [double-conversion](python/library/double-conversion.md)
+  * [einops](python/library/einops.md)
+  * [et-xmlfile](python/library/et-xmlfile.md)
+  * [executing](python/library/executing.md)
+  * [fastjsonschema](python/library/fastjsonschema.md)
+  * [filelock](python/library/filelock.md)
+  * [flake8](python/library/flake8.md)
+  * [flatbuffers](python/library/flatbuffers.md)
+  * [fonttools](python/library/fonttools.md)
+  * [fsspec](python/library/fsspec.md)
+  * [gast](python/library/gast.md)
 
 ## Rust
 
