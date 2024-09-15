@@ -16,7 +16,7 @@ description: 像素级别变换
 
 Gamma变换（幂次变换）：用于改变亮度。
 
-<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
