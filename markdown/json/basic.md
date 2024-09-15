@@ -20,9 +20,23 @@
 
 ### JSON
 
+1. object：对象。可以是空，也可以包含任意个键值对，键必须是字符串。
 
+```json
+{} 正确
+{  } 正确
+{   "a":2} 正确
+{"a"} 错误，必须是键值对
+{1:2} 错误，键须是字符串
+```
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+2. value：
 
 ### JSON5
 
 
+
+### JSONC
 
