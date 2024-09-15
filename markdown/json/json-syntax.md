@@ -1,8 +1,10 @@
-# Basic
+---
+description: json语法
+---
 
-## Overview and Links
+# json syntax
 
-### Standards
+## Standards
 
 [ECMA](https://en.wikipedia.org/wiki/Ecma\_International)和[ISO](https://en.wikipedia.org/wiki/International\_Organization\_for\_Standardization)/[IEC](https://en.wikipedia.org/wiki/International\_Electrotechnical\_Commission)标准只描述了允许的语法，而RFC涵盖了一些安全和互操作性考虑。
 
@@ -11,16 +13,13 @@
 * RFC标准：[https://datatracker.ietf.org/doc/html/rfc8259](https://datatracker.ietf.org/doc/html/rfc8259)
 * RFC标准翻译：[https://rfc2cn.com/rfc8259.html](https://rfc2cn.com/rfc8259.html)
 
-### Links
+## comment：注释
 
-* wiki：[https://en.wikipedia.org/wiki/JSON](https://en.wikipedia.org/wiki/JSON)
-* 工具箱：[https://www.json.cn/](https://www.json.cn/)
+{% hint style="info" %}
+json 不允许注释，单行多行都不行！
+{% endhint %}
 
-## Syntax
-
-### JSON
-
-whitespace：空白
+## whitespace：空白
 
 {% hint style="info" %}
 空格，空行，换行符，制表符都被解释成空白。
@@ -28,7 +27,7 @@ whitespace：空白
 
 <figure><img src="../../.gitbook/assets/image (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
-string：字符串
+## string：字符串
 
 {% hint style="info" %}
 字符串是零个或多个Unicode字符的序列。字符串必须用双引号，不能用单引号。
@@ -42,7 +41,7 @@ string：字符串
 
 <figure><img src="../../.gitbook/assets/image.png" alt="" width="563"><figcaption></figcaption></figure>
 
-number：数值
+## number：数值
 
 {% hint style="info" %}
 浮点数采用 IEEE754 标准。另外 JSON 标准本身不直接支持十六进制、八进制和二进制的字面量表示，实在想用，可以用字符串模拟。
@@ -64,7 +63,7 @@ number：数值
 
 <figure><img src="../../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
-value：值
+## value：值
 
 {% hint style="info" %}
 json有六种值：空白，数字，字符串，数组，对象，真，假
@@ -83,7 +82,7 @@ json有六种值：空白，数字，字符串，数组，对象，真，假
 
 <figure><img src="../../.gitbook/assets/image (3).png" alt="" width="563"><figcaption></figcaption></figure>
 
-object：对象
+## object：对象
 
 {% hint style="info" %}
 可以是空，也可以包含任意个键值对，键必须是字符串。
@@ -100,7 +99,7 @@ object：对象
 
 <figure><img src="../../.gitbook/assets/image (5).png" alt="" width="563"><figcaption></figcaption></figure>
 
-array： 数组
+## array： 数组
 
 {% hint style="info" %}
 可以是空，也可以包含任意个值。
@@ -108,56 +107,5 @@ array： 数组
 
 <figure><img src="../../.gitbook/assets/image (4).png" alt="" width="563"><figcaption></figcaption></figure>
 
-### JSON5
 
-```json5
-{
-  // 单行注释:
-  // "key1": "str",
-
-  // 多行注释:
-  /* "key2": "str",
-    "key3": "str" */
-
-  // key 可以不使用引号
-  key1: "str",
-
-  // key 允许使用单引号
-  key2: "str",
-
-  // 字符串值允许使用单引号括起来
-  singleQuotes: 'I can use "double quotes" here',
-
-  // 字符串值允许包含字符转义序列
-  lineBreaks: "Look, Mom!\
-  No \n's!",
-
-  arr1: [1, 2], // 可以有尾随逗号
-  arr2: { a: "str", b: "str" }, // 对象也可以有尾随逗号
-
-  // 数字可以是十六进制，注意是 0xff5643 不是 #ff5643
-  hexadecimal: 0xff5643,
-
-  // 数字可以带有 前导小数点 后导小数点：
-  leadingDecimalPoint: .35, andTrailing: 35.,
-
-  // 允许正负号
-  income: +3000.0, amount: -500.0,
-
-  // 允许使用 NaN 和 Infinity
-  positiveInfinity: Infinity,
-  negativeInfinity: -Infinity,
-  notANumber: NaN,
-
-  // Unicode 字符可以在标识符中使用
-  π: 3.141592653589793,
-  "ლ(ಠ益ಠლ)": "为什么我们不能成为朋友？",
-
-  // 键名允许重复，后面的会覆盖前面的
-  重复键: "第一个值",
-  重复键: "第二个值", // 这将覆盖第一个值
-}
-```
-
-### JSONC
 

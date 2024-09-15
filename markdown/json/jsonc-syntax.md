@@ -1,0 +1,6 @@
+---
+description: jsonc
+---
+
+# jsonc syntax
+
