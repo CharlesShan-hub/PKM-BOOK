@@ -10,6 +10,7 @@ description: json5 语法
 * json5 官网：[https://json5.org/](https://json5.org/)
 * 中文的简洁易懂的 blog：[https://blog.csdn.net/github\_38727595/article/details/137816175](https://blog.csdn.net/github\_38727595/article/details/137816175)
 * 另一个blog：[http://wxnacy.com/2018/02/18/json5/](http://wxnacy.com/2018/02/18/json5/)
+* json5 在线解析：[https://www.json.cn/json5/](https://www.json.cn/json5/)
 
 > 个人感觉 Json5 更适合搭配 js 使用，它把 json 改造的更像 js 的对象了。
 
@@ -94,29 +95,10 @@ JSON5**允许**在数据中添加注释。
 {% endhint %}
 
 ```json5
+{
+    year: 2000,
+}
 ```
-
-## 尾随逗号
-
-在JSON中，对象或数组的最后一个键值对或元素后面不能有逗号，但在JSON5中这是允许的。
-
-
-
-## 二进制数据
-
-JSON5提供了表示二进制数据的机制。
-
-## 正则表达式
-
-JSON5允许直接表示正则表达式对象。
-
-## 函数
-
-虽然这在数据交换中并不常见，但JSON5允许表示函数。
-
-
-
-
 
 ## Demo
 
