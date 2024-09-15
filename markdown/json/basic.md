@@ -16,3 +16,13 @@
 * wiki：[https://en.wikipedia.org/wiki/JSON](https://en.wikipedia.org/wiki/JSON)
 * 工具箱：[https://www.json.cn/](https://www.json.cn/)
 
+## Syntax
+
+### JSON
+
+
+
+### JSON5
+
+
+
