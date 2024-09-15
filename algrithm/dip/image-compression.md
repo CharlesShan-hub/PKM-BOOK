@@ -182,9 +182,9 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 * 编译表（String Table）​：编译表不是事先创建好的，而是根据原始文件数据动态创建的
 * LZW压缩算法的基本原理：提取原始文本文件数据中的不同字符，基于这些字符创建一个编译表，然后用编译表中的字符的索引替代原始文本文件数据中的相应字符，减少原始数据大小。
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>[4] encoding <a href="https://www.bilibili.com/video/BV1rp4y117WB">https://www.bilibili.com/video/BV1rp4y117WB</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>[4] encoding <a href="https://www.bilibili.com/video/BV1rp4y117WB">https://www.bilibili.com/video/BV1rp4y117WB</a></p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>[5] <a href="https://www.bilibili.com/video/BV15p4y1C71G">https://www.bilibili.com/video/BV15p4y1C71G</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[5] <a href="https://www.bilibili.com/video/BV15p4y1C71G">https://www.bilibili.com/video/BV15p4y1C71G</a></p></figcaption></figure>
 
 详细过程感觉并不好记，使用时随时翻阅资料吧
 
@@ -202,7 +202,7 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 * 需要用过采样，即以比奈奎斯特速率高几倍的速率对模拟信号采样。
 * DM 是 DPCM 的最简单形式。
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -210,7 +210,7 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 
 比如对\[33, 35, 34, 36, 35]进行编码，步长为 4.5
 
-![](<../../.gitbook/assets/image (3) (1).png>)
+![](<../../.gitbook/assets/image (3) (1) (1).png>)
 
 结果就是\[33, 1, 0, 1, 0]，其中 33 代表初始的位置，1 代表上升，0 代表下降。
 
@@ -223,7 +223,7 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
   * 这个变化是用某个像素的一边（下例是 左，左上，上三个方向）来预测这个像素。然后用预测值与本像素相减，得到误差。
   * 这个误差会经过量化，这一步引入了误差，也达到了压缩的目的。
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 

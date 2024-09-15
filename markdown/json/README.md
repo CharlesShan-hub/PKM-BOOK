@@ -5,13 +5,15 @@ description: README
 
 # JSON
 
-## Syntex
+## JSON and variations
 
-* [json-syntax.md](json-syntax.md "mention")
-* [json5-syntax.md](json5-syntax.md "mention")
+* [json.md](json.md "mention")：最原始的 json，用于替代 XML
+* [jsonl.md](jsonl.md "mention")：一行一个 json，提高读写性能
+* [json5.md](json5.md "mention")：扩展了 json 的数据
+* [jsonc.md](jsonc.md "mention")：是 json5 的子集
+*
+* [geojson.md](geojson.md "mention")：json 用于地理
+* [topojson.md](topojson.md "mention")：GeoJSON 的扩展
 
-## Links
+## Scheme
 
-* wiki：[https://en.wikipedia.org/wiki/JSON](https://en.wikipedia.org/wiki/JSON)
-* 工具箱：[https://www.json.cn/](https://www.json.cn/)
-* json语法介绍与每个语言调用 json 的工具链接：[https://www.json.org/json-en.html](https://www.json.org/json-en.html)

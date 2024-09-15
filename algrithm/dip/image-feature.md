@@ -17,7 +17,7 @@ description: 图像本身的特征
 
 1. 一般颜色直方图：某个色彩通道的直方图。
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -58,7 +58,7 @@ plt.show()
 
 2. 全局累加直方图：当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。
 
-<figure><img src="../../.gitbook/assets/image (2) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -271,7 +271,7 @@ $$
 \gamma_{i,j}^{(k)}=\underset{p_1\in I_{(i)}, p_2\in I}{\operatorname{P}}[p_2\in I_{(j)}\mid |p_1-p_2|=k]
 $$
 
-<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
 
@@ -343,9 +343,9 @@ plt.show()
 
 <summary>Overview</summary>
 
-<img src="../../.gitbook/assets/image (5) (1) (1).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
+<img src="../../.gitbook/assets/image (5) (1) (1) (1).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
 
-<img src="../../.gitbook/assets/image (6) (1).png" alt="综述[2]" data-size="original">综述总结\[2]
+<img src="../../.gitbook/assets/image (6) (1) (1).png" alt="综述[2]" data-size="original">综述总结\[2]
 
 [https://github.com/cgreen259/Texture-Toolbox](https://github.com/cgreen259/Texture-Toolbox)
 
@@ -439,7 +439,7 @@ $$
 | x<0, y≥0  | \[1-x, Ni] | \[1, Nj-y] |
 | x<0, y<0  | \[1-x, Ni] | \[1-y, Nj] |
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>为了增强可视化效果，图2 中间我扣下了一部分</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption><p>为了增强可视化效果，图2 中间我扣下了一部分</p></figcaption></figure>
 
 <details>
 
@@ -504,7 +504,7 @@ plt.show()
 
 <summary> 书中的描述与例子[4]</summary>
 
-![](<../../.gitbook/assets/image (9).png>)![](<../../.gitbook/assets/image (10).png>)
+![](<../../.gitbook/assets/image (9) (1).png>)![](<../../.gitbook/assets/image (10) (1).png>)
 
 </details>
 
@@ -625,7 +625,7 @@ plt.show()
 
 具体内容可以看网页\[8]\[9]。
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -1011,7 +1011,7 @@ plt.show()
 
 我的理解是，其实有了很多的备选的边界，然后精髓是把图像的 xy 轴当成实轴虚轴，进行傅里叶变换，取前几项进行近似（这样就平滑了）
 
-<figure><img src="../../.gitbook/assets/image (5) (1).png" alt="" width="188"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt="" width="188"><figcaption></figcaption></figure>
 
 <details>
 
@@ -1112,7 +1112,7 @@ SUSAN算法：
    3. 当核心在角点时 , USAN 区域最小
 3. 可以通过计算每 1 个像素的 USAN 值，并与设定的门限值进行比较， 如果该像素的 USAN 值小于门限 值，则该点可以认为是 1 个边缘点
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
 
 
 
