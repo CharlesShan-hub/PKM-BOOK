@@ -17,7 +17,7 @@ description: 图像本身的特征
 
 1. 一般颜色直方图：某个色彩通道的直方图。
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -1112,7 +1112,7 @@ SUSAN算法：
    3. 当核心在角点时 , USAN 区域最小
 3. 可以通过计算每 1 个像素的 USAN 值，并与设定的门限值进行比较， 如果该像素的 USAN 值小于门限 值，则该点可以认为是 1 个边缘点
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
 
 
 

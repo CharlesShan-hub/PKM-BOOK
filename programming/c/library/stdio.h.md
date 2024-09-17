@@ -47,7 +47,7 @@ int main(void)
 
 <summary>一图胜千言</summary>
 
-<img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt="printf format specifications quick reference[2]" data-size="original">
+<img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt="printf format specifications quick reference[2]" data-size="original">
 
 </details>
 

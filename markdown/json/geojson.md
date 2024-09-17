@@ -10,7 +10,7 @@ description: GeoJson简介
 * 官网：[https://geojson.org/](https://geojson.org/)
 * 线上 Demo：[https://geojson.io/#map=2/0/20](https://geojson.io/#map=2/0/20)
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -400,7 +400,7 @@ description: GeoJson简介
 * GeoJSON是一种开放的标准格式，用于表示简单的地理特征沿着非空间属性。它基于JSON格式。
 * 这些特征包括点（因此是地址和位置）、[线串](https://en.wikipedia.org/wiki/Polygonal\_chain)（因此是街道、高速公路和边界）、[多边形](https://en.wikipedia.org/wiki/Polygon)（国家、省、大片土地）以及这些类型的多部分集合。
 
-<table><thead><tr><th width="106">Types</th><th width="103">Picture</th><th>Code</th></tr></thead><tbody><tr><td>点</td><td><img src="../../.gitbook/assets/image (1).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+<table><thead><tr><th width="106">Types</th><th width="103">Picture</th><th>Code</th></tr></thead><tbody><tr><td>点</td><td><img src="../../.gitbook/assets/image (1) (1).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "Point", 
     "coordinates": [30.0, 10.0]
 }

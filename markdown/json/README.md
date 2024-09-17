@@ -18,9 +18,9 @@ description: README
   * [topojson.md](topojson.md "mention")：GeoJSON 的扩展
 * Binary
   * [bson.md](bson.md "mention")：mongodb 推出二进制 JSON，支持更多类型
-  * [smile.md](smile.md "mention")：
-  * [cbor.md](cbor.md "mention")：
-  * [ubjson.md](ubjson.md "mention")：
+  * [smile.md](smile.md "mention")：1:1 对应 json 的二进制版本（复杂的规则）
+  * [cbor.md](cbor.md "mention")：1:1 对应 json 的二进制版本（类似报文段）
+  * [ubjson.md](ubjson.md "mention")：1:1 对应 json 的二进制版本（类型+长度+内容）
 
 ## Research
 
