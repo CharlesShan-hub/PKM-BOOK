@@ -159,6 +159,7 @@
   * [Smile](markdown/json/smile.md)
   * [CBOR](markdown/json/cbor.md)
   * [UBJSON](markdown/json/ubjson.md)
+  * [JSON Schema](markdown/json/json-schema.md)
 * [YAML](markdown/yaml.md)
 * [TOML](markdown/toml.md)
 * [XML](markdown/xml.md)

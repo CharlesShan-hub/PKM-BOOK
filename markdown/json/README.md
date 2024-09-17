@@ -21,10 +21,11 @@ description: README
   * [smile.md](smile.md "mention")：1:1 对应 json 的二进制版本（复杂的规则）
   * [cbor.md](cbor.md "mention")：1:1 对应 json 的二进制版本（类似报文段）
   * [ubjson.md](ubjson.md "mention")：1:1 对应 json 的二进制版本（类型+长度+内容）
-
-## Research
-
 * JSON 的二进制版本总结
   * [Comparison of data-serialization formats](https://en.wikipedia.org/wiki/Comparison\_of\_data-serialization\_formats)
   * [A Survey of JSON-compatible Binary Serialization Specifications](https://arxiv.org/abs/2201.02089)
   * [A Benchmark of JSON-compatible Binary Serialization Specifications](https://arxiv.org/abs/2201.03051)
+
+## Schema
+
+* [json-schema.md](json-schema.md "mention")
