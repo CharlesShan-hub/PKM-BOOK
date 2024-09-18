@@ -145,7 +145,10 @@
 
 ## Markdown
 
-* [Markdown](markdown/markdown.md)
+* [Markdown](markdown/markdown/README.md)
+  * [Markdown](markdown/markdown/markdown.md)
+  * [Markdown Extra](markdown/markdown/markdown-extra.md)
+  * [GitHub Flavored Markdown](markdown/markdown/github-flavored-markdown.md)
 * [Latex](markdown/latex.md)
 * [JSON](markdown/json/README.md)
   * [JSON](markdown/json/json.md)
@@ -166,14 +169,15 @@
 * [HTML](markdown/html.md)
 * [CSS](markdown/css.md)
 
-## Algrithm
+## Tech
 
-* [DIP](algrithm/dip/README.md)
-  * [Introduction](algrithm/dip/introduction.md)
-  * [Image Basic](algrithm/dip/image-basic.md)
-  * [Color Space](algrithm/dip/color-space.md)
-  * [Image Feature](algrithm/dip/image-feature.md)
-  * [Pixel Transform](algrithm/dip/pixel-transform.md)
-  * [Space Transform](algrithm/dip/space-transform.md)
-  * [Frequceial Transform](algrithm/dip/frequceial-transform.md)
-  * [Image Compression](algrithm/dip/image-compression.md)
+* [Regular Expression](tech/regular-expression.md)
+* [DIP](tech/dip/README.md)
+  * [Introduction](tech/dip/introduction.md)
+  * [Image Basic](tech/dip/image-basic.md)
+  * [Color Space](tech/dip/color-space.md)
+  * [Image Feature](tech/dip/image-feature.md)
+  * [Pixel Transform](tech/dip/pixel-transform.md)
+  * [Space Transform](tech/dip/space-transform.md)
+  * [Frequceial Transform](tech/dip/frequceial-transform.md)
+  * [Image Compression](tech/dip/image-compression.md)

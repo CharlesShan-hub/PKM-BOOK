@@ -1,5 +1,5 @@
 ---
-icon: hourglass-clock
+icon: medal
 description: README
 ---
 
