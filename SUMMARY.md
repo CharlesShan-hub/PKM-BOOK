@@ -142,6 +142,7 @@
   * [结构体](programming/rust/jie-gou-ti.md)
   * [枚举和模式匹配](programming/rust/mei-ju-he-mo-shi-pi-pei.md)
   * [包、carte、模块](programming/rust/bao-carte-mo-kuai.md)
+* [Java](programming/java.md)
 
 ## Markdown
 
@@ -172,7 +173,8 @@
 
 ## Tech
 
-* [Regular Expression](tech/regular-expression.md)
+* [Regular Expression](tech/regular-expression/README.md)
+  * [《学习正则表达式》](tech/regular-expression/xue-xi-zheng-ze-biao-da-shi.md)
 * [DIP](tech/dip/README.md)
   * [Introduction](tech/dip/introduction.md)
   * [Image Basic](tech/dip/image-basic.md)

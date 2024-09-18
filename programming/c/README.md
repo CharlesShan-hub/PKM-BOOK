@@ -1,34 +1,21 @@
 ---
-description: README
 icon: medal
+description: README
 ---
 
 # C
 
-## Plan
+## Overview
 
-本笔记本按照《C Primer Plus》进行案例与语法快速总结与收集。本笔记本会充分利用 AI 生成文本。
+本笔记本按照一下书目进行案例与语法快速总结与收集。本笔记本会充分利用 AI 生成文本。
 
-TODO：
+* [ ] K\&R
+* [x] C Primer Plus
+* [ ] C和指针
+* [ ] C陷阱与缺陷
+* [ ] C专家编程
 
-* 读《K\&R》
-* 《CPP》看到第四章了
-
-TODO：
-
-* [x] Key Word
-* [x] Data Type
-* [ ] Stdio（Standard IO）
-* [ ] Operator & 表达式
-* [x] Loop
-* [x] Branch
-* [ ] Function
-* [ ] Array & Pointer
-* [ ] String
-* [ ] Structure
-* [ ] Bit Operation
-* [ ] C 预处理器
-* [ ] C 库
+## Draft
 
 下边是 GPT 给的推荐目录
 
