@@ -13,5 +13,5 @@ description: CBOR 简介
 
 简单来看，有点想 IPv4 的那种报文段。就是前边是类型，后边是数据，数据可以扩展长度。
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 

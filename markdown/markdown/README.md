@@ -1,5 +1,5 @@
 ---
-icon: hourglass-clock
+icon: medal
 ---
 
 # Markdown
@@ -10,11 +10,14 @@ John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使�
 
 markdown 语言的目标是使人们能够“使用易于阅读和编写的纯文本格式进行编写，并选择将其转换为结构有效的XHTML（或HTML）。从2012年开始，包括Jeff Atwood和John MacFarlane在内的一群人发起了Atwood所说的标准化工作。其中 commonmark\[3] 是一个持续更新的很好的转换的实现标准。人们总结了 markdown 转其他标记语言的工具列表\[2]。
 
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption><p>[5]</p></figcaption></figure>
+
 另外，为了扩展功能，不同的平台也推出了自己的 markdown 变体：
 
 * [.](./ "mention")
 * [markdown-extra.md](markdown-extra.md "mention")
 * [github-flavored-markdown.md](github-flavored-markdown.md "mention")
+* [multimarkdown.md](multimarkdown.md "mention")
 
 ## Links
 
@@ -23,4 +26,10 @@ markdown 语言的目标是使人们能够“使用易于阅读和编写的纯�
 \[2] [https://github.com/markdown/markdown.github.com/wiki/Implementations](https://github.com/markdown/markdown.github.com/wiki/Implementations)
 
 \[3] [https://commonmark.org/](https://commonmark.org/)
+
+\[4] awesome-markdown：[https://github.com/mundimark/awesome-markdown](https://github.com/mundimark/awesome-markdown)
+
+\[5] [https://www.markdownguide.org/getting-started/](https://www.markdownguide.org/getting-started/)
+
+
 
