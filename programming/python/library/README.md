@@ -17,6 +17,7 @@ icon: gift
   * fsspec：抽象文件系统
   * h5py：读写 HDF5 文件
   * h5py：HDF5 二进制数据格式接口的库
+  * imageio：用于读取、写入和操作图像和视频文件
 * 命令行
   * click：编写命令行界面（CLI）工具
   * executing：简化命令行工具的执行和参数传递
@@ -96,6 +97,7 @@ icon: gift
   * black：代码格式化工具
   * babel：国际化与本地化
   * gettext：用于国际化和本地化
+  * idna： 用于处理国际化的域名（IDNs）
   * boto3：AWS（Amazon Web Services）提供的 Python SDK，用于与 AWS 服务进行交互
   * botocore：AWS（Amazon Web Services）提供的一个 Python SDK，用于构建 AWS 服务客户端
   * cloudpickle：专门为 AWS Lambda 函数、Docker 容器和其他远程执行环境设计
