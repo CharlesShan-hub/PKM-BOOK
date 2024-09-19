@@ -15,6 +15,8 @@ icon: gift
   * flatbuffers：创建和操作高效的二进制格式，用于序列化数据
   * fonttools：处理字体文件
   * fsspec：抽象文件系统
+  * h5py：读写 HDF5 文件
+  * h5py：HDF5 二进制数据格式接口的库
 * 命令行
   * click：编写命令行界面（CLI）工具
   * executing：简化命令行工具的执行和参数传递
@@ -62,6 +64,8 @@ icon: gift
   * biopython：用于生物信息学领域的计算
   * contourpy：生成高质量的等高线图
   * einops：执行高效的 NumPy 操作
+  * geographiclib：地理坐标系统转换和地理计算的工具集
+  * geopy：提供了各种地理编码和地理信息检索的函数
 * AI
   * d2l：用于教育目的，帮助学生和初学者学习数据科学（李沐动手学 AI 用的这个）
   * depthai：用于与 NVIDIA Jetson TX2、TX1、Xavier 和 Nano 开发板上的深度学习加速器（例如 Jetson TX2 上的 NVIDIA TX2）进行交互
@@ -86,10 +90,12 @@ icon: gift
 * 科学计算
   * blas：是一个底层库，提供基本的线性代数运算。（numpy 会调用它）
   * blobconverter：将图像转换为Blob格式（pytorch 会调用它）
+  * gmpy2：Python中可以轻松进行大数运算
 * 其他
   * autopep8：代码格式化
   * black：代码格式化工具
   * babel：国际化与本地化
+  * gettext：用于国际化和本地化
   * boto3：AWS（Amazon Web Services）提供的 Python SDK，用于与 AWS 服务进行交互
   * botocore：AWS（Amazon Web Services）提供的一个 Python SDK，用于构建 AWS 服务客户端
   * cloudpickle：专门为 AWS Lambda 函数、Docker 容器和其他远程执行环境设计
