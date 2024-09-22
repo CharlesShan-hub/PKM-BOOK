@@ -10,7 +10,7 @@ description: GeoJson简介
 * 官网：[https://geojson.org/](https://geojson.org/)
 * 线上 Demo：[https://geojson.io/#map=2/0/20](https://geojson.io/#map=2/0/20)
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -400,11 +400,11 @@ description: GeoJson简介
 * GeoJSON是一种开放的标准格式，用于表示简单的地理特征沿着非空间属性。它基于JSON格式。
 * 这些特征包括点（因此是地址和位置）、[线串](https://en.wikipedia.org/wiki/Polygonal\_chain)（因此是街道、高速公路和边界）、[多边形](https://en.wikipedia.org/wiki/Polygon)（国家、省、大片土地）以及这些类型的多部分集合。
 
-<table><thead><tr><th width="106">Types</th><th width="103">Picture</th><th>Code</th></tr></thead><tbody><tr><td>点</td><td><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+<table><thead><tr><th width="106">Types</th><th width="103">Picture</th><th>Code</th></tr></thead><tbody><tr><td>点</td><td><img src="../../.gitbook/assets/image (4).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "Point", 
     "coordinates": [30.0, 10.0]
 }
-</code></pre></td></tr><tr><td> 线</td><td><img src="../../.gitbook/assets/image (2) (1).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td> 线</td><td><img src="../../.gitbook/assets/image (5).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "LineString", 
     "coordinates": [
         [30.0, 10.0],
@@ -412,7 +412,7 @@ description: GeoJson简介
         [40.0, 40.0]
     ]
 }
-</code></pre></td></tr><tr><td>多边形</td><td><img src="../../.gitbook/assets/image (4).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td>多边形</td><td><img src="../../.gitbook/assets/image (7).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "Polygon", 
     "coordinates": [
         [
@@ -424,7 +424,7 @@ description: GeoJson简介
         ]
     ]
 }
-</code></pre></td></tr><tr><td>多边形</td><td><img src="../../.gitbook/assets/image (5).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td>多边形</td><td><img src="../../.gitbook/assets/image (8).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "Polygon", 
     "coordinates": [
         [
@@ -442,7 +442,7 @@ description: GeoJson简介
         ]
     ]
 }
-</code></pre></td></tr><tr><td>多点</td><td><img src="../../.gitbook/assets/image (6).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td>多点</td><td><img src="../../.gitbook/assets/image (9).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "MultiPoint", 
     "coordinates": [
         [10.0, 40.0],
@@ -451,7 +451,7 @@ description: GeoJson简介
         [30.0, 10.0]
     ]
 }
-</code></pre></td></tr><tr><td>多线</td><td><img src="../../.gitbook/assets/image (7).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td>多线</td><td><img src="../../.gitbook/assets/image (10).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "MultiLineString", 
     "coordinates": [
         [
@@ -467,7 +467,7 @@ description: GeoJson简介
         ]
     ]
 }
-</code></pre></td></tr><tr><td>多体</td><td><img src="../../.gitbook/assets/image (8).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td>多体</td><td><img src="../../.gitbook/assets/image (11).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "MultiPolygon", 
     "coordinates": [
         [
@@ -489,7 +489,7 @@ description: GeoJson简介
         ]
     ]
 }
-</code></pre></td></tr><tr><td>多体</td><td><img src="../../.gitbook/assets/image (9).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td>多体</td><td><img src="../../.gitbook/assets/image (12).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "MultiPolygon", 
     "coordinates": [
         [
@@ -518,7 +518,7 @@ description: GeoJson简介
         ]
     ]
 }
-</code></pre></td></tr><tr><td>集合</td><td><img src="../../.gitbook/assets/image (10).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
+</code></pre></td></tr><tr><td>集合</td><td><img src="../../.gitbook/assets/image (13).png" alt="" data-size="original"></td><td><pre class="language-json"><code class="lang-json">{
     "type": "GeometryCollection",
     "geometries": [
         {
