@@ -53,6 +53,7 @@
     * [cstring](programming/c++/library/cstring.md)
     * [ctime](programming/c++/library/ctime.md)
     * [chrono](programming/c++/library/chrono.md)
+  * [邓老师讲C++笔记](programming/c++/deng-lao-shi-jiang-c++-bi-ji.md)
 * [Python](programming/python/README.md)
   * [Basic](programming/python/basic/README.md)
     * [Basic DataType](programming/python/basic/basic-datatype.md)
@@ -192,3 +193,4 @@
   * [Space Transform](tech/dip/space-transform.md)
   * [Frequceial Transform](tech/dip/frequceial-transform.md)
   * [Image Compression](tech/dip/image-compression.md)
+* [Linear Algebra](tech/linear-algebra.md)

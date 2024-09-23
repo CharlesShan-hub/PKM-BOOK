@@ -7,7 +7,7 @@ description: 字符
 
 ## Overview
 
-<img src="../../../.gitbook/assets/file.excalidraw (1).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -23,7 +23,7 @@ description: 字符
 
 ### Class
 
-<table><thead><tr><th width="164">类别</th><th>介绍</th></tr></thead><tbody><tr><td>数字</td><td>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }</td></tr><tr><td>十六进制数字</td><td>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, a, b, c, d, e, f }</td></tr><tr><td>小写字母</td><td>{ a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z }</td></tr><tr><td>大写字母</td><td>{ A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z }</td></tr><tr><td>字母</td><td>小写字母和大写字母的集合</td></tr><tr><td>字母数字字符</td><td>数字、小写字母和大写字母的集合</td></tr><tr><td>标点符号字符</td><td>{ !, ", #, $, %, &#x26;, ', (, ), *, +, ,, -, ., /, :, ;, &#x3C;, =, >, ?, @, [, , ], ^, _, `, {, |,  }, ~ }</td></tr><tr><td>图形字符</td><td>字母数字字符和标点符号字符的集合</td></tr><tr><td>空格字符</td><td>制表符、换行符、垂直制表符、换页符、回车符、空格符的集合</td></tr><tr><td>可打印字符</td><td>字母数字字符、标点符号字符和空格字符的集合</td></tr><tr><td>控制字符</td><td>在 ASCII 编码中，八进制代码从 000 到 037，以及 177（DEL）</td></tr><tr><td>空白字符</td><td>包括空格符和制表符</td></tr><tr><td>字母字符</td><td>小写字母和大写字母的集合</td></tr></tbody></table>
+<table><thead><tr><th width="164">类别</th><th>介绍</th></tr></thead><tbody><tr><td>数字</td><td>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }</td></tr><tr><td>十六进制数字</td><td>{ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F, a, b, c, d, e, f }</td></tr><tr><td>小写字母</td><td>{ a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z }</td></tr><tr><td>大写字母</td><td>{ A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z }</td></tr><tr><td>字母</td><td>小写字母和大写字母的集合</td></tr><tr><td>字母数字字符</td><td>数字、小写字母和大写字母的集合</td></tr><tr><td>标点符号字符</td><td>{ !, ", #, $, %, &#x26;, ', (, ), *, +, ,, -, ., /, :, ;, &#x3C;, =, >, ?, @, [, , ], ^, _, `, {, |, }, ~ }</td></tr><tr><td>图形字符</td><td>字母数字字符和标点符号字符的集合</td></tr><tr><td>空格字符</td><td>制表符、换行符、垂直制表符、换页符、回车符、空格符的集合</td></tr><tr><td>可打印字符</td><td>字母数字字符、标点符号字符和空格字符的集合</td></tr><tr><td>控制字符</td><td>在 ASCII 编码中，八进制代码从 000 到 037，以及 177（DEL）</td></tr><tr><td>空白字符</td><td>包括空格符和制表符</td></tr><tr><td>字母字符</td><td>小写字母和大写字母的集合</td></tr></tbody></table>
 
 ***
 
