@@ -1,5 +1,5 @@
 ---
-icon: hourglass-clock
+icon: medal
 ---
 
 # YAML
@@ -12,7 +12,7 @@ icon: hourglass-clock
 
 下面是一些收集到的链接
 
-* &#x20;Yaml 官网 & 各个语言沟通 yaml 的方案：[https://yaml.org/](https://yaml.org/)
+* Yaml 官网 & 各个语言沟通 yaml 的方案：[https://yaml.org/](https://yaml.org/)
 * Yaml官网 1.2.2 语法：[https://yaml.org/spec/1.2.2/](https://yaml.org/spec/1.2.2/)
 * wiki：[https://en.wikipedia.org/wiki/YAML](https://en.wikipedia.org/wiki/YAML)
 * yaml 在线工具：[https://onlineyamltools.com/](https://onlineyamltools.com/)
