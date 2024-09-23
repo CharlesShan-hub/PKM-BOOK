@@ -7,7 +7,7 @@ description: 字符串
 
 ## Overview
 
-<img src="../../../.gitbook/assets/file.excalidraw (2).svg" alt="https://www.runoob.com/ [1]" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (1) (1).svg" alt="https://www.runoob.com/ [1]" class="gitbook-drawing">
 
 1. 字符串 = 真正的字符串内容+'\0'，'\0'用来代表字符串结束。
 2. scanf 和printf用 %s 占位字符串
@@ -123,9 +123,7 @@ char *s_gets(char *st, int n)
 
 <summary>strncat</summary>
 
-&#x20;strcat 无法检查第一个数组是否能容纳第二个数组，如果数组 1 不够大，就会溢出影响旁边存储的内容！
-
-
+strcat 无法检查第一个数组是否能容纳第二个数组，如果数组 1 不够大，就会溢出影响旁边存储的内容！
 
 ```c
 /* join_chk.c -- joins two strings, check size first */
@@ -204,8 +202,6 @@ char *s_gets(char *st, int n)
 
 进行字符串比较
 
-
-
 ```c
 /* compback.c -- strcmp returns */
 #include <stdio.h>
@@ -250,8 +246,6 @@ int main(void)
 <summary>strncmp</summary>
 
 限定找前n 个字符
-
-
 
 ```c
 /* starsrch.c -- use strncmp() */
@@ -503,24 +497,3 @@ has C++ demo links\[2]
 \[1] [https://www.runoob.com/cprogramming/c-standard-library-string-h.html](https://www.runoob.com/cprogramming/c-standard-library-string-h.html)
 
 \[2] [https://cplusplus.com/reference/cstring/](https://cplusplus.com/reference/cstring/)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

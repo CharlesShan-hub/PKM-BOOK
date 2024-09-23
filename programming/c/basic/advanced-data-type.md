@@ -176,8 +176,6 @@ scanf("%f", &p_lib->value);
 s_gets(p_lib->author, MAXAUTL);
 ```
 
-
-
 </details>
 
 <details>
@@ -299,21 +297,11 @@ char * s_gets(char * st, int n)
 
 </code></pre>
 
-
-
-
-
-
-
-
-
 </details>
 
 <details>
 
 <summary>struct 复合字面量（C99）</summary>
-
-
 
 <pre class="language-c"><code class="lang-c">/* complit.c -- compound literals */
 #include &#x3C;stdio.h>
@@ -354,7 +342,7 @@ int main(void)
 
 <details>
 
-<summary> 伸缩型成员变量（C99）</summary>
+<summary>伸缩型成员变量（C99）</summary>
 
 结构体里边的数组不写 MAX，只写 方括号，这样后边的 malloc 就要去计算大小了
 
@@ -421,7 +409,7 @@ void showFlex(const struct flex * p)
 
 <details>
 
-<summary> 匿名结构（C11）</summary>
+<summary>匿名结构（C11）</summary>
 
 <pre class="language-c"><code class="lang-c">struct person
 {
@@ -516,8 +504,6 @@ enum levels = {lows = 100, medium = 500, high = 2000};
 
 <summary>Demo</summary>
 
-
-
 ```c
 /* enum.c -- uses enumerated values */
 #include <stdio.h>
@@ -610,7 +596,7 @@ typedef+结构(上边结构里边)
 
 `int a[2][3];`
 
-<img src="../../../.gitbook/assets/file.excalidraw (9).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
 
 * 数组明后边的\[]和函数名后边的()具有相同优先级，他们优先级高于\*
 
@@ -639,14 +625,3 @@ int (*p)[10]; // 指向含有十个整数的数组的指针
     // 0x7ff7be28a7e0, sizeof(int)=4,sizeof(q)=8, sizeof(*q)=16
     // 100 200 300 400
 ```
-
-
-
-
-
-
-
-
-
-
-

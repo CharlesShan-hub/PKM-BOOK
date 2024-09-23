@@ -7,7 +7,7 @@ description: 图像本身的特征
 
 ## Overview
 
-<img src="../../.gitbook/assets/file.excalidraw (8).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (3).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -17,7 +17,7 @@ description: 图像本身的特征
 
 1. 一般颜色直方图：某个色彩通道的直方图。
 
-<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -58,7 +58,7 @@ plt.show()
 
 2. 全局累加直方图：当图像中的特征并不能取遍所有可取值时，**统计直方图中会出现一些零值**。这些零值的出现会对相似性度量的计算带来影响，从而使得相似性度量并不能正确反映图像之间的颜色差别。
 
-<figure><img src="../../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -271,7 +271,7 @@ $$
 \gamma_{i,j}^{(k)}=\underset{p_1\in I_{(i)}, p_2\in I}{\operatorname{P}}[p_2\in I_{(j)}\mid |p_1-p_2|=k]
 $$
 
-<figure><img src="../../.gitbook/assets/image (35).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
 
@@ -343,13 +343,11 @@ plt.show()
 
 <summary>Overview</summary>
 
-<img src="../../.gitbook/assets/image (36).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
+<img src="../../.gitbook/assets/image (5) (1) (1) (1).png" alt="数字图像处理—图像纹理特征[1]" data-size="original">播客中的图片\[1]
 
-<img src="../../.gitbook/assets/image (37).png" alt="综述[2]" data-size="original">综述总结\[2]
+<img src="../../.gitbook/assets/image (6) (1) (1).png" alt="综述[2]" data-size="original">综述总结\[2]
 
 [https://github.com/cgreen259/Texture-Toolbox](https://github.com/cgreen259/Texture-Toolbox)
-
-
 
 </details>
 
@@ -359,7 +357,7 @@ plt.show()
 
 要理解 2D 的自相关函数还是先看看一维的自相关函数。自相关函数代表了一个信号移动一些距离，和自己是相像的程度！
 
-<figure><img src="../../.gitbook/assets/image (95).png" alt=""><figcaption><p>参考了[5]，但不一样</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption><p>参考了[5]，但不一样</p></figcaption></figure>
 
 <details>
 
@@ -429,7 +427,7 @@ plt.show()
 {% endhint %}
 
 $$
-\rho(x,y)=\frac{\frac{1}{(N_i-\left|x\right|)(N_j-\left|y\right|)}\sum_{i}\sum_{j}I(i,j)I(i+x,j+y)}{\frac{1}{N_i N_j}\sum_{i=1}^{N_i}\sum_{j=1}^{N_j}I(i,j)^2}
+ho(x,y)=\frac{\frac{1}{(N_i-\left|x\right|)(N_j-\left|y\right|)}\sum_{i}\sum_{j}I(i,j)I(i+x,j+y)}{\frac{1}{N_i N_j}\sum_{i=1}^{N_i}\sum_{j=1}^{N_j}I(i,j)^2}
 $$
 
 | condition | range of i | range of y |
@@ -439,7 +437,7 @@ $$
 | x<0, y≥0  | \[1-x, Ni] | \[1, Nj-y] |
 | x<0, y<0  | \[1-x, Ni] | \[1-y, Nj] |
 
-<figure><img src="../../.gitbook/assets/image (39).png" alt=""><figcaption><p>为了增强可视化效果，图2 中间我扣下了一部分</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1).png" alt=""><figcaption><p>为了增强可视化效果，图2 中间我扣下了一部分</p></figcaption></figure>
 
 <details>
 
@@ -502,9 +500,9 @@ plt.show()
 
 <details>
 
-<summary> 书中的描述与例子[4]</summary>
+<summary>书中的描述与例子[4]</summary>
 
-![](<../../.gitbook/assets/image (40).png>)![](<../../.gitbook/assets/image (41).png>)
+<img src="../../.gitbook/assets/image (9) (1).png" alt="" data-size="original"><img src="../../.gitbook/assets/image (10) (1).png" alt="" data-size="original">
 
 </details>
 
@@ -512,7 +510,7 @@ plt.show()
 
 计算梯度幅度的直方图。不同的纹理的图片对应的梯度幅度直方图比较稳定，因为取的幅度，所以不受方向影响。
 
-<figure><img src="../../.gitbook/assets/image (96).png" alt="" width="563"><figcaption><p>[6]</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (36).png" alt="" width="563"><figcaption><p>[6]</p></figcaption></figure>
 
 论文\[6]的计算方法：
 
@@ -525,13 +523,13 @@ plt.show()
 
 一般采用 0,45,90,135 四个角度的方向来计算距离为 n 的灰度共生矩阵。下面是方向为0，距离 n 为 1 的案例：
 
-<figure><img src="../../.gitbook/assets/image (97).png" alt=""><figcaption><p>一图胜千言[7]</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (37).png" alt=""><figcaption><p>一图胜千言[7]</p></figcaption></figure>
 
 另外灰度共生矩阵（GLDM）可以进一步计算的到很多统计量。
 
 论文中提出了 14 种：角二阶矩（能量）​、对比度、熵、相关性、均匀性、逆差矩、和平均、和方差、和熵、差方差（变异差异）​、差熵、局部平稳性、相关信息测度1、相关信息测度2。
 
-<figure><img src="../../.gitbook/assets/image (98).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (38).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
 
@@ -617,15 +615,15 @@ plt.show()
 
 简单的“卷积核”是下面的五个一维向量互相进行矩阵乘法得到：
 
-* Level L5 = \[1 4 6 4 1]&#x20;
-* Edge E5 = \[-1 -2 0 2 1]&#x20;
-* Spot S5 = \[-1 0 2 0 -1]&#x20;
-* Wave W5 = \[-1 2 0 -2 1]&#x20;
+* Level L5 = \[1 4 6 4 1]
+* Edge E5 = \[-1 -2 0 2 1]
+* Spot S5 = \[-1 0 2 0 -1]
+* Wave W5 = \[-1 2 0 -2 1]
 * Ripple R5 = \[1 -4 6 -4 1]
 
 具体内容可以看网页\[8]\[9]。
 
-<figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -718,7 +716,7 @@ $$
 \begin{aligned} &x'=x\cos(\theta)+y\sin(\theta),\ &y'=-x\sin(\theta)+y\cos(\theta). \end{aligned}
 $$
 
-<figure><img src="../../.gitbook/assets/image (99).png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (2).png" alt="" width="375"><figcaption></figcaption></figure>
 
 <details>
 
@@ -819,22 +817,22 @@ plt.show()
 （Local Binary Pattern, BLP）
 
 {% hint style="info" %}
-&#x20;通过中心像素与相邻像素的亮度区别，体现出了亮度变换，也就是梯度。
+通过中心像素与相邻像素的亮度区别，体现出了亮度变换，也就是梯度。
 {% endhint %}
 
 基本的LBP算子：3×3的矩形块，有1个中心像素和8个邻域像素分别对应9个灰度值。以中心像素的灰度值为阈值，将其邻域的8个灰度值与阈值比较，大于中心灰度值的像素用1表示，反之用0表示。
 
 根据顺时针方向读出8个二进制值。每个位置有自己的权重。求出这个 3 x 3 的块的值。（下图 为 25）
 
-<figure><img src="../../.gitbook/assets/image (104).png" alt=""><figcaption><p>[10]</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (2).png" alt=""><figcaption><p>[10]</p></figcaption></figure>
 
 因为人类视觉系统对纹理的感知与平均灰度（亮度）无关，而局部二值模式方法注重像素灰度的变化，所以它符合人类视觉对图像纹理的感知特点。LBP计算过程如图5-6所示。
 
-<figure><img src="../../.gitbook/assets/image (100).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (2).png" alt="" width="563"><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (101).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (2) (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (103).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (2).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -1011,13 +1009,11 @@ plt.show()
 
 我的理解是，其实有了很多的备选的边界，然后精髓是把图像的 xy 轴当成实轴虚轴，进行傅里叶变换，取前几项进行近似（这样就平滑了）
 
-<figure><img src="../../.gitbook/assets/image (27).png" alt="" width="188"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1).png" alt="" width="188"><figcaption></figcaption></figure>
 
 <details>
 
 <summary>Code</summary>
-
-
 
 ```python
 import numpy as np
@@ -1088,7 +1084,7 @@ $$
 
 1. Robert
 2. Sobel
-3. &#x20;Prewitt
+3. Prewitt
 
 ### 二阶边缘检测
 
@@ -1106,15 +1102,13 @@ SUSAN算法：
 > SUSAN以及后续研究：\[13] [https://core.ac.uk/download/41438484.pdf](https://core.ac.uk/download/41438484.pdf)
 
 1. 用圆形模板，根据亮度值是否相似于核心点亮度的，把区域分成核值相似区USAN与核值不相似区
-2. 模板在图像上移动时&#x20;
+2. 模板在图像上移动时
    1. 当圆形模板完全在背景或者目标区域时 ,其 USAN区域最大
    2. 当核心在边缘时 , USAN 区域减少一半
    3. 当核心在角点时 , USAN 区域最小
 3. 可以通过计算每 1 个像素的 USAN 值，并与设定的门限值进行比较， 如果该像素的 USAN 值小于门限 值，则该点可以认为是 1 个边缘点
 
-<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
-
-
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[14] <a href="https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045">https://baike.baidu.com/item/susan%E7%AE%97%E5%AD%90/5532045</a></p></figcaption></figure>
 
 ***
 

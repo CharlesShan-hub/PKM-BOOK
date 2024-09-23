@@ -7,7 +7,7 @@ description: 标准输入输出
 
 ## Overview
 
-<img src="../../../.gitbook/assets/file.excalidraw (4).svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (2) (1).svg" alt="stdio.h大致内容[1]" class="gitbook-drawing">
 
 ## Functions
 
@@ -47,13 +47,13 @@ int main(void)
 
 <summary>一图胜千言</summary>
 
-<img src="../../../.gitbook/assets/image (30).png" alt="printf format specifications quick reference[2]" data-size="original">
+<img src="../../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt="printf format specifications quick reference[2]" data-size="original">
 
 </details>
 
 <details>
 
-<summary> 转换说明[3]</summary>
+<summary>转换说明[3]</summary>
 
 * %a 浮点数、十六进制数和p记数法（C99/C11）
 * %A 浮点数、十六进制数和p记数法（C99/C11）
@@ -62,9 +62,9 @@ int main(void)
 * %e 浮点数，e记数法
 * %E 浮点数，e记数法
 * %f 浮点数，十进制记数法
-* %_g 根据值的不同，自动选择_f或\*e。\*e格式用于指数小于-4或者大于或等于精度时
-* %_G 根据值的不同，自动选择_f或\*E。\*E格式用于指数小于-4或者大于或等于精度时
-* %_i 有符号十进制整数（与d_相同）
+* %\_g 根据值的不同，自动选择\_f或\*e。\*e格式用于指数小于-4或者大于或等于精度时
+* %\_G 根据值的不同，自动选择\_f或\*E。\*E格式用于指数小于-4或者大于或等于精度时
+* %\_i 有符号十进制整数（与d\_相同）
 * %o 无符号八进制整数
 * %p 指针
 * %s 字符串
@@ -95,27 +95,27 @@ int main(void)
   * 只使用.表示其后跟随一个0，所以%.f和%.0f相同
 * h
   * 和整型转换说明一起使用，表示short int或unsigned short int类型的值
-  * 示例: "%hu"、"%hx"、"%6.4hd"&#x20;
+  * 示例: "%hu"、"%hx"、"%6.4hd"
 * hh
-  * 和整型转换说明一起使用，表示signed char或unsigned char类型的值&#x20;
-  * 示例: "%hhu"、"%hhx"、"%6.4hhd"&#x20;
+  * 和整型转换说明一起使用，表示signed char或unsigned char类型的值
+  * 示例: "%hhu"、"%hhx"、"%6.4hhd"
 * j
-  * 和整型转换说明一起使用，表示intmax\_t或uintmax\_t类型的值。这些类型定义在stdint.h中&#x20;
-  * 示例: "%ja"、"%8jx"&#x20;
+  * 和整型转换说明一起使用，表示intmax\_t或uintmax\_t类型的值。这些类型定义在stdint.h中
+  * 示例: "%ja"、"%8jx"
 * l
-  * 和整型转换说明一起使用，表示long int或unsigned long int类型的值&#x20;
-  * 示例: "%ld"、"%8lu"&#x20;
+  * 和整型转换说明一起使用，表示long int或unsigned long int类型的值
+  * 示例: "%ld"、"%8lu"
 * ll
-  * 和整型转换说明一起使用，表示long long int或unsigned long long int类型的值(C99)&#x20;
-  * 示例: "%lld"、"%8llu"&#x20;
+  * 和整型转换说明一起使用，表示long long int或unsigned long long int类型的值(C99)
+  * 示例: "%lld"、"%8llu"
 * L
-  * 和浮点转换说明一起使用，表示long double类型的值&#x20;
-  * 示例: "%Ld"、"%10.4Le"&#x20;
+  * 和浮点转换说明一起使用，表示long double类型的值
+  * 示例: "%Ld"、"%10.4Le"
 * t
-  * 和整型转换说明一起使用，表示ptrdiff\_t类型的值。ptrdiff\_t是两个指针差值的类型(C99)&#x20;
-  * 示例: "%td"、"%12ti"&#x20;
+  * 和整型转换说明一起使用，表示ptrdiff\_t类型的值。ptrdiff\_t是两个指针差值的类型(C99)
+  * 示例: "%td"、"%12ti"
 * z
-  * 和整型转换说明一起使用，表示size\_t类型的值。size\_t是sizeof返回的类型(C99)&#x20;
+  * 和整型转换说明一起使用，表示size\_t类型的值。size\_t是sizeof返回的类型(C99)
   * 示例: "%zd"、"%12zd"
 
 </details>
@@ -391,8 +391,6 @@ int main()
 
 <summary>你是否觉得 fgets 还要用 sizeof 有点麻烦，那就用gets_s吧。但是它没有fgets灵活</summary>
 
-
-
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -447,9 +445,7 @@ char * s_gets(char * st, int n)
 
 <details>
 
-<summary> 进行字符串格式化，形成一个字符串保存到某个变量中</summary>
-
-
+<summary>进行字符串格式化，形成一个字符串保存到某个变量中</summary>
 
 ```c
 /* format.c -- format a string */
@@ -506,8 +502,6 @@ char *s_gets(char *st, int n)
 ```
 
 </details>
-
-
 
 ## Reference
 

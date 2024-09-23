@@ -19,7 +19,7 @@ description: 图像压缩
 
 扫描各种颜色的像素出现的概率，然后按照概率大小组成哈夫曼编码。（个人感觉意义不大）
 
-<figure><img src="../../.gitbook/assets/image (105).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (39).png" alt="" width="563"><figcaption></figcaption></figure>
 
 <details>
 
@@ -182,9 +182,9 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 * 编译表（String Table）​：编译表不是事先创建好的，而是根据原始文件数据动态创建的
 * LZW压缩算法的基本原理：提取原始文本文件数据中的不同字符，基于这些字符创建一个编译表，然后用编译表中的字符的索引替代原始文本文件数据中的相应字符，减少原始数据大小。
 
-<figure><img src="../../.gitbook/assets/image (22).png" alt=""><figcaption><p>[4] encoding <a href="https://www.bilibili.com/video/BV1rp4y117WB">https://www.bilibili.com/video/BV1rp4y117WB</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[4] encoding <a href="https://www.bilibili.com/video/BV1rp4y117WB">https://www.bilibili.com/video/BV1rp4y117WB</a></p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption><p>[5] <a href="https://www.bilibili.com/video/BV15p4y1C71G">https://www.bilibili.com/video/BV15p4y1C71G</a></p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>[5] <a href="https://www.bilibili.com/video/BV15p4y1C71G">https://www.bilibili.com/video/BV15p4y1C71G</a></p></figcaption></figure>
 
 详细过程感觉并不好记，使用时随时翻阅资料吧
 
@@ -202,7 +202,7 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 * 需要用过采样，即以比奈奎斯特速率高几倍的速率对模拟信号采样。
 * DM 是 DPCM 的最简单形式。
 
-<figure><img src="../../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -210,7 +210,7 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
 
 比如对\[33, 35, 34, 36, 35]进行编码，步长为 4.5
 
-![](<../../.gitbook/assets/image (25).png>)
+<img src="../../.gitbook/assets/image (3) (1) (1).png" alt="" data-size="original">
 
 结果就是\[33, 1, 0, 1, 0]，其中 33 代表初始的位置，1 代表上升，0 代表下降。
 
@@ -223,13 +223,11 @@ huffman_traversal(root_node, tmp_array, f)  # 遍历树结构，给出编码
   * 这个变化是用某个像素的一边（下例是 左，左上，上三个方向）来预测这个像素。然后用预测值与本像素相减，得到误差。
   * 这个误差会经过量化，这一步引入了误差，也达到了压缩的目的。
 
-<figure><img src="../../.gitbook/assets/image (26).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
 <summary>Demo</summary>
-
-
 
 ```python
 import numpy as np
@@ -334,25 +332,23 @@ if __name__ == '__main__':
 
 * K-L 变换又称 Hotelling 变换，特征向量变换或主分量方法（这个就是主成分分析法吧。。）
 
-步骤1：读取图片，将图片信息以8x8图像方块合成一个向量，将整张图片分割成一个n\*64的矩阵A。&#x20;
+步骤1：读取图片，将图片信息以8x8图像方块合成一个向量，将整张图片分割成一个n\*64的矩阵A。
 
-步骤2：计算向量数据矩阵A的协方差矩阵（64x64）。&#x20;
+步骤2：计算向量数据矩阵A的协方差矩阵（64x64）。
 
-步骤3：对协方差矩阵进行特征分解，并按特征值大小排列特征向量D。&#x20;
+步骤3：对协方差矩阵进行特征分解，并按特征值大小排列特征向量D。
 
 步骤4：计算AD，得到kl变换矩阵K。
 
-步骤5：将矩阵K的后m列置为0。&#x20;
+步骤5：将矩阵K的后m列置为0。
 
 步骤6：通过K\*D^T得新矩阵A，并将其重新还原图像。
 
-<figure><img src="../../.gitbook/assets/image (106).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (40).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
 <summary>Demo[8]</summary>
-
-
 
 ```python
 import cv2  
@@ -454,20 +450,14 @@ f(x,y) = \frac{2}{N} \sum_{u=0}^{N-1}\sum_{v=0}^{N-1} C(u)C(v) \cos\left[\frac{\
 $$
 
 $$
-C(u), C(v) =
-\begin{cases} 
-\frac{1}{\sqrt{2}} & u, v = 0 \\
-1 & \text{其他}
-\end{cases}
+C(u), C(v) = \begin{cases} \frac{1}{\sqrt{2}} & u, v = 0 \\ 1 & \text{其他} \end{cases}
 $$
 
-<figure><img src="../../.gitbook/assets/image (107).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (41).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
 <summary>Demo</summary>
-
-
 
 ```python
 from math import cos, pi, sqrt
@@ -570,11 +560,11 @@ if __name__ == '__main__':
 2. 8×8的图像块经过DCT后，低频分量都集中在左上角，高频分量则分布在右下角。
 3. 使用量化操作去掉高频分量，量化操作就是将某一个值除以量化表中的对应值。
 
-<figure><img src="../../.gitbook/assets/image (108).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (42).png" alt=""><figcaption></figcaption></figure>
 
 4. 采用之字型（zig-zag）顺序进行行程编码（对每一个 8x8 的块进行一次zig-zag）
 
-<figure><img src="../../.gitbook/assets/image (109).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (43).png" alt=""><figcaption></figcaption></figure>
 
 5. 得到DC码字和AC行程码字后，为了进一步提高压缩比，再进行熵编码，可采用哈夫曼编码。
 
@@ -597,4 +587,3 @@ if __name__ == '__main__':
 \[7] [https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation](https://en.wikipedia.org/wiki/Differential\_pulse-code\_modulation)
 
 \[8] [https://blog.csdn.net/gmynebula/article/details/134887145](https://blog.csdn.net/gmynebula/article/details/134887145)
-

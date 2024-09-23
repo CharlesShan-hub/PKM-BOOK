@@ -7,7 +7,7 @@ description: 基础数据类型
 
 ## Overview
 
-<img src="../../../.gitbook/assets/file.excalidraw (3).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (2).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -26,7 +26,7 @@ int 可以与 short 等关键字搭配，构造更具体的 int：
 
 <details>
 
-<summary> 查看自己电脑不同类型整数所占字节数</summary>
+<summary>查看自己电脑不同类型整数所占字节数</summary>
 
 ```c
 #include <stdio.h>
@@ -85,7 +85,7 @@ int main()
 
 <details>
 
-<summary> Demo</summary>
+<summary>Demo</summary>
 
 ```c
 #include <stdio.h>
@@ -132,9 +132,9 @@ char 代表字符，采用 ASCII 码，占用内存 8 bits。
 | \a   | 警报（ANSI C）                            |
 | \b   | 退格                                    |
 | \f   | 换页                                    |
-| \n   | 换行                                    |
-| \r   | 回车                                    |
-| \n   | 水平制表符                                 |
+|      | 换行                                    |
+|      | 回车                                    |
+|      | 水平制表符                                 |
 | \v   | 垂直制表符                                 |
 | \\\\ | 反斜杠（\）                                |
 | '    | 单引号                                   |
@@ -154,9 +154,9 @@ char 代表字符，采用 ASCII 码，占用内存 8 bits。
 
 <details>
 
-<summary> Demo</summary>
+<summary>Demo</summary>
 
-&#x20;使用 \_Bool
+使用 \_Bool
 
 ```c
 // boolean.c -- using a _Bool variable
@@ -264,7 +264,7 @@ int main(void)
  double d = .8E-5; // 也可以用 E
 ```
 
-不同格式的 printf&#x20;
+不同格式的 printf
 
 | 类型       | 占位符 |
 | -------- | --- |
@@ -275,7 +275,7 @@ int main(void)
 
 <details>
 
-<summary> Demo1</summary>
+<summary>Demo1</summary>
 
 ```c
 #include <stdio.h>
@@ -342,7 +342,7 @@ int main(void)
 
 <details>
 
-<summary> Demo</summary>
+<summary>Demo</summary>
 
 ```c
 /* floaterr.c--demonstrates round-off error */
@@ -376,7 +376,7 @@ int main(void)
 
 <details>
 
-<summary> Demo</summary>
+<summary>Demo</summary>
 
 ```c
 #include <stdio.h>
@@ -417,4 +417,3 @@ int main()
 ```
 
 </details>
-

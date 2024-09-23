@@ -5,7 +5,7 @@ description: 时域变换
 
 # Space Transform
 
-<img src="../../.gitbook/assets/file.excalidraw (7).svg" alt="" class="gitbook-drawing">
+<img src="../../.gitbook/assets/file.excalidraw (2) (1) (1).svg" alt="" class="gitbook-drawing">
 
 ***
 
@@ -30,10 +30,10 @@ $$
 均值滤波器（盒式滤波器），就是某个“方块”内的像素求均值。
 
 $$
-k  = \frac{1}{mn}\begin{bmatrix} 1&1&...&1\\1&1&...&1\\...&...&...&...\\1&1&...&1\end{bmatrix}_{mn}
+k = \frac{1}{mn}\begin{bmatrix} 1&1&...&1\\1&1&...&1\\...&...&...&...\\1&1&...&1\end{bmatrix}_{mn}
 $$
 
-<figure><img src="../../.gitbook/assets/image (48).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -84,7 +84,7 @@ $$
 W(i,j) = \frac{G(i,j)}{\sum_{i=-a}^{a}\sum_{i=-b}^{b}G(i,j)}
 $$
 
-<figure><img src="../../.gitbook/assets/image (49).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (6) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -134,7 +134,7 @@ plt.show()
 
 以上滤波器均为线性滤波，而中值滤波是一种基于统计的非线性滤波，它是椒盐噪声的“特效药”。
 
-<figure><img src="../../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -180,22 +180,14 @@ plt.show()
 2x2大小的求边缘。
 
 $$
-G_x = 
-\begin{bmatrix}
--1 & 0 \\
-0 & 1
-\end{bmatrix}
+G_x = \begin{bmatrix} -1 & 0 \\ 0 & 1 \end{bmatrix}
 $$
 
 $$
-G_y = 
-\begin{bmatrix}
-0 & -1 \\
-1 & 0
-\end{bmatrix}
+G_y = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}
 $$
 
-<figure><img src="../../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -241,24 +233,14 @@ plt.show()
 3x3 大小的边缘
 
 $$
-G_x = 
-\begin{bmatrix}
--1 & -2 & -1 \\
-0 & 0 & 0 \\
-1 & 2 & 1
-\end{bmatrix}
+G_x = \begin{bmatrix} -1 & -2 & -1 \\ 0 & 0 & 0 \\ 1 & 2 & 1 \end{bmatrix}
 $$
 
 $$
-G_y = 
-\begin{bmatrix}
--1 & 0 & 1 \\
--2 & 0 & 2 \\
--1 & 0 & 1
-\end{bmatrix}
+G_y = \begin{bmatrix} -1 & 0 & 1 \\ -2 & 0 & 2 \\ -1 & 0 & 1 \end{bmatrix}
 $$
 
-<figure><img src="../../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -301,26 +283,18 @@ plt.show()
 Sobel 和 Robert 把 3x3 或者 2x2 的区域当成一个大像素，算这个像素内部的梯度。Laplacian 换了一个角度，找一个 3x3 的区域，算这个区域中心往外的梯度。另外，实践中，尝尝采用中心权重为正的形式，虽然按照梯度公式中心应该是负。
 
 $$
-G = \begin{bmatrix}
-0 & -1 & 0 \\
--1 & 4 & -1 \\
-0 & -1 & 0
-\end{bmatrix}
+G = \begin{bmatrix} 0 & -1 & 0 \\ -1 & 4 & -1 \\ 0 & -1 & 0 \end{bmatrix}
 $$
 
 或者加上四个对角线方向
 
 $$
-G = \begin{bmatrix}
--1 & -1 & -1 \\
--1 & 8 & -1 \\
--1 & -1 & -1
-\end{bmatrix}
+G = \begin{bmatrix} -1 & -1 & -1 \\ -1 & 8 & -1 \\ -1 & -1 & -1 \end{bmatrix}
 $$
 
 另外，可以把边缘加到原图上得到锐化图像。
 
-<figure><img src="../../.gitbook/assets/image (55).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12) (1).png" alt=""><figcaption></figcaption></figure>
 
 <details>
 
@@ -352,10 +326,3 @@ plt.show()
 {% endcode %}
 
 </details>
-
-
-
-
-
-
-
