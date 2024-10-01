@@ -596,7 +596,7 @@ typedef+结构(上边结构里边)
 
 `int a[2][3];`
 
-<img src="../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (10).svg" alt="" class="gitbook-drawing">
 
 * 数组明后边的\[]和函数名后边的()具有相同优先级，他们优先级高于\*
 

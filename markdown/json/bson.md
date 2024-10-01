@@ -23,4 +23,4 @@ description: BSON简介
 * 每一个元素，首先要写它的键的类型（具体见：[https://bsonspec.org/spec.html](https://bsonspec.org/spec.html)）然后是键的名字的二进制，然后是值。
 * 键和值和对象，都用0x00作为结尾。
 
-<figure><img src="../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (112).png" alt=""><figcaption></figcaption></figure>
