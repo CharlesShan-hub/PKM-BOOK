@@ -62,7 +62,7 @@ layout:
             <td>Where dreams began.</td>
             <td></td>
             <td></td>
-            <td><a href=".gitbook/assets/logo/c.jpg">36421726831525_.pic.jpg</a></td>
+            <td><a href=".gitbook/assets/logo/c.jpg">c.jpg</a></td>
             <td><a href="programming/c/">c</a></td>
         </tr>
         <tr>
@@ -70,7 +70,7 @@ layout:
             <td>C is easy to shoot yourself in the foot; C++ is even easier to blow your whole leg off.</td>
             <td></td>
             <td></td>
-            <td><a href=".gitbook/assets/logo/cpp.jpg">36411726831524_.pic.jpg</a></td>
+            <td><a href=".gitbook/assets/logo/cpp.jpg">cpp.jpg</a></td>
             <td><a href="programming/c++/">c++</a></td>
         </tr>
         <tr>
