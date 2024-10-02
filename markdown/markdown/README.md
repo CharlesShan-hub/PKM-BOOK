@@ -10,8 +10,6 @@ John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使�
 
 下面是 markdown 的语法：
 
-<img src="../../.gitbook/assets/md-syntex.excalidraw.svg" alt="markdown syntex" class="gitbook-drawing">
-
 * [.](./ "mention")
 * [markdown-extra.md](markdown-extra.md "mention")
 
