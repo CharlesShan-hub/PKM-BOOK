@@ -8,6 +8,8 @@ icon: medal
 
 John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使用纯文本编辑器创建格式化文本。主要设计目标是**可读性**，即语言可以按原样阅读，而不会看起来像是用标签或格式化指令标记的，不像用“更重”的标记语言格式化的文本，例如RTF，HTML。Gruber避免在Markdown中使用花括号，以非正式地将它们保留给特定于实现的扩展。\[1]
 
+<img src="../../.gitbook/assets/md-syntex.excalidraw.svg" alt="" class="gitbook-drawing">
+
 下面是 markdown 的语法：
 
 * [.](./ "mention")

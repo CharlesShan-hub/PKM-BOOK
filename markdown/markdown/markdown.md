@@ -6,7 +6,7 @@ description: 本文收集 markdown 的有趣的冷门的语法
 
 ## Syntax
 
-1111
+<img src="../../.gitbook/assets/md-syntex.excalidraw.svg" alt="" class="gitbook-drawing">
 
 ### 标题
 
