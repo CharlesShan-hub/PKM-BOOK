@@ -1,5 +1,5 @@
 ---
-description: markdown语法
+description: 本文收集 markdown 的有趣的冷门的语法
 ---
 
 # Markdown
@@ -8,52 +8,36 @@ description: markdown语法
 
 ### 标题
 
-```markdown
-标题
-# 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
+标题除了`#`的写法，也可以用横线，但是不推荐使用。
 
-标题(另一种写法)
+```markdown
 Heading level 1
 ===============
 Heading level 2
 ---------------
 ```
 
-### 段落与强调与引用
+### 换行
 
-```markdown
-段落
-什么也不加就是段落，可以段落间空一行，就是加入段间距，也可以不空一行，就会取消段间距
+换行的三种方式：
 
-强调
-**bold text**
-__bold text__
-（👎 Love__is__bold，不要这样）
- *斜体*
-（A*cat*meow,不要这样）
-This text is ***really important***
-This text is ___really important___.
-This text is __*really important*__.
-This text is **_really important_**.
-This is really***very***important text.
+* `<br>`
+* 直接回车
+* 行末两个空格：不推荐
 
-引用
-> 这是引用
->> 这是嵌套的引用
-```
+### 强调
+
+* 加粗或斜体：推荐用下划线而不是星号
+  * `Love__is__bold`：不起作用！
+  * `Love**is**bold`：这样才行！
+* 下划线：`<u>下划线文本</u>`
+* 删除：`~~世界是平坦的。~~`
 
 ### 列表
 
-```
-列表
-1. First item
-2. Second item
-3. Third item
-4. Fourth item
+有序列表，序号可以不真的按序号，只要是数字就行
 
+```
 列表可以不真正的排序
 1. First item
 1. Second item
@@ -65,32 +49,25 @@ This is really***very***important text.
 8. Second item
 3. Third item
 5. Fourth item
+```
 
-加入 tab 可以进行缩进
-1. First item
-2. Second item
-3. Third item
-    1. Indented item
-    2. Indented item
-4. Fourth item
+无需列表可以用`+`，`-`，`*`
 
-无序列表
+```markdown
+可以用-
 - First item
 - Second item
 - Third item
-- Fourth item
 
 也可以用*
 * First item
 * Second item
 * Third item
-* Fourth item
 
 或者*
 + First item
 + Second item
 + Third item
-+ Fourth item
 ```
 
 ### 代码
@@ -146,7 +123,6 @@ URL 和 邮箱
 
 ***
 
-## Links
+## Reference
 
 \[1] [https://www.markdownguide.org/basic-syntax/](https://www.markdownguide.org/basic-syntax/)
-
