@@ -25,6 +25,11 @@ markdown 语言的目标是使人们能够“使用易于阅读和编写的纯�
 
 * [github-flavored-markdown.md](github-flavored-markdown.md "mention")
 * [multimarkdown.md](multimarkdown.md "mention")
+* [CommonMark](https://commonmark.org/)
+* [GitHub Flavored Markdown (GFM)](https://github.github.com/gfm/)
+* [Markdown Extra](https://michelf.ca/projects/php-markdown/extra/)
+* [MultiMarkdown](https://fletcherpenney.net/multimarkdown/)
+* [R Markdown](https://rmarkdown.rstudio.com/)
 
 ## Resources
 
