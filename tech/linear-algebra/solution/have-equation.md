@@ -4,7 +4,7 @@
 
 <img src="../../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
-
+其实并没有真正的去解方程，我们只是一直在“换句话说”。
 
 ## Reference
 
