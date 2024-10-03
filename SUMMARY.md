@@ -194,7 +194,7 @@
   * [Matrix](tech/linear-algebra/matrix/README.md)
     * [Linear System](tech/linear-algebra/matrix/linear-system.md)
     * [Linear Equation](tech/linear-algebra/matrix/linear-equation.md)
-    * [Vector](tech/linear-algebra/matrix/vector.md)
+    * [Vector and Matrix](tech/linear-algebra/matrix/vector-and-matrix.md)
     * [Page](tech/linear-algebra/matrix/page.md)
 * [高等数学](tech/gao-deng-shu-xue.md)
 * [概率论](tech/gaillun.md)
