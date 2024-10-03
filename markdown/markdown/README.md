@@ -12,7 +12,7 @@ John Gruber于2004年创建了一种轻量级标记语言 Markdown，用于使�
 
 下面是 markdown 冷门语法汇总：
 
-* [markdown.md](markdown.md "mention")
+* [markdown-syntax.md](markdown-syntax.md "mention")
 
 markdown 语言的目标是使人们能够“使用易于阅读和编写的纯文本格式进行编写，并选择将其转换为结构有效的XHTML（或HTML）。从2012年开始，包括Jeff Atwood和John MacFarlane在内的一群人发起了Atwood所说的标准化工作。
 

@@ -155,7 +155,7 @@
 ## Markdown
 
 * [Markdown](markdown/markdown/README.md)
-  * [Markdown Syntax](markdown/markdown/markdown.md)
+  * [Markdown Syntax](markdown/markdown/markdown-syntax.md)
 * [Latex](markdown/latex.md)
 * [JSON](markdown/json/README.md)
   * [JSON](markdown/json/json.md)
@@ -190,7 +190,8 @@
   * [Space Transform](tech/dip/space-transform.md)
   * [Frequceial Transform](tech/dip/frequceial-transform.md)
   * [Image Compression](tech/dip/image-compression.md)
-* [Linear Algebra](tech/linear-algebra.md)
+* [Linear Algebra](tech/linear-algebra/README.md)
+  * [Linear System](tech/linear-algebra/linear-system.md)
 * [高等数学](tech/gao-deng-shu-xue.md)
 * [概率论](tech/gaillun.md)
 * [Artificial Intelligence](tech/artificial-intelligence.md)
