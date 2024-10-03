@@ -196,7 +196,7 @@
     * [Vector and Matrix](tech/linear-algebra/matrix/vector-and-matrix.md)
     * [Linear Equation](tech/linear-algebra/matrix/linear-equation.md)
   * [Solution](tech/linear-algebra/solution/README.md)
-    * [Page](tech/linear-algebra/solution/page.md)
+    * [Have Equation](tech/linear-algebra/solution/have-equation.md)
 * [高等数学](tech/gao-deng-shu-xue.md)
 * [概率论](tech/gaillun.md)
 * [Artificial Intelligence](tech/artificial-intelligence.md)
