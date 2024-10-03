@@ -192,6 +192,7 @@
   * [Image Compression](tech/dip/image-compression.md)
 * [Linear Algebra](tech/linear-algebra/README.md)
   * [Linear System](tech/linear-algebra/linear-system.md)
+  * [Linear Equation](tech/linear-algebra/linear-equation.md)
 * [高等数学](tech/gao-deng-shu-xue.md)
 * [概率论](tech/gaillun.md)
 * [Artificial Intelligence](tech/artificial-intelligence.md)
