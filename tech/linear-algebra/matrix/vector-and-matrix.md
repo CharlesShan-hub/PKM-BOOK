@@ -4,7 +4,7 @@
 
 * What is Vector\[1]
 
-<img src="../../../.gitbook/assets/la-vector.svg" alt="Vector" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/la-vector.excalidraw.svg" alt="Vector" class="gitbook-drawing">
 
 * What is Matrix\[2]
 
@@ -12,7 +12,7 @@
 
 * Matrix-vector Product\[3]
 
-<img src="../../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/la-product.excalidraw.svg" alt="Matrix-vector Product" class="gitbook-drawing">
 
 
 

@@ -2,7 +2,7 @@
 
 ## Roadmap
 
-<img src="../../../.gitbook/assets/la-le.svg" alt="Linear Equation is Linear System" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/la-le.excalidraw.svg" alt="Linear Equation is Linear System" class="gitbook-drawing">
 
 ## Reference
 
