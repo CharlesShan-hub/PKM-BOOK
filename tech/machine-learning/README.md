@@ -1,6 +1,6 @@
 ---
-description: 机器学习中不包括深度学习的部分
 icon: hourglass-clock
+description: 机器学习中不包括深度学习的部分
 ---
 
 # Machine Learning
@@ -8,11 +8,22 @@ icon: hourglass-clock
 ## Draft
 
 > * 西瓜书
+>   * 周老师亲自讲：学堂在线《机器学习初步》
 > * 橘子书（西瓜书的搭配材料，每章都一样的主题）
 > * 统计学习方法
 > * 吴恩达机器学习
 >   * [https://sanzo.top/Blog/ML-AndrewNg/](https://sanzo.top/Blog/ML-AndrewNg/)
 >   * [https://developer.baidu.com/article/details/2749722](https://developer.baidu.com/article/details/2749722)
+
+## 周老师的建议
+
+1. 书读三遍
+   1. 第一遍观其大略（一个月内看完西书），然后找相关材料，三个月到半年
+   2. 第二遍经过沉淀，得到升华，然后去细致学习机器学习的每个分支，大概三年
+   3. 第三遍疏通经络
+2.
+
+
 
 * 基础
   * （西瓜书第一章 绪论）基本概念
