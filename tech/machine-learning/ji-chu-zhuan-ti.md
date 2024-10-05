@@ -37,11 +37,74 @@
 
 ## 性能度量
 
-### 错误率与精读
+### 错误率与精度
 
-
+可以从离散的数数，和概率角度，两个方向去统计错误率和精读（正确率）
 
 ### 混淆矩阵、查准率、全检率、F1
 
+* 混淆矩阵（**Confusion Matrix**）
 
+> [\[机器学习笔记\] 混淆矩阵（Confusion Matrix）](https://blog.csdn.net/seagal890/article/details/105059498)
+
+|      | 预测正例    | 预测反例    |
+| ---- | ------- | ------- |
+| 真实正例 | TP（真正例） | FN（假反例） |
+| 真实反例 | FP（假正例） | TN（真反例） |
+
+* 精确率
+
+$$
+Accuracy = \frac{TP+TN}{TP+FN+FP+TN}
+$$
+
+* 查准率，正确率：预测为正确的，有多少真正确
+
+$$
+Precision = \frac{TP}{TP+FP}
+$$
+
+
+
+* 全检率，召回率：正例中，多少被预测到了
+
+查准率和查全率是一对矛盾的指标。一般来说，查准率高时，查全率往往偏低；二查全率高时，查准率往往偏低。
+
+$$
+Recall = Sensitivity(True Positive Rate，TPR) = \frac{TP}{TP+FN}
+$$
+
+* 负正确率：预测为正确的，但其实是错误的，占所有错误的比率，越低越好
+
+$$
+False Positive Rate, FPR = \frac{FP}{TN+FP}
+$$
+
+* 特异性：识别为负类的样本的数量，占总的负类样本数量的比值
+
+$$
+Specificity = 1-FPR
+$$
+
+* Fβ\_Score：正确率和召回率的一种加权平均，召回率的权重是正确率的β倍
+
+$$
+F\beta = \beta \cdot Recall + Precision
+$$
+
+* F1\_Score：正确率和召回率的调和平均数
+
+$$
+F1 = Recall + Precision
+$$
+
+
+
+
+
+## Reference
+
+\[1] 大佬笔记：[西瓜书学习笔记(1)--绪论](https://www.heywhale.com/mw/project/5e4f83590e2b66002c1f574b)
+
+\[2] 大佬笔记：[西瓜书学习笔记(2)--模型的评估与选择](https://www.heywhale.com/mw/project/5e4f89fb0e2b66002c1f6468)
 
