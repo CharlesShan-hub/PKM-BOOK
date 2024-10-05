@@ -199,6 +199,7 @@
     * [Have Solution](tech/linear-algebra/solution/have-solution.md)
     * [Solution Number](tech/linear-algebra/solution/solution-number.md)
     * [Solve Equation](tech/linear-algebra/solution/solve-equation.md)
+    * [From RREF](tech/linear-algebra/solution/from-rref.md)
 * [高等数学](tech/gao-deng-shu-xue.md)
 * [概率论](tech/gaillun.md)
 * [Artificial Intelligence](tech/artificial-intelligence.md)
