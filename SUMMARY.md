@@ -212,3 +212,6 @@
 * [最优化理论](tech/zui-you-hua-li-lun.md)
 * [信息论](tech/xin-xi-lun.md)
 * [计算学习理论](tech/ji-suan-xue-xi-li-lun.md)
+* [Linux](tech/linux/README.md)
+  * [clash](tech/linux/clash.md)
+  * [Git](tech/linux/git.md)
