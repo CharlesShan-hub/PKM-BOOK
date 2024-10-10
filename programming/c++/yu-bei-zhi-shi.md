@@ -10,7 +10,7 @@ description: >-
 
 ### 1.1 C++简介
 
-三种不同的编程方式：过程，OOP，泛型
+* 三种不同的编程方式：**过程**，**OOP**，**泛型**
 
 ***
 
@@ -23,7 +23,9 @@ description: >-
 #### 1.2.2 C语言编程原理
 
 1. 程序 = 数据+算法。C 语言强调的是算法。
-2. 结构化编程(structured programming)，比如 for 循环，do while 循环，if else 语句
+2. 结构化编程(structured programming)
+   1. 相比 pascal、Basic 的“意大利面条”式编程进行了提提高
+   2. 比如 for 循环，do while 循环，if else 语句
 3. 自顶向下(top-down)的设计：模块化开发
 
 #### 1.2.3 面向对象编程
@@ -70,10 +72,5 @@ C++ 语言强调的是数据。
 
 * 普通的编译：`g++ spiffy.cxx`
 * 加入链接库：`g++ spiffy.cxx -lg++`
-* 编译多个文件：`g++ my.cxx precious.cxx`&#x20;
+* 编译多个文件：`g++ my.cxx precious.cxx`
 * 也可以通过之前生成的.o文件编译：`g++ my.cxx precious.o`
-
-
-
-
-

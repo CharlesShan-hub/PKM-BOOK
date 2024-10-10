@@ -8,7 +8,7 @@ description: >-
 
 # 复合类型
 
-4.1 数组
+### 4.1 数组
 
 <details>
 
@@ -361,7 +361,7 @@ s2 += " for a day" yields s2 = buzzard for a day
 
 <details>
 
-<summary>string的其他操作，比如.size（class  vs cstring）</summary>
+<summary>string的其他操作，比如.size（class vs cstring）</summary>
 
 ```cpp
 // strtype3.cpp -- more string class features
@@ -754,7 +754,7 @@ Now updates = 7
 
 <details>
 
-<summary> 指针初始化，C++中 int* 本身是一种复合类型</summary>
+<summary>指针初始化，C++中 int* 本身是一种复合类型</summary>
 
 <pre class="language-cpp"><code class="lang-cpp">// init_ptr.cpp -- initialize a pointer
 #include &#x3C;iostream>
@@ -947,8 +947,6 @@ access two elements with pointer notation
 
 <summary>输入字符串（静态）</summary>
 
-
-
 ```cpp
 // ptrstr.cpp -- using pointers to strings
 #include <iostream>
@@ -1005,8 +1003,6 @@ snake at 0x7faa28804080 0x7ff7b2c327c8
 
 <summary>输入字符串（动态）</summary>
 
-
-
 ```cpp
 // newstrct.cpp -- using new with a structure
 #include <iostream>
@@ -1052,8 +1048,6 @@ Price: $100
 <details>
 
 <summary>delete来释放内存，然后重新输入</summary>
-
-
 
 ```cpp
 // delete.cpp -- using the delete operator
@@ -1108,8 +1102,6 @@ Shan at 0x7fcb08f06030
 
 <summary>其实就是把上边的综合这些一个Demo</summary>
 
-
-
 ```cpp
 // mixtypes.cpp --some type combinations
 #include <iostream>
@@ -1157,9 +1149,7 @@ int main()
 
 <details>
 
-<summary> vector</summary>
-
-
+<summary>vector</summary>
 
 ```cpp
 #include <iostream>
@@ -1284,4 +1274,3 @@ a4[2]: 1.62 at 0x7ff7b52d7780
 ```
 
 </details>
-
