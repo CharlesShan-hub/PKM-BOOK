@@ -8,8 +8,7 @@
   * 回归（regression）：函数的输出是一个标量（scaler）。比如，预测明天温度。
   * 分类（classification）：函数输出的是类别（class）。比如，判断邮件是否为垃圾邮件，AlphaGo下围棋（判断 19x19 的个位置要取哪一个）。
   * 结构化学习（structured learning）：（参考：[大佬笔记](https://www.cnblogs.com/wry789/p/13215042.html)）函数输出是一个结构化的数据，比如图片，语句等等。比如，语音识别、机器翻译、句法解析、目标检测
-
-## 如何找到这个函数
+* 如何找到这个函数
 
 <img src="../../.gitbook/assets/ml-workflow.excalidraw.svg" alt="" class="gitbook-drawing">
 
