@@ -1,9 +1,13 @@
 ---
-description: 人工智能的发展过程梳理
 icon: hourglass-clock
+description: 人工智能的发展过程梳理
 ---
 
 # Artificial Intelligence
+
+## 推荐网站
+
+* [https://www.showmeai.tech/](https://www.showmeai.tech/)
 
 ## AI 的发展
 

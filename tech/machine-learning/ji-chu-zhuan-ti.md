@@ -1,5 +1,26 @@
 # 基础专题
 
+## 基础定义
+
+* 什么是机器学习
+  * 李宏毅：很多应用场景都是根据给定输入进行处理后进行输出，其过程可以抽象成一个函数，机器学习就是通过给定大量数据，学习到这样的一个函数。
+* 机器学习的种类
+  * 回归（regression）：函数的输出是一个标量（scaler）。比如，预测明天温度。
+  * 分类（classification）：函数输出的是类别（class）。比如，判断邮件是否为垃圾邮件，AlphaGo下围棋（判断 19x19 的个位置要取哪一个）。
+  * 结构化学习（structured learning）：（参考：[大佬笔记](https://www.cnblogs.com/wry789/p/13215042.html)）函数输出是一个结构化的数据，比如图片，语句等等。比如，语音识别、机器翻译、句法解析、目标检测
+
+## 如何找到这个函数
+
+<img src="../../.gitbook/assets/ml-workflow.excalidraw.svg" alt="" class="gitbook-drawing">
+
+1. 我们的主要目标是根据特定的数据学到一个模型。假设任务是预测天气。
+2. 首先定义一个模型，比如最简单的线性模型，明天天气是今天天气的 k 倍+ b。
+3. 通过模型得到的结果和真实结果的误差可以进一步计算的到 MAE 或 MSE。
+   1. $$MAE = \frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|$$
+   2. $$MSE = \frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2$$
+4. 误差表面(error surface)：根据不同的超参数，绘制误差。
+5. 优化：通过梯度下降等方法找到误差最小的地方。
+
 ## 经验误差
 
 前提：$$m$$个样本中$$\alpha$$个样本分类错误
@@ -104,7 +125,9 @@ $$
 
 ## Reference
 
-\[1] 大佬笔记：[西瓜书学习笔记(1)--绪论](https://www.heywhale.com/mw/project/5e4f83590e2b66002c1f574b)
+\[1] [【機器學習2021】預測本頻道觀看人數 (上) - 機器學習基本概念簡介](https://www.youtube.com/watch?v=Ye018rCVvOo\&list=PLJV\_el3uVTsMhtt7\_Y6sgTHGHp1Vb2P2J)
 
-\[2] 大佬笔记：[西瓜书学习笔记(2)--模型的评估与选择](https://www.heywhale.com/mw/project/5e4f89fb0e2b66002c1f6468)
+\[2] 大佬笔记：[西瓜书学习笔记(1)--绪论](https://www.heywhale.com/mw/project/5e4f83590e2b66002c1f574b)
+
+\[3] 大佬笔记：[西瓜书学习笔记(2)--模型的评估与选择](https://www.heywhale.com/mw/project/5e4f89fb0e2b66002c1f6468)
 
