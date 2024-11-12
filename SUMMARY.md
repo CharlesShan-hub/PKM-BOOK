@@ -216,3 +216,14 @@
 * [Linux](tech/linux/README.md)
   * [clash](tech/linux/clash.md)
   * [Git](tech/linux/git.md)
+
+## Papers
+
+* [Paper Collection](papers/paper-collection/README.md)
+  * [RCNN](papers/paper-collection/rcnn.md)
+* [图像分类（Image Classification）](papers/tu-xiang-fen-lei-image-classification.md)
+* [目标检测（Object Detection）](papers/mu-biao-jian-ce-object-detection.md)
+* [图像分割（Image Segmentation）](papers/tu-xiang-fen-ge-image-segmentation.md)
+* [图像融合（Image Fusion）](papers/tu-xiang-rong-he-image-fusion.md)
+* [图像压缩（Image Compression）](papers/tu-xiang-ya-suo-image-compression.md)
+* [超分辨率重建（Image Super-Resolution）](papers/chao-fen-bianlzhong-jian-image-superresolution.md)
