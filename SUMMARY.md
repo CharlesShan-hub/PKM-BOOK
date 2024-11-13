@@ -221,6 +221,7 @@
 
 * [Paper Collection](papers/paper-collection/README.md)
   * [RCNN](papers/paper-collection/rcnn.md)
+  * [Dataset：VOC](papers/paper-collection/dataset-voc.md)
 * [图像分类（Image Classification）](papers/tu-xiang-fen-lei-image-classification.md)
 * [目标检测（Object Detection）](papers/mu-biao-jian-ce-object-detection.md)
 * [图像分割（Image Segmentation）](papers/tu-xiang-fen-ge-image-segmentation.md)
