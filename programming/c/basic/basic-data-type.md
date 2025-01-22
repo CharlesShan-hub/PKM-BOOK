@@ -7,9 +7,12 @@ description: 基础数据类型
 
 ## Overview
 
-<img src="../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing"><img src="../assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
+
+
+<img src="../../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
 
 ![img](../assets/test.svg)
+
 ***
 
 ## Intenger
