@@ -16,7 +16,7 @@ description: 基础数据类型
 
 <img src="../assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
 
-![img](./assets/file.excalidraw (4).svg)
+![img](../assets/file.excalidraw (4).svg)
 
 3. gitbook语法+obsidian导出的svg
 
