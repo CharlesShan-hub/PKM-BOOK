@@ -10,6 +10,9 @@ description: 基础数据类型
 <img src="../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
 <img src="../assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
 
+![aaaa](../assets/file.excalidraw%20(4).svg)
+![img][../assets/test.excalidraw]
+
 ***
 
 ## Intenger
