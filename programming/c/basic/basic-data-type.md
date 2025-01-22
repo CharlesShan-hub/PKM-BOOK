@@ -6,11 +6,13 @@ description: 基础数据类型
 # Basic Data Type
 
 ## Overview
-
-
-
+1. gitbook原生的
 <img src="../../../.gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
-
+2. gitbook语法+obsidian导出的svg
+<img src=".../assets/test.svg" alt="" class="gitbook-drawing">
+3. gitbook语法+obsidian原生excelidraw
+<img src=".../assets/test.svg" alt="" class="gitbook-drawing">
+4. !\[img\]类型的图片（svg）
 ![img](../assets/test.svg)
 
 ***
