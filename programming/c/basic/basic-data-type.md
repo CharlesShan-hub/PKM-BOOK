@@ -7,13 +7,13 @@ description: 基础数据类型
 
 ## Overview
 
-<img src="../assets/basic-data-type.svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/basic-data-type.svg" alt="" class="gitbook-drawing">
 
 ***
 
-## Intenger
+## 1. Intenger
 
-### int, long, short, unsigned
+### 1.1. int, long, short, unsigned
 
 int 可以与 short 等关键字搭配，构造更具体的 int：
 
@@ -118,7 +118,7 @@ int main()
 
 <table><thead><tr><th>type</th><th width="86">printf</th><th>hexadecimal</th><th>octal</th><th>decimal</th></tr></thead><tbody><tr><td>char</td><td>%c</td><td>\0x41</td><td>\0101</td><td>N.A.</td></tr><tr><td>int</td><td>%d</td><td>0x41</td><td>0101</td><td>65</td></tr><tr><td>unsigned int</td><td>%u</td><td>0x41u</td><td>0101u</td><td>65u</td></tr><tr><td>long</td><td>%ld</td><td>0x41L</td><td>0101L</td><td>65L</td></tr><tr><td>unsigned long</td><td>%lu</td><td>0x41UL</td><td>0101UL</td><td>65UL</td></tr><tr><td>long long</td><td>%lld</td><td>0x41LL</td><td>0101LL</td><td>65LL</td></tr><tr><td>unsigned long long</td><td>%llu</td><td>0x41ULL</td><td>0101ULL</td><td>65ULL</td></tr></tbody></table>
 
-### char
+### 1.2. char
 
 char 代表字符，采用 ASCII 码，占用内存 8 bits。
 
@@ -143,7 +143,7 @@ char 代表字符，采用 ASCII 码，占用内存 8 bits。
 | \0oo | 八进制值（oo必须是有效的八进制数，即每个o可表示0\~7中的一个数）   |
 | \xhh | 十六进制值（hh必须是有效的十六进制数，即每个h可表示0\~f中的一个数） |
 
-### \_Bool
+### 1.3. \_Bool
 
 * C99添加了布尔类型，占用 1bit。 我们可以直接就使用`_Bool`
 * 也可以通过引入`stdbool.h`来使用`bool`
@@ -226,7 +226,7 @@ int main(void)
 
 </details>
 
-### stdint.h & inttypes.h
+### 1.4. stdint.h & inttypes.h
 
 > stdint.h：用于各种 int 的声明
 >
@@ -242,9 +242,9 @@ int main(void)
 
 ***
 
-## Decimal
+## 2. Decimal
 
-### float, double, long double
+### 2.1. float, double, long double
 
 占用字节数与表示范围
 
@@ -361,7 +361,7 @@ int main(void)
 
 </details>
 
-### Complex, Imaginary
+### 2.2. Complex, Imaginary
 
 * C99
   * 复数：float \_Complex, double \_Complex, long double \_Complex
