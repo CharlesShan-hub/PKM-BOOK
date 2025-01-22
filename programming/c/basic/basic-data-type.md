@@ -7,12 +7,9 @@ description: 基础数据类型
 
 ## Overview
 
-<img src="../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
-<img src="../assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
+<img src="../../../.gitbook/assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing"><img src="../assets/file.excalidraw (4).svg" alt="" class="gitbook-drawing">
 
-![aaaa](../assets/file.excalidraw%20(4).svg)
-![img][../assets/test.drawing.svg]
-
+![img](../assets/test.drawing.svg)
 ***
 
 ## Intenger
